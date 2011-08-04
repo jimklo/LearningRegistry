@@ -263,12 +263,16 @@ window.cur_related_keys = {};
 
 var relatedKeys = function(envelope) {
 	if (envelope.keys) {
+		used = {}
 		for (var i=0; i<envelope.keys.length; i++) {
 			var clean = envelope.keys[i].toLowerCase().trim();
 			if (!window.cur_related_keys[clean]) {
 				window.cur_related_keys[clean] = 0;
 			}
-			window.cur_related_keys[clean] += 1;
+			if (!used[clean] || used[clean] < 1 ) {
+				window.cur_related_keys[clean] += 1;
+				used[clean] = 1;
+			}
 		}
 	}
 	
