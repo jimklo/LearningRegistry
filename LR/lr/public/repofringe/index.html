@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>RepoFringe Browser</title>
+    <link rel="stylesheet" href="app.css" type="text/css">
+    <link rel="stylesheet" href="jquery-ui.css" type="text/css">
+</head>
+<body>
+
+<div id="input">
+<form id="search-form">
+    <input type="hidden" id="cur-keys" name="cur-keys" value=""/>
+    <fieldset>
+	    <label for="keys">Keyword:<input id="keys" name="keys" type="text"/></label>
+	    <input type="submit" value="Browse">
+	    
+	    <div id="title">LR Visual Filter</div>
+    </fieldset>
+</form>
+</div>
+
+<div id="log"></div>
+<div id="related-keys">
+</div>
+
+<div id="results">
+<table id="resources">
+<thead>
+<tr>
+    <th>Thumbnail</th>
+    <th>Details</th>
+</tr>
+</thead>
+<tbody id="resource_body"></tbody>
+</table>
+</div>
+</body>
+
+<script type="text/x-mustache" id="resourceRowTemplate">
+    <tr>
+        <td>{{{thumbnail}}}</td>
+        <td>
+            <div class="resource_name"><a class="resource-locator" href="{{resource_locator_url}}" target="_blank">{{resource_locator_url}}</a></div>
+            {{#identity}}
+            {{#owner}}<div class="id_owner">Owner: {{owner}}</div>{{/owner}}
+            {{#submitter}}<div class="id_submitter">Submitter: {{submitter}}</div>{{/submitter}}
+            {{#curator}}<div class="id_curator">Curator: {{curator}}</div>{{/curator}}
+            {{/identity}}
+            <div class="unknown">Average Educator Rating: &#9734;&#9734;&#9734;&#9734;&#9734;</div>
+            <div class="unknown">Average Student Rating: &#9734;&#9734;&#9734;&#9734;&#9734;</div>
+            <div class="addthis_toolbox addthis_default_style "
+                    addthis:url="{{resource_locator_url}}">
+                <a class="addthis_button_preferred_1"></a>
+                <a class="addthis_button_preferred_2"></a>
+                <a class="addthis_button_preferred_3"></a>
+                <a class="addthis_button_preferred_4"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+        </td>
+    </tr>
+</script>
+
+<script type="text/x-mustache" id="relatedKeyTemplate">
+    <div class="related-key">{{related_key}} {{count}}</div>
+</script>
+
+<script type="text/x-mustache" id="thumbnailTemplate">
+<iframe FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=192 HEIGHT=256 
+src="http://wimg.ca/uc_y_mode_iframe_w_256_h_192/{{{resource_locator}}}"></iframe>
+</script>
+
+<script type="text/x-mustache" id="keywordModelTemplate">
+{
+    "id": "{{keyword}}",
+    "name": "{{keyword}}",
+    "data": {
+        "$dim": {{dim}} * 20, 
+        "count": {{count}} 
+    },
+    "children": [{{{children}}}]
+}
+</script>
+
+
+
+<script src="/_utils/script/jquery.js"></script>
+<script src="/_utils/script/jquery.couch.js"></script>
+<script src="jquery.mustache.js"></script>
+<script src="jquery-ui.min.js"></script>
+<script src="app.js"></script>
+<!--[if IE]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
+<script src="jit-yc.js"></script>
+<script src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e39e9cd70e035a6"></script>
+
+</html>

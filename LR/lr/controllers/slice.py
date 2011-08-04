@@ -19,6 +19,8 @@ ANY_TAGS = 'any_tags'
 #FULL_DOCS = 'full_docs'
 IDS_ONLY = 'ids_only'
 CALLBACK = 'callback'
+LIMIT = 'limit'
+STALE = 'stale'
 
 class SliceController(BaseController):
     """REST Controller styled on the Atom Publishing Protocol"""
@@ -56,13 +58,25 @@ class SliceController(BaseController):
                 return False
             else:
                 return False
-                
-        def _set_boolean_param(paramKey):
+            
+        def _set_int_param(paramKey, setifempty=True):
             if req_params.has_key(paramKey):
-                params[paramKey] = req_params[paramKey][0].lower() == 't'
+                params[paramKey] = int(req_params[paramKey])
                 return True
-            else :
+            elif setifempty:
+                params[paramKey] = None
+                return False
+            else:
+                return False
+                
+        def _set_boolean_param(paramKey, setifempty=True):
+            if req_params.has_key(paramKey):
+                params[paramKey] = req_params[paramKey].lower() in ["t", "true"]
+                return True
+            elif setifempty:
                 params[paramKey] = False
+                return False
+            else:
                 return False
         
         if _set_string_param(START_DATE) : param_count += 1
@@ -70,18 +84,20 @@ class SliceController(BaseController):
         if _set_string_param(ANY_TAGS) : param_count += 1
         _set_string_param(END_DATE)
         _set_boolean_param(IDS_ONLY)
+        _set_boolean_param(STALE)
         _set_string_param(CALLBACK, False)
+        _set_int_param(LIMIT)
         
         params['param_count'] = param_count
         log.debug(json.dumps(params))
         return params
 
-    def _get_view(self,view_name = '_design/learningregistry/_view/resources',keys=[], include_docs = False):
+    def _get_view(self,view_name = '_design/learningregistry/_view/resources',keys=[], include_docs = False, stale=False, limit=None):
         db_url = '/'.join([appConfig['couchdb.url'],appConfig['couchdb.db.resourcedata']])
         if len(keys) > 0:
-            view =  h.getView(database_url=db_url, method="POST", view_name=view_name,keys=keys,include_docs=include_docs)#,stale='ok'):
+            view =  h.getView(database_url=db_url, method="POST", view_name=view_name,keys=keys,include_docs=include_docs,stale=stale, limit=limit)
         else:
-            view = h.getView(database_url=db_url,view_name=view_name,include_docs=include_docs)#,stale='ok'):
+            view = h.getView(database_url=db_url,view_name=view_name,include_docs=include_docs,stale=stale,limit=limit)
         return view
 
     
@@ -169,8 +185,10 @@ class SliceController(BaseController):
                     prefix = ",\n"
                 else:
                     log.debug("{0} skipping: alreadySent {1} / forceUnique {2}".format(doc_count, repr(alreadySent), forceUnique))
+            prefix = ""
+                        
                     
-        yield '\n], "resultCount":'+str(num_sent) +', "replyEnd":"'+str(datetime.today())+'"}'    
+        yield prefix+'\n], "resultCount":'+str(num_sent) +', "replyEnd":"'+str(datetime.today())+'"}'    
         
 #        if __name__ == '__main__':
 #            param = {START_DATE: "2011-03-10", END_DATE: "2011-05-01", IDENTITY: "NSDL 2 LR Data Pump", 'search_key': 'Arithmetic'}
@@ -189,7 +207,7 @@ class SliceController(BaseController):
                  
                 if CALLBACK in params:
                     yield "{0}(".format(params[CALLBACK])
-                docs = self._get_view('_design/learningregistry/_view/slice', keys, not params[IDS_ONLY]) 
+                docs = self._get_view('_design/learningregistry/_view/slice', keys, not params[IDS_ONLY], stale=params[STALE],limit=params[LIMIT]) 
                 for i in  self.format_data(params[IDS_ONLY],docs,keys,True):
                     yield i
                 if CALLBACK in params:

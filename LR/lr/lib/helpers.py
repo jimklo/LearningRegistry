@@ -27,15 +27,32 @@ class document:
 def getView(database_url, view_name, method="GET", **kwargs):    
     str_param_template= '\"{0}\"'
     json_headers = { "Content-Type": "application/json; charset=\"utf-8\"" }
+    for_removal = []
     for foo in kwargs:
         if foo == 'startkey' or foo == 'endkey':
             kwargs[foo] = str_param_template.format(kwargs[foo])
+            
+        if foo == 'stale' and kwargs[foo]:
+            kwargs[foo] = 'ok'
+        elif foo == 'stale':
+            for_removal.append(foo)
+            
+        if foo == 'limit' and kwargs[foo] == None:
+            for_removal.append(foo)
+    
+    for foo in for_removal:
+        del kwargs[foo]
+        
     if method is "POST":
+        query_args = []
         if "include_docs" in kwargs:
-            include_docs = "include_docs={0}".format(repr(kwargs["include_docs"])).lower()
-        else:
-            include_docs = ""
-        view_url = '?'.join(['/'.join([database_url,view_name]), include_docs]) 
+            query_args.append("include_docs={0}".format(repr(kwargs["include_docs"])).lower())
+        if "stale" in kwargs:
+            query_args.append("stale={0}".format(kwargs["stale"]))
+        if "limit" in kwargs:
+            query_args.append("limit={0}".format(kwargs["limit"]))
+        
+        view_url = '?'.join(['/'.join([database_url,view_name]), "&".join(query_args)]) 
         post_data = json.dumps(kwargs)
         log.debug("POST "+view_url)
         log.debug("DATA " + post_data)
