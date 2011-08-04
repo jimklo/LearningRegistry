@@ -40,6 +40,11 @@
 </div>
 </body>
 
+
+<div id="dialog" title="View Comments" style="display:none;">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vulputate rhoncus urna vitae convallis. Fusce massa velit, adipiscing nec ultrices fringilla, egestas quis eros. Nulla aliquam dictum condimentum. Nullam eu purus magna, id blandit augue. In hac habitasse platea dictumst. Vestibulum ornare sem at tellus tristique vulputate. Aliquam sem ante, vehicula quis venenatis quis, scelerisque a enim. Quisque laoreet dapibus euismod. Nam vitae purus vitae sapien gravida faucibus sed vel arcu. Praesent posuere, sem ut hendrerit venenatis, erat urna lobortis velit, non viverra risus sapien vel enim. Maecenas volutpat erat nec justo porta nec viverra mi sollicitudin. Sed commodo auctor orci quis porta. Praesent justo arcu, eleifend eget facilisis eu, ultricies sit amet ligula. Nunc vitae nunc vitae quam ullamcorper scelerisque non sed lorem. Phasellus lacinia adipiscing erat in sodales. Pellentesque ut enim lacus. Phasellus pulvinar, justo a fermentum accumsan, diam mauris consectetur arcu, non tincidunt enim justo rutrum lacus.</p>
+</div>
+
 <script type="text/x-mustache" id="resourceRowTemplate">
     <tr>
         <td>{{{thumbnail}}}</td>
@@ -52,15 +57,7 @@
             {{/identity}}
             <div class="unknown">Average Educator Rating: &#9734;&#9734;&#9734;&#9734;&#9734;</div>
             <div class="unknown">Average Student Rating: &#9734;&#9734;&#9734;&#9734;&#9734;</div>
-            <div class="addthis_toolbox addthis_default_style "
-                    addthis:url="{{resource_locator_url}}">
-                <a class="addthis_button_preferred_1"></a>
-                <a class="addthis_button_preferred_2"></a>
-                <a class="addthis_button_preferred_3"></a>
-                <a class="addthis_button_preferred_4"></a>
-                <a class="addthis_button_compact"></a>
-                <a class="addthis_counter addthis_bubble_style"></a>
-            </div>
+            <div class="unknown">Comments: TBD <a href="javascript:openDialog();">view</a> <a href="#">add</a>
         </td>
     </tr>
 </script>

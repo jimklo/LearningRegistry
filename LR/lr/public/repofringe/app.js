@@ -26,6 +26,10 @@ var Log = {
   }
 };
 
+var openDialog = function () {
+	jQuery("#dialog").dialog({height: 400, width: 600, modal: true, draggable: false});
+	return false;
+}
 
 var initFDGraph = function (json) {
 	jQuery("#related-keys").html("");
@@ -39,7 +43,7 @@ var initFDGraph = function (json) {
 	      //Enable panning events only if we're dragging the empty
 	      //canvas (and not a node).
 	      panning: 'avoid nodes',
-	      zooming: 10 //zoom speed. higher is more sensible
+	      zooming: 50 //zoom speed. higher is more sensible
 	    },
 	    // Change node and edge styles such as
 	    // color and width.
