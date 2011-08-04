@@ -29,6 +29,8 @@ var Log = {
 
 var initGraph = function(model) {
 	
+	jQuery("#related-keys").html("");
+	
 	//init RGraph
     window.rgraph = new $jit.RGraph({
         //Where to append the visualization
