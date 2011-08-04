@@ -27,6 +27,136 @@ var Log = {
 };
 
 
+var initFDGraph = function (json) {
+	jQuery("#related-keys").html("");
+	window.fd = new $jit.ForceDirected({
+	    //id of the visualization container
+	    injectInto: 'related-keys',
+	    //Enable zooming and panning
+	    //by scrolling and DnD
+	    Navigation: {
+	      enable: true,
+	      //Enable panning events only if we're dragging the empty
+	      //canvas (and not a node).
+	      panning: 'avoid nodes',
+	      zooming: 10 //zoom speed. higher is more sensible
+	    },
+	    // Change node and edge styles such as
+	    // color and width.
+	    // These properties are also set per node
+	    // with dollar prefixed data-properties in the
+	    // JSON structure.
+	    Node: {
+	    	color: '#f00',
+	    	overridable: true
+	    },
+	    Edge: {
+	      overridable: true,
+	      color: '#23A4FF',
+	      lineWidth: 0.4
+	    },
+	    //Native canvas text styling
+	    Label: {
+	      type: labelType, //Native or HTML
+	      size: 10,
+	      style: 'bold'
+	    },
+	    //Add Tips
+	    Tips: {
+	      enable: true,
+	      onShow: function(tip, node) {
+	        //count connections
+	//        var count = 0;
+	//        node.eachAdjacency(function() { count++; });
+	        //display node info in tooltip
+	        tip.innerHTML = "<div class=\"tip\"><div class=\"tip-title\">" + node.name + "</div>"
+	          + "<div class=\"tip-text\"><b>" + node.data.count + " documents found.</b></div></div>";
+	      }
+	    },
+	    // Add node events
+	    Events: {
+	      enable: true,
+	      type: 'Native',
+	      //Change cursor style when hovering a node
+	      onMouseEnter: function() {
+	        fd.canvas.getElement().style.cursor = 'move';
+	      },
+	      onMouseLeave: function() {
+	        fd.canvas.getElement().style.cursor = '';
+	      },
+	      //Update node positions when dragged
+	      onDragMove: function(node, eventInfo, e) {
+	          var pos = eventInfo.getPos();
+	          node.pos.setc(pos.x, pos.y);
+	          fd.plot();
+	      },
+	      //Implement the same handler for touchscreens
+	      onTouchMove: function(node, eventInfo, e) {
+	        $jit.util.event.stop(e); //stop default touchmove event
+	        this.onDragMove(node, eventInfo, e);
+	      },
+	      //Add also a click handler to nodes
+	      onClick: function(node) {
+	        if(!node) return;
+	        
+	        filterSlice(node.name);
+	        // Build the right column relations list.
+	        // This is done by traversing the clicked node connections.
+	//        var html = "<h4>" + node.name + "</h4><b> connections:</b><ul><li>",
+	//            list = [];
+	//        node.eachAdjacency(function(adj){
+	//          list.push(adj.nodeTo.name);
+	//        });
+	        //append connections information
+	//        $jit.id('inner-details').innerHTML = html + list.join("</li><li>") + "</li></ul>";
+	      }
+	    },
+	    //Number of iterations for the FD algorithm
+	    iterations: 200,
+	    //Edge length
+	    levelDistance: 130,
+	    // Add text to the labels. This method is only triggered
+	    // on label creation and only for DOM labels (not native canvas ones).
+	    onCreateLabel: function(domElement, node){
+	      domElement.innerHTML = node.name;
+	      var style = domElement.style;
+	      style.fontSize = "0.8em";
+	      style.color = "#ddd";
+	    },
+	    // Change node styles when DOM labels are placed
+	    // or moved.
+	    onPlaceLabel: function(domElement, node){
+	      var style = domElement.style;
+	      var left = parseInt(style.left);
+	      var top = parseInt(style.top);
+	      var w = domElement.offsetWidth;
+	      style.left = (left - w / 2) + 'px';
+	      style.top = (top + 10) + 'px';
+	      style.display = '';
+	    }
+	  });
+  // load JSON data.
+	window.fd.loadJSON(json);
+  // compute positions incrementally and animate.
+	window.fd.computeIncremental({
+    iter: 40,
+    property: 'end',
+    onStep: function(perc){
+      Log.write(perc + '% loaded...');
+    },
+    onComplete: function(){
+      Log.write('done');
+      fd.animate({
+        modes: ['linear'],
+        transition: $jit.Trans.Elastic.easeOut,
+        duration: 2500
+      });
+    }
+  });
+  // end
+}
+
+
 var initGraph = function(model) {
 	
 	jQuery("#related-keys").html("");
@@ -179,6 +309,7 @@ var keywordModel = function() {
 	
 }
 
+
 var displayKeys = function() {
 	var related_keys = jQuery("#related-keys");
 	var template = jQuery("#relatedKeyTemplate").html();
@@ -200,6 +331,54 @@ var getThumbnail = function(resource_locator) {
 	});
 }
 
+
+var filterSlice = function(filter) {
+	
+	var template = jQuery("#resourceRowTemplate").html();
+	var target = jQuery("#resource_body");
+	
+	if (!(filter && window.results)) return;
+	
+	var data = window.results;
+	
+	target.html("");
+	if (data.documents) {
+//		console.log("have documents");
+		doc = data.documents;
+		for (var i=0; i < data.documents.length; i++) {
+			
+//			console.dir(doc[i]);
+			if (doc[i].resource_data_description && 
+					doc[i].resource_data_description.resource_locator && 
+					doc[i].resource_data_description.keys ){
+				var use = false;
+				for (key in doc[i].resource_data_description.keys) {
+					console.log("1: "+doc[i].resource_data_description.keys[key].trim().toLowerCase());
+					console.log("2: "+filter.trim());
+					if (doc[i].resource_data_description.keys[key].trim().toLowerCase() == filter.trim()) {
+	
+						use = true;
+						continue;
+					}
+						
+				}
+				if (!use) continue;
+				
+//				console.log("locator");
+				thumb_url = getThumbnail(doc[i].resource_data_description.resource_locator);
+				target.prepend(jQuery.mustache(template, 
+					{ 
+						"thumbnail": thumb_url,
+						"resource_locator_url": doc[i].resource_data_description.resource_locator,
+						"identity": (doc[i].resource_data_description.identity ? doc[i].resource_data_description.identity : null)
+					} 
+				));
+				relatedKeys(doc[i].resource_data_description);
+			}
+			
+		}
+	}
+}
 
 var handleSlice = function(data) {
 	window.cur_related_keys = {};
@@ -237,7 +416,8 @@ var handleSlice = function(data) {
 		//displayKeys();
 		var keyModel = keywordModel();
 		
-		initGraph(keyModel);
+//		initGraph(keyModel);
+		initFDGraph(keyModel);
 	}
 	
 	

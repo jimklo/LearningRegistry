@@ -26,3 +26,8 @@ a:link    {color:#fff;}
 a:visited {color:#fff;}
 a:hover   {color:#fff;}
 a:active  {color:#fff;}
+
+.tip { background-color: #fff;
+       padding: 4px; }
+.tip-text {color:#000;}
+.tip-title {color:#000;}
