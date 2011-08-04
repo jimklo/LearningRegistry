@@ -247,7 +247,7 @@ var doSlice = function() {
 
 	cur_keys.val(keys.val());
 	
-	jQuery.getJSON("/slice", { "any_tags": keys.val(), "stale": true, "limit" : 500 }, handleSlice);
+	jQuery.getJSON("/slice", { "any_tags": keys.val(), "stale": true, "limit" : 100 }, handleSlice);
 }
 
 
