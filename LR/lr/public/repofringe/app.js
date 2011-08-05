@@ -400,6 +400,7 @@ var handleSlice = function(data) {
 	
 	target.html("");
 	if (data.documents) {
+		jQuery("#resource_head").css("visibility", "visible");
 //		console.log("have documents");
 		doc = data.documents;
 		for (var i=0; i < data.documents.length; i++) {
