@@ -95,9 +95,9 @@ class SliceController(BaseController):
     def _get_view(self,view_name = '_design/learningregistry/_view/resources',keys=[], include_docs = False, stale=False, limit=None):
         db_url = '/'.join([appConfig['couchdb.url'],appConfig['couchdb.db.resourcedata']])
         if len(keys) > 0:
-            view =  h.getView(database_url=db_url, method="POST", view_name=view_name,keys=keys,include_docs=include_docs,stale=stale, limit=limit)
+            view =  h.getView(database_url=db_url, method="POST", view_name=view_name,keys=keys,include_docs=include_docs,stale=stale, limit=limit, reduce="false")
         else:
-            view = h.getView(database_url=db_url,view_name=view_name,include_docs=include_docs,stale=stale,limit=limit)
+            view = h.getView(database_url=db_url,view_name=view_name,include_docs=include_docs,stale=stale,limit=limit, reduce="false")
         return view
 
     

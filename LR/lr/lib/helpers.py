@@ -51,6 +51,8 @@ def getView(database_url, view_name, method="GET", **kwargs):
             query_args.append("stale={0}".format(kwargs["stale"]))
         if "limit" in kwargs:
             query_args.append("limit={0}".format(kwargs["limit"]))
+        if "reduce" in kwargs:
+            query_args.append("reduce={0}".format(kwargs["reduce"]))
         
         view_url = '?'.join(['/'.join([database_url,view_name]), "&".join(query_args)]) 
         post_data = json.dumps(kwargs)
