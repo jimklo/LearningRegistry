@@ -35,7 +35,7 @@ def DataCleaner(testName, type="Basic"):
                 
         docs_json = json.dumps(test_data)
         response = obj.app.post('/publish', params=docs_json, headers={"Content-type": "application/json"})
-        urlopen(obj.couch_url+"/resource_data/_design/learningregistry-slice/_view/docs?limit=1")
+        urlopen("{url}/{db}/_design/learningregistry-slice/_view/docs?limit=1".format(url=obj.couch_url, db=obj.database))
         return response
     
     
@@ -49,7 +49,7 @@ def DataCleaner(testName, type="Basic"):
                 
         docs_json = json.dumps(test_data)
         response = obj.app.post('/publish', params=docs_json, headers=json_headers)
-        urlopen(obj.couch_url+"/resource_data/_design/learningregistry-slice/_view/docs?limit=1")
+        urlopen("{url}/{db}/_design/learningregistry-slice/_view/docs?limit=1".format(url=obj.couch_url, db=obj.database))
         return response
     
     def writeResumptionTestData(obj):
@@ -66,7 +66,7 @@ def DataCleaner(testName, type="Basic"):
                 
         docs_json = json.dumps(test_data)
         response = obj.app.post('/publish', params=docs_json, headers=json_headers)
-        urlopen(obj.couch_url+"/resource_data/_design/learningregistry-slice/_view/docs?limit=1")
+        urlopen("{url}/{db}/_design/learningregistry-slice/_view/docs?limit=1".format(url=obj.couch_url, db=obj.database))
         return response
 
     def buildTestDoc(submitter, keys, type, schemas):
@@ -94,7 +94,7 @@ def DataCleaner(testName, type="Basic"):
     
     
     def removeTestData(obj):
-        response = urlopen(obj.couch_url+"/resource_data/_design/learningregistry-slice/_view/docs?reduce=false&key=\""+obj.testDataKey+"\"")
+        response = urlopen("{url}/{db}/_design/learningregistry-slice/_view/docs?reduce=false&key=\"{key}\"".format(url=obj.couch_url, db=obj.database, key=obj.testDataKey))
         body = response.read()
         data = json.loads(body) 
         rows = data["rows"]
@@ -149,7 +149,7 @@ class TestSlicesController(TestController):
     #end_date = datetime.strptime("2011-01-01","%Y-%m-%d")
     
     couch_url = config['couchdb.url']
-    database='resource_data'
+    database= config['couchdb.db.resourcedata']
     server = couchdb.Server(couch_url)
     db = server[database]
     
@@ -169,7 +169,7 @@ class TestSlicesController(TestController):
             doc = self.db[doc_id]
             doc["node_timestamp"] = self.test_start_date_string + self.test_time_string
             self.db[doc.id] = doc
-        urlopen(self.couch_url+"/resource_data/_design/learningregistry-slice/_view/docs?limit=1")
+        urlopen("{url}/{db}/_design/learningregistry-slice/_view/docs?limit=1".format(url=self.couch_url, db=self.database))
             
     def updateTestDataWithMultipleTestDates(self, docs, testName):
         for result in docs['document_results'] :
@@ -185,7 +185,7 @@ class TestSlicesController(TestController):
                 doc["node_timestamp"] = self.test_end_date_string + self.test_time_string
             
             self.db[doc.id] = doc
-        urlopen(self.couch_url+"/resource_data/_design/learningregistry-slice/_view/docs?limit=1")
+        urlopen("{url}/{db}/_design/learningregistry-slice/_view/docs?limit=1".format(url=self.couch_url, db=self.database))
         
     def _checkIdentity(self, doc, identity) :
         

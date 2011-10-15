@@ -94,7 +94,7 @@ class oaipmh(harvest):
     '''
     Utility class to provide OAI-PMH results from Learning Registy
     '''
-    def __init__(self, server=appConfig['couchdb.url'], database="resource_data"):
+    def __init__(self, server=appConfig['couchdb.url'], database=appConfig['couchdb.db.resourcedata']):
         '''
         Constructor
         '''
