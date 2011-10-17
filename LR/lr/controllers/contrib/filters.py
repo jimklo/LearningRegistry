@@ -27,7 +27,7 @@ class FiltersController(BaseController):
 
     def index(self, format='json'):
         """GET /contrib/filters: All items in the collection"""
-        url = 'http://localhost:5984/resource_data/_design/filter'
+        url = '{couch}/{db}/_design/filter'.format(couch=_COUCH_SERVER, db=_RESOURCE_DATA)
         res = urllib2.urlopen(url);
         response.headers['content-type'] = 'application/json'
         
@@ -137,7 +137,7 @@ class FiltersController(BaseController):
         if design.has_key("views") == True and design["views"].has_key(id) == True and design["views"][id].has_key("reduce"):
             reduceParam = "?reduce=false"
 
-        uri = 'http://127.0.0.1:5984/resource_data/_design/filter/_view/'+id+reduceParam
+        uri = '{couch}/{db}/_design/filter/_view/'.format(couch=_COUCH_SERVER, db=_RESOURCE_DATA)+id+reduceParam
         url = urllib2.Request(uri,headers={"Content-Type": "application/json"})
         res = urllib2.urlopen(url);
         response.headers['content-type'] = 'application/json'
@@ -148,7 +148,7 @@ class FiltersController(BaseController):
 
     def edit(self, id, format='json'):
         """GET /contrib/filters/id/edit: Form to edit an existing item"""
-        url = 'http://localhost:5984/resource_data/_design/filter'
+        url = '{couch}/{db}/_design/filter'.format(couch=_COUCH_SERVER, db=_RESOURCE_DATA)
         res = urllib2.urlopen(url);
         response.headers['content-type'] = 'application/json'
         
