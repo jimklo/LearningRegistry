@@ -25,10 +25,18 @@ SetupCommand('setup-app').run([pylons.test.pylonsapp.config['__file__']])
 
 environ = {}
 
+def reroute_remote(wsgiapp):
+        from lr.util.nose import relay
+        if relay is not None:
+                from lr.util.remote import WSGIRemoteNodeApplication
+                return WSGIRemoteNodeApplication(wsgiapp, relay)
+        else:
+                return wsgiapp
+
 class TestController(TestCase):
 
     def __init__(self, *args, **kwargs):
-        wsgiapp = pylons.test.pylonsapp
+        wsgiapp = reroute_remote(pylons.test.pylonsapp)
         config = wsgiapp.config
         self.app = TestApp(wsgiapp)
         url._push_object(URLGenerator(config['routes.map'], environ))
