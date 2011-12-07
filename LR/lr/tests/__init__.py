@@ -17,6 +17,8 @@ from webtest import TestApp
 from datetime import datetime
 import pylons.test
 import logging
+import lr.util.noseplugin 
+
 log = logging.getLogger(__name__)
 __all__ = ['environ', 'url', 'TestController']
 time_format = '%Y-%m-%d %H:%M:%SZ'
@@ -26,12 +28,17 @@ SetupCommand('setup-app').run([pylons.test.pylonsapp.config['__file__']])
 environ = {}
 
 def reroute_remote(wsgiapp):
-        from lr.util.nose import relay
-        if relay is not None:
+        
+        import pdb; pdb.set_trace()
+        if lr.util.noseplugin.relay is not None:
                 from lr.util.remote import WSGIRemoteNodeApplication
-                return WSGIRemoteNodeApplication(wsgiapp, relay)
+                app =  WSGIRemoteNodeApplication(wsgiapp, lr.util.noseplugin.relay)
+                return app
         else:
                 return wsgiapp
+
+                
+
 
 class TestController(TestCase):
 

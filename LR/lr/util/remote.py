@@ -38,6 +38,34 @@ def reconstruct_url(environ):
     environ['reconstructed_url'] = url
     return url
 
+def config_remote(remote, environ): 
+    import pdb; pdb.set_trace()
+    if environ.get('HTTP_HOST') and remote.node_parts.hostname:
+        environ['HTTP_HOST'] = remote.node_parts.hostname
+
+        if remote.node_parts.port:
+            environ['HTTP_HOST'] += ":" + remote.node_parts.port
+            if environ.get('SERVER_PORT'):
+                environ['SERVER_PORT'] = remote.node_parts.port
+        elif environ['wsgi.url_scheme'] == 'https':
+            if environ['SERVER_PORT'] != '443':
+                environ['HTTP_HOST'] += ':' + environ['SERVER_PORT']
+            else:
+                environ['HTTP_HOST'] += ':443'
+        else:
+            if environ['SERVER_PORT'] != '80':
+                environ['HTTP_HOST'] += ':' + environ['SERVER_PORT']
+            else:
+                environ['HTTP_HOST'] += ':80'
+
+    
+    if environ.get('SERVER_NAME') and remote.node_parts.hostname:
+        environ['SERVER_NAME'] = remote.node_parts.hostname
+    
+    return environ
+    
+
+
 class WSGIRemoteNodeApplication(object):
     """Application to handle requests that need to be proxied"""
     def __init__(self, wsgiapp, remote):
@@ -50,13 +78,11 @@ class WSGIRemoteNodeApplication(object):
     def handler(self, environ, start_response):
         """Proxy for requests to the actual http server"""
         import pdb; pdb.set_trace()
-        url = urlparse(reconstruct_url(environ))
-
-        remote = urlparse(self.remote.node)
+        url = urlparse(reconstruct_url(config_remote(self.remote, environ)))
     
         # Create connection object
         try:
-            connection = self.ConnectionClass(remote.netloc)
+            connection = self.ConnectionClass(url.netloc)
             # Build path
             path = url.geturl().replace('%s://%s' % (url.scheme, url.netloc), '')
         except Exception, e:

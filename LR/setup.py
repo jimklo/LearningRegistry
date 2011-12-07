@@ -33,5 +33,8 @@ setup(
 
     [paste.app_install]
     main = pylons.util:PylonsInstaller
+
+    [nose.plugins]
+    relay = lr.util.noseplugin:PylonsRelayPlugin
     """,
 )
