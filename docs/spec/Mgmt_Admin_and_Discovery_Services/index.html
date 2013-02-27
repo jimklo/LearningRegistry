@@ -1,0 +1,834 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>11. Management, Administrative and Discovery Services: Learning Registry Technical Specification V MS:0.49.0 &mdash; Learning Registry 0.50.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.50.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Learning Registry 0.50.1 documentation" href="../../index.html" />
+    <link rel="up" title="Learning Registry Technical Specification V 0.49.0" href="../Technical_Spec/index.html" />
+    <link rel="next" title="12. Learning Registry Operations: Learning Registry Technical Specification V OP:0.49.0" href="../Operations/index.html" />
+    <link rel="prev" title="10. Broker Services: Learning Registry Technical Specification V BS:0.50.0" href="../Broker_Services/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../Operations/index.html" title="12. Learning Registry Operations: Learning Registry Technical Specification V OP:0.49.0"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../Broker_Services/index.html" title="10. Broker Services: Learning Registry Technical Specification V BS:0.50.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" accesskey="U">Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">11. Management, Administrative and Discovery Services: Learning Registry Technical Specification V MS:0.49.0</a><ul>
+<li><a class="reference internal" href="#administrative-services">11.1. Administrative Services</a></li>
+<li><a class="reference internal" href="#network-node-status-service">11.2. Network Node Status Service</a></li>
+<li><a class="reference internal" href="#network-node-description-service">11.3. Network Node Description Service</a></li>
+<li><a class="reference internal" href="#network-node-services-service">11.4. Network Node Services Service</a></li>
+<li><a class="reference internal" href="#resource-distribution-network-policy-service">11.5. Resource Distribution Network Policy Service</a></li>
+<li><a class="reference internal" href="#change-log">11.6. Change Log</a></li>
+<li><a class="reference internal" href="#working-notes-and-placeholder-text">11.7. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../Broker_Services/index.html"
+                        title="previous chapter">10. Broker Services: Learning Registry Technical Specification V BS:0.50.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../Operations/index.html"
+                        title="next chapter">12. Learning Registry Operations: Learning Registry Technical Specification V OP:0.49.0</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/spec/Mgmt_Admin_and_Discovery_Services/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="management-administrative-and-discovery-services-learning-registry-technical-specification-v-ms-0-49-0">
+<span id="h-u6sbhsuktqyj"></span><h1>11. Management, Administrative and Discovery Services: Learning Registry Technical Specification V MS:0.49.0<a class="headerlink" href="#management-administrative-and-discovery-services-learning-registry-technical-specification-v-ms-0-49-0" title="Permalink to this headline">¶</a></h1>
+<p>Draft in Progress.</p>
+<p>See the <a class="reference internal" href="../Services_and_APIs/index.html#h-e1519o-y653zc"><em>Change</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-e1519o-y653zc"><em>Log</em></a> for links to prior stable versions.</p>
+<p><span class="changes">Shading indicates major changes and additions from the prior version (0.24.0). Also indicated with ▲.</span></p>
+<p><span class="deletions">Significant deletions are shaded.</span></p>
+<p><span class="deprecation">Features to be deprecated in a future version are shaded and indicated with ▼.</span></p>
+<p>This document is part of one or more versions of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a>. It may contain links to other parts of the Specification.
+These links may link to the most recent version of a part, not to the version of the part that corresponds to this version of this part.
+Go to the appropriate version of the Specification that links to this version of this part, and follow the links there to the referenced part to find the version of the part that corresponds to this version of this part.</p>
+<blockquote>
+<div><p><a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Management</em></a><a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>,</em></a><a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Administrative</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>and</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Discovery</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Services</em></a><a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>:</em></a><a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Learning</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Registry</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Technical</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Specification</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>V</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>MS</em></a><a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>:0.49.0</em></a></p>
+<blockquote>
+<div><p><a class="reference internal" href="#h-kuf0re8u58qs"><em>Administrative</em></a> <a class="reference internal" href="#h-kuf0re8u58qs"><em>Services</em></a></p>
+<blockquote>
+<div><p><a class="reference internal" href="#h-x3qh8x-kqmikf"><em>Network</em></a> <a class="reference internal" href="#h-x3qh8x-kqmikf"><em>Node</em></a> <a class="reference internal" href="#h-x3qh8x-kqmikf"><em>Status</em></a> <a class="reference internal" href="#h-x3qh8x-kqmikf"><em>Service</em></a></p>
+<p><a class="reference internal" href="#h-ixbka3-k9h0vx"><em>Network</em></a> <a class="reference internal" href="#h-ixbka3-k9h0vx"><em>Node</em></a> <a class="reference internal" href="#h-ixbka3-k9h0vx"><em>Description</em></a> <a class="reference internal" href="#h-ixbka3-k9h0vx"><em>Service</em></a></p>
+<p><a class="reference internal" href="#h-5l0qus-ugg81l"><em>Network</em></a> <a class="reference internal" href="#h-5l0qus-ugg81l"><em>Node</em></a> <a class="reference internal" href="#h-5l0qus-ugg81l"><em>Services</em></a> <a class="reference internal" href="#h-5l0qus-ugg81l"><em>Service</em></a></p>
+<p><a class="reference internal" href="#h-jlubtj-czhato"><em>Resource</em></a> <a class="reference internal" href="#h-jlubtj-czhato"><em>Distribution</em></a> <a class="reference internal" href="#h-jlubtj-czhato"><em>Network</em></a> <a class="reference internal" href="#h-jlubtj-czhato"><em>Policy</em></a> <a class="reference internal" href="#h-jlubtj-czhato"><em>Service</em></a></p>
+</div></blockquote>
+<p><a class="reference internal" href="../Services_and_APIs/index.html#h-e1519o-y653zc"><em>Change</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-e1519o-y653zc"><em>Log</em></a></p>
+<p><a class="reference internal" href="../Services_and_APIs/index.html#h-tph0s9vmrwxu"><em>Working</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-tph0s9vmrwxu"><em>Notes</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-tph0s9vmrwxu"><em>and</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-tph0s9vmrwxu"><em>Placeholder</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-tph0s9vmrwxu"><em>Text</em></a></p>
+</div></blockquote>
+</div></blockquote>
+<p>This document is part of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a>. It describes the basic Learning Registry services used to manage, administer and perform discovery in a distribution network.</p>
+<p>This document is not standalone.
+The reader should be familiar with other parts of the specification, including, but not limited to:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../General_Matter/index.html"><em>General</em></a> <a class="reference internal" href="../General_Matter/index.html"><em>Matter</em></a>, including Licenses, Notation, Versioning, Glossary, References</li>
+<li><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Distribution</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Network</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Model</em></a></li>
+<li><a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Data</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Data</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Models</em></a></li>
+<li><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Identity</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Trust</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Authentication</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Security</em></a></li>
+<li><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Data</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Model</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>API</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Attributes</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Behaviors</em></a></li>
+<li><a class="reference internal" href="../Services_and_APIs/index.html"><em>Other</em></a> <a class="reference internal" href="../Services_and_APIs/index.html"><em>Services</em></a> including <a class="reference internal" href="../Distribution_Services/index.html"><em>Distribution</em></a>, <a class="reference internal" href="../Publish_Services/index.html"><em>Publish</em></a>, <a class="reference internal" href="../Access_Services/index.html"><em>Access</em></a>, <a class="reference internal" href="../Broker_Services/index.html"><em>Broker</em></a></li>
+<li><a class="reference internal" href="../Operations/index.html"><em>Learning</em></a> <a class="reference internal" href="../Operations/index.html"><em>Registry</em></a> <a class="reference internal" href="../Operations/index.html"><em>Operations</em></a></li>
+</ul>
+<p>In particular, the reader needs to be aware that specific criteria for services and APIs are presented in the <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Data</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Model</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>API</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Attributes</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Behaviors</em></a> part, the <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Distribution</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Network</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Model</em></a> part describes the network model and the <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Identity</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Trust</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Authentication</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Security</em></a> part describes security requirements.</p>
+<div class="section" id="administrative-services">
+<span id="h-kuf0re8u58qs"></span><h2>11.1. Administrative Services<a class="headerlink" href="#administrative-services" title="Permalink to this headline">¶</a></h2>
+<p>Administrative services are used to trigger network node administrative operations, to determine node status or to retrieve descriptive information about a network node.
+They are used to support monitoring and discovery.
+Future drafts or versions of this specification MAY define additional administrative services.
+Future drafts or versions of this specification MAY define additional service query arguments that will customize the returned data.</p>
+<p><em>NB</em>: Provisioning administrative services is optional.
+They SHOULD NOT be relied on for resource distribution network operations.</p>
+<p><em>Open</em> <em>Question</em>: Do we need to have separate services to return node filters (now part of the general node description) or node connectivity (currently not retrievable).</p>
+<p>All administrative services SHALL support HTTP content negotiation.
+All administrative services SHALL support return of CONTENT-TYPE: text/plain.
+All administrative services SHOULD support return of text/html, text/xml, application/rdf+xml.</p>
+</div>
+<div class="section" id="network-node-status-service">
+<span id="h-x3qh8x-kqmikf"></span><h2>11.2. Network Node Status Service<a class="headerlink" href="#network-node-status-service" title="Permalink to this headline">¶</a></h2>
+<p>The network node status service is used to return information and operational data about a network node.
+The service SHALL return all of the key-value pairs listed that have a valid value.
+The service MAY return additional key-value pairs that indicate status.</p>
+<p>A network node SHALL maintain all of the data necessary to return the required key-value pairs.</p>
+<p><strong>API</strong></p>
+<div class="highlight-python"><pre>GET &lt;node-service-endpoint-URL&gt;/status
+
+
+Arguments:
+
+    None
+
+Request Object:
+
+    None
+
+Results Object:
+
+        {"timestamp": "string",
+                                // time of report, time/date encoding
+
+        "active": boolean;
+                                // is the network node active
+
+        "node_id": "string",
+                                // ID of the network node
+
+        "node_name": "string",
+                                // name of the network node
+
+        "doc_count": integer,
+                                // number of unique:changes:` `resource data documents
+
+                                // held by the node
+
+                                //  only count distributable documents
+
+        "total_doc_count": integer,
+                                // number of unique resource data documents
+
+                                // held by the node
+
+                                // including non distributable documents
+
+        "install_time": "string",
+                                // time/date of node install
+
+        "start_time": "string",
+                                // server restart time/date
+
+                                // last reboot
+
+        "last_in_sync": "string",
+                                // time of last inbound sync
+
+                                // omit if node has not sync’ed
+
+        "in_sync_node": "string",
+                                // id of the node from the last inbound sync
+
+                                // omit if node has not sync’ed
+
+        "last_out_sync": "string",
+                                // time of last outbound sync
+
+                                // omit if node has not sync’ed
+
+        "out_sync_node": "string",
+                                // id of the node for the last outbound sync
+
+                                // omit if node has not sync’ed
+
+        "earliestDatestamp": "string"
+                                // oldest timestamp for harvest
+
+                                // time/date encoding
+
+        }</pre>
+</div>
+<p><strong>Network</strong> <strong>Node</strong> <strong>Status</strong></p>
+<div class="highlight-python"><pre>                                    // Return the operational status of a network node
+
+DEFINE VIEW on
+
+            *network* *node* *description* document containing the required fields
+
+            + *network* *node* *operationa*l data containing the required fields
+
+QUERY
+
+TRANSFORM results to specified CONTENT-TYPE</pre>
+</div>
+<p><strong>Service</strong> <strong>Description</strong></p>
+<div class="highlight-python"><pre>{
+    "doc_type": "service_description",
+
+    "doc_version": "0.20.0",
+
+    "doc_scope": "node",
+
+    "active": true,
+
+    "service_id": "&lt;uniqueid&gt;",
+
+    "service_type": "access",
+
+    "service_name": "Network Node Status",
+
+    "service_description": "Service to retrieve basic operational status information for a node",
+
+    "service_version": "0.23.0",
+
+    "service_endpoint": "&lt;node-service-endpoint-URL&gt;",
+
+    "service_auth":
+                                    // service authentication and authorization descriptions
+
+    {
+
+        "service_authz": ["&lt;authvalue&gt;"],
+                                    // authz values for the service
+
+        "service_key": &lt; T / F &gt; ,
+                                    // does service use an access key
+
+        "service_https": &lt; T / F &gt;
+                                    // does service require https
+
+    }
+
+}</pre>
+</div>
+<p>When the service is deployed at a node, appropriate values for the placeholders (service_id, service_endpoint, service_auth) SHALL be provided.
+The descriptive values (service_name, service_description) MAY be changed from what is specified herein.</p>
+</div>
+<div class="section" id="network-node-description-service">
+<span id="h-ixbka3-k9h0vx"></span><h2>11.3. Network Node Description Service<a class="headerlink" href="#network-node-description-service" title="Permalink to this headline">¶</a></h2>
+<p>The network node description service is used to return descriptive information about a network node, the resource distribution network that it is a part of and the network community that it is a part of.
+The service SHALL return all of the key-value pairs listed that have a valid value.
+An implementation MAY omit the return of any key-value pair that is an optional key-value pair in a <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.2hcwpd1wq9oo">Network</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.2hcwpd1wq9oo">Data</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.2hcwpd1wq9oo">Model</a> for which a value is missing or NULL.
+The service MAY return additional informational values.</p>
+<p><strong>API</strong></p>
+<div class="highlight-python"><pre>GET &lt;node-service-endpoint-URL&gt;/description
+
+
+Arguments:
+
+    None
+
+Request Object:
+
+    None
+
+Results Object:
+
+        {"timestamp": "string",
+                                // time of report, time/date encoding
+
+        "active": boolean;
+                                // is the network node active
+
+        "node_id": "string",
+                                // ID of the network node
+
+        "node_name": "string",
+                                // name of the network node
+
+        "node_description": "string",
+                                // description of the node
+
+        "node_admin_identity": "string",
+                                // identity of node admin
+
+        "node_key": "string",
+                                // node public key
+
+        "network_id": "string",
+                                // id of the network
+
+        "network_name": "string",
+                                // name of the network
+
+        "network_description": "string",
+                                // description of the network
+
+        "network_admin_identity": "string",
+                                // identity of network admin
+
+        "network_key": "string",
+                                // network public key
+
+        "community_id": "string",
+                                // id of the community
+
+        "community_name": "string",
+                                // name of the community
+
+        "community_description: "string",
+                                // description of the community
+
+        "community_admin_identity": "string",
+                                // identity of community admin
+
+        "community_key": "string",
+                                // community public key
+
+        "policy_id": "string",
+                                // id of the policy description
+
+        "policy_version": "string",
+                                // version identifier for the policy
+
+        "gateway_node": boolean,
+                                // node is a gateway node
+
+        "open_connect_source": boolean,
+                                // node is willing to be a source
+
+        "open_connect_dest": boolean,
+                                // node is willing to be a destination
+
+        "social_community": boolean,
+                                // is community is a social community
+
+        "node_policy":
+                                // node-specific policies, optional
+
+            {"sync_frequency": integer,
+                                // target time between synchronizations
+
+            "deleted_data_policy": "string",
+                                // policy value
+
+            "TTL": integer,
+                                // minimum time to live for resource data
+
+            "accepted_version": ["string"],
+                                // list of resource data description document
+
+                                // versions that the node can process
+
+            "accepted_TOS": ["string"],
+                                // list of ToS that the node will accept
+
+            "accepts_anon": boolean,
+                                // node takes anonymous submissions
+
+            "accepts_unsigned": boolean,
+                                // node takes unsigned submissions
+
+            "validates_signature": boolean,
+                                // node will validate signatures
+
+            "check_trust": boolean,
+                                // node will evaluate trust of submitter
+
+            "max_doc_size": integer
+                                // max document size that a node stores
+
+            }
+
+        "filter":
+                                // filter data
+
+            {"filter_name": "string",
+                                // name of the filter
+
+            "custom": boolean,
+                                // custom filter
+
+            "include_exclude": boolean,
+                                // accept or reject list
+
+            "filters":[
+                                // array of filter rules
+
+                {"filter_key": "string",
+                                // REGEX that matches names
+
+                "filter_value": "string"
+                                // REGEX that matches values
+
+                }
+
+                ]
+
+            }
+
+        }</pre>
+</div>
+<p><strong>Network</strong> <strong>Node</strong> <strong>Description</strong></p>
+<div class="highlight-python"><pre>                                    // Return the description of a network node
+
+DEFINE VIEW on
+
+            *network* *node* *description* document containing the required output fields
+
+            + *resource* *distribution* *network* *description* document containing the required output fields
+
+            + *resource* *distribution* *network* *policy* document containing the required output fields
+
+            + *network* *community* *description* document containing the required output fields
+
+            + *network* *node* *filter* *description* document containing the required output fields
+
+QUERY
+
+TRANSFORM results to specified CONTENT-TYPE</pre>
+</div>
+<p><strong>Service</strong> <strong>Description</strong></p>
+<div class="highlight-python"><pre>{
+
+    "doc_type": "service_description",
+
+    "doc_version": "0.20.0",
+
+    "doc_scope": "node",
+
+    "active": true,
+
+    "service_id": "&lt;uniqueid&gt;",
+
+    "service_type": "access",
+
+    "service_name": "Network Node Description",
+
+    "service_description": "Service to retrieve a comprehensive description of a node",
+
+    "service_version": "0.23.0",
+
+    "service_endpoint": "&lt;node-service-endpoint-URL&gt;",
+
+    "service_auth":
+                                    // service authentication and authorization descriptions
+
+        {"service_authz": ["&lt;authvalue&gt;"],
+                                    // authz values for the service
+
+        "service_key": &lt; T / F &gt; ,
+                                    // does service use an access key
+
+        "service_https": &lt; T / F &gt;
+                                    // does service require https
+
+        }
+
+}</pre>
+</div>
+<p>When the service is deployed at a node, appropriate values for the placeholders (service_id, service_endpoint, service_auth) SHALL be provided.
+The descriptive values (service_name, service_description) MAY be changed from what is specified herein.</p>
+</div>
+<div class="section" id="network-node-services-service">
+<span id="h-5l0qus-ugg81l"></span><h2>11.4. Network Node Services Service<a class="headerlink" href="#network-node-services-service" title="Permalink to this headline">¶</a></h2>
+<p>The network node services service is used to return the list of services available at a network node.
+For each service at a node, the service SHALL return all of the key-value pairs listed that have a valid value.
+An implementation MAY omit the return of any key-value pair that is an optional key-value pair in a <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.2hcwpd1wq9oo">Network</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.2hcwpd1wq9oo">Data</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.2hcwpd1wq9oo">Model</a> for which a value is missing or NULL.
+The service MAY return additional key-value pairs for a service.</p>
+<p>The service SHOULD group and sort the results in some logical form, e.g., by ACTIVE, by TYPE.</p>
+<p><strong>API</strong></p>
+<div class="highlight-python"><pre>GET &lt;node-service-endpoint-URL&gt;/services
+
+
+
+Arguments:
+
+    None
+
+Request Object:
+
+    None
+
+Results Object:
+
+        {"timestamp": "string",
+                                // time of report, time/date encoding
+
+        "active": boolean;
+                                // is the network node active
+
+        "node_id": "string",
+                                // ID of the network node
+
+        "node_name": "string",
+                                // name of the network node
+
+        "services":[
+                                // array of service description objects
+
+            {"active": boolean;
+                                // is the service active
+
+            "service_id": "string",
+                                // id of the service
+
+            "service_type": "string",
+                                // fixed vocabulary
+
+            "service_name": "string",
+                                // name of the service
+
+            "service_description": "string",
+                                // description of the service
+
+            "service_version": "string",
+                                // version number of the service description
+
+            "service_endpoint": "string",
+                                // URL of service
+
+            "service_auth":
+                                // service authentication and authorization descriptions
+
+                {"service_authz": ["string"],
+                                // authz values for the service
+
+                "service_key": boolean,
+                                // does service use an access key
+
+                "service_https": boolean
+                                // does service require https
+
+                },
+
+            "service_data": {}
+                                // service-specific name-value pairs
+
+            }
+
+            ]
+
+        }</pre>
+</div>
+<p><strong>Network</strong> <strong>Node</strong> <strong>Services</strong></p>
+<div class="highlight-python"><pre>                                    // Return the description of network node services
+
+DEFINE VIEW on
+
+            *network* *node* *description* document containing the required output fields
+
+            + ALL *network* *node* *service* *description* documents containing the required output fields
+
+            GROUPED and ORDERED on service attributes.
+
+QUERY
+
+TRANSFORM results to specified CONTENT-TYPE</pre>
+</div>
+<p><strong>Service</strong> <strong>Description</strong></p>
+<div class="highlight-python"><pre>{
+    "doc_type": "service_description",
+
+    "doc_version": "0.20.0",
+
+    "doc_scope": "node",
+
+    "active": true,
+
+    "service_id": "&lt;uniqueid&gt;",
+
+    "service_type": "access",
+
+    "service_name": "Network Node Services",
+
+    "service_description": "Service to retrieve the list of services deployed at a node",
+
+    "service_version": "0.21.0",
+
+    "service_endpoint": "&lt;node-service-endpoint-URL&gt;",
+
+    "service_auth":
+                                    // service authentication and authorization descriptions
+
+        {
+
+        "service_authz": ["&lt;authvalue&gt;"],
+                                    // authz values for the service
+
+        "service_key": &lt; T / F &gt; ,
+                                    // does service use an access key
+
+        "service_https": &lt; T / F &gt;
+                                    // does service require https
+
+        }
+
+}</pre>
+</div>
+<p>When the service is deployed at a node, appropriate values for the placeholders (service_id, service_endpoint, service_auth) SHALL be provided.
+The descriptive values (service_name, service_description) MAY be changed from what is specified herein.</p>
+</div>
+<div class="section" id="resource-distribution-network-policy-service">
+<span id="h-jlubtj-czhato"></span><h2>11.5. Resource Distribution Network Policy Service<a class="headerlink" href="#resource-distribution-network-policy-service" title="Permalink to this headline">¶</a></h2>
+<p>The resource distribution network policies service is used to return information about the policies that apply to the resource distribution network that the network node is a part of.
+The service SHALL return all of the key-value pairs listed that have a valid value.
+An implementation MAY omit the return of any key-value pair that is an optional key-value pair in a <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.2hcwpd1wq9oo">Network</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.2hcwpd1wq9oo">Data</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.2hcwpd1wq9oo">Model</a> for which a value is missing or NULL.
+The service MAY return additional policy key-value pairs.
+The service MAY be called at any node in the resource distribution network; all network nodes store an identical copy of the policy data.</p>
+<p><strong>API</strong></p>
+<div class="highlight-python"><pre>GET &lt;node-service-endpoint-URL&gt;/policy
+
+
+
+Arguments:
+
+    None
+
+Request Object:
+
+    None
+
+Results Object:
+
+        {
+
+            "timestamp": "string",
+                                // time of report, time/date encoding
+
+            "active": boolean;
+                                // is the network node active
+
+            "node_id": "string",
+                                // ID of the network node
+
+            "node_name": "string",
+                                // name of the network node
+
+            "network_id": "string",
+                                // id of the network
+
+            "network_name": "string",
+                                // name of the network
+
+            "network_description": "string",
+                                // description of the network
+
+            "policy_id": "string",
+                                // id of the policy description
+
+            "policy_version": "string",
+                                // version identifier for the policy
+
+            "TTL": integer
+                                // minimum time to live for resource data
+
+        }</pre>
+</div>
+<p><strong>Resource</strong> <strong>Distribution</strong> <strong>Network</strong> <strong>Policy</strong></p>
+<div class="highlight-python"><pre>                                    // Return the description of network policies
+
+DEFINE VIEW on
+
+            *network* *node* *description* document containing the required output fields
+
+            + *resource* *distribution* *network* *description* document containing the required output fields
+
+            + *resource* *distribution* *network* *policy* document containing the required output fields
+
+QUERY
+
+TRANSFORM results to specified CONTENT-TYPE</pre>
+</div>
+<p><strong>Service</strong> <strong>Description</strong></p>
+<div class="highlight-python"><pre>{
+
+    "doc_type": "service_description",
+
+    "doc_version": "0.20.0",
+
+    "doc_scope": "node",
+
+    "active": true,
+
+    "service_id": "&lt;uniqueid&gt;",
+
+    "service_type": "access",
+
+    "service_name": "Resource Distribution Network Policy",
+
+    "service_description": "Service to retrieve network policies from a node",
+
+    "service_version": "0.21.0",
+
+    "service_endpoint": "&lt;node-service-endpoint-URL&gt;",
+
+    "service_auth":
+                                    // service authentication and authorization descriptions
+
+        {
+
+        "service_authz": ["&lt;authvalue&gt;"],
+                                    // authz values for the service
+
+        "service_key": &lt; T / F &gt; ,
+                                    // does service use an access key
+
+        "service_https": &lt; T / F &gt;
+                                    // does service require https
+
+        }
+
+}</pre>
+</div>
+<p>When the service is deployed at a node, appropriate values for the placeholders (service_id, service_endpoint, service_auth) SHALL be provided.
+The descriptive values (service_name, service_description) MAY be changed from what is specified herein.</p>
+</div>
+<div class="section" id="change-log">
+<span id="h-e1519o-y653zc"></span><h2>11.6. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
+<p><em>NB</em>: The change log only lists major updates to the specification.</p>
+<p><em>NB</em>: Updates and edits may not results in a version update.</p>
+<p><em>NB</em>: See the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a> for prior change history not listed below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="3%" />
+<col width="4%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Change</strong></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>20110921</td>
+<td>DR</td>
+<td>This document extracted from the monolithic V 0.24.0 document.`Archived &lt;<a class="reference external" href="https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US">https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US</a>&gt;`_ <a class="reference external" href="https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US">copy</a> (V 0.24.0)</td>
+</tr>
+<tr class="row-odd"><td>0.49.0</td>
+<td>20110927</td>
+<td>DR</td>
+<td>Editorial updates to create stand alone version.Archived copy location TBD. (V MS:0.49.0)</td>
+</tr>
+<tr class="row-even"><td>0.50.0</td>
+<td>TBD</td>
+<td>DR</td>
+<td>Renumber all document models and service documents. Added node policy to control storage of attachments (default is stored). Archived copy location TBD. (V MS:0.50.0)</td>
+</tr>
+<tr class="row-odd"><td>Future</td>
+<td>TBD</td>
+<td>&nbsp;</td>
+<td>Archived copy location TBD. (V MS:x.xx.x)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="working-notes-and-placeholder-text">
+<span id="h-tph0s9vmrwxu"></span><h2>11.7. Working Notes and Placeholder Text<a class="headerlink" href="#working-notes-and-placeholder-text" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../Operations/index.html" title="12. Learning Registry Operations: Learning Registry Technical Specification V OP:0.49.0"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../Broker_Services/index.html" title="10. Broker Services: Learning Registry Technical Specification V BS:0.50.0"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" >Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Learning Registry Contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

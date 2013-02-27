@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6. Services and APIs: Learning Registry Technical Specification V SA:0.50.0 &mdash; Learning Registry 0.50.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.50.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Learning Registry 0.50.1 documentation" href="../../index.html" />
+    <link rel="up" title="Learning Registry Technical Specification V 0.49.0" href="../Technical_Spec/index.html" />
+    <link rel="next" title="7. Distribution Services: Learning Registry Technical Specification V DS:0.49.0" href="../Distribution_Services/index.html" />
+    <link rel="prev" title="5. Data Model and API Attributes and Behaviors: Learning Registry Technical Specification V RQ:0.49.0" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../Distribution_Services/index.html" title="7. Distribution Services: Learning Registry Technical Specification V DS:0.49.0"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../Data_Model_and_API_Attributes_and_Behaviors/index.html" title="5. Data Model and API Attributes and Behaviors: Learning Registry Technical Specification V RQ:0.49.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" accesskey="U">Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">6. Services and APIs: Learning Registry Technical Specification V SA:0.50.0</a><ul>
+<li><a class="reference internal" href="#services-and-apis">6.1. Services and APIs</a></li>
+<li><a class="reference internal" href="#change-log">6.2. Change Log</a></li>
+<li><a class="reference internal" href="#working-notes-and-placeholder-text">6.3. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"
+                        title="previous chapter">5. Data Model and API Attributes and Behaviors: Learning Registry Technical Specification V RQ:0.49.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../Distribution_Services/index.html"
+                        title="next chapter">7. Distribution Services: Learning Registry Technical Specification V DS:0.49.0</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/spec/Services_and_APIs/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="services-and-apis-learning-registry-technical-specification-v-sa-0-50-0">
+<span id="h-u6sbhsuktqyj"></span><h1>6. Services and APIs: Learning Registry Technical Specification V SA:0.50.0<a class="headerlink" href="#services-and-apis-learning-registry-technical-specification-v-sa-0-50-0" title="Permalink to this headline">¶</a></h1>
+<p>Draft in Progress.</p>
+<p>See the <a class="reference internal" href="#h-e1519o-y653zc"><em>Change</em></a> <a class="reference internal" href="#h-e1519o-y653zc"><em>Log</em></a> for links to prior stable versions.</p>
+<p><span class="changes">Shading indicates major changes and additions from the prior version (0.24.0). Also indicated with ▲.</span></p>
+<p><span class="deletions">Significant deletions are shaded.</span></p>
+<p><span class="deprecation">Features to be deprecated in a future version are shaded and indicated with ▼.</span></p>
+<p>This document is part of one or more versions of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a>. It may contain links to other parts of the Specification.
+These links may link to the most recent version of a part, not to the version of the part that corresponds to this version of this part.
+Go to the appropriate version of the Specification that links to this version of this part, and follow the links there to the referenced part to find the version of the part that corresponds to this version of this part.</p>
+<blockquote>
+<div><p><a class="reference internal" href="#h-u6sbhsuktqyj"><em>Services</em></a> <a class="reference internal" href="#h-u6sbhsuktqyj"><em>and</em></a> <a class="reference internal" href="#h-u6sbhsuktqyj"><em>APIs</em></a><a class="reference internal" href="#h-u6sbhsuktqyj"><em>:</em></a><a class="reference internal" href="#h-u6sbhsuktqyj"><em>Learning</em></a> <a class="reference internal" href="#h-u6sbhsuktqyj"><em>Registry</em></a> <a class="reference internal" href="#h-u6sbhsuktqyj"><em>Technical</em></a> <a class="reference internal" href="#h-u6sbhsuktqyj"><em>Specification</em></a> <a class="reference internal" href="#h-u6sbhsuktqyj"><em>V</em></a> <a class="reference internal" href="#h-u6sbhsuktqyj"><em>SA</em></a><a class="reference internal" href="#h-u6sbhsuktqyj"><em>:0.50.0</em></a></p>
+<blockquote>
+<div><p><a class="reference internal" href="#h-d08onhltt4u1"><em>Services</em></a> <a class="reference internal" href="#h-d08onhltt4u1"><em>and</em></a> <a class="reference internal" href="#h-d08onhltt4u1"><em>APIs</em></a></p>
+<p><a class="reference internal" href="#h-e1519o-y653zc"><em>Change</em></a> <a class="reference internal" href="#h-e1519o-y653zc"><em>Log</em></a></p>
+<p><a class="reference internal" href="#h-tph0s9vmrwxu"><em>Working</em></a> <a class="reference internal" href="#h-tph0s9vmrwxu"><em>Notes</em></a> <a class="reference internal" href="#h-tph0s9vmrwxu"><em>and</em></a> <a class="reference internal" href="#h-tph0s9vmrwxu"><em>Placeholder</em></a> <a class="reference internal" href="#h-tph0s9vmrwxu"><em>Text</em></a></p>
+</div></blockquote>
+</div></blockquote>
+<p>This document is part of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a>. It is an introduction to the Learning Registry services.</p>
+<p>This document is not standalone.
+The reader should be familiar with other parts of the specification, including, but not limited to:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../General_Matter/index.html"><em>General</em></a> <a class="reference internal" href="../General_Matter/index.html"><em>Matter</em></a>, including Licenses, Notation, Versioning, Glossary, References</li>
+<li><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Distribution</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Network</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Model</em></a></li>
+<li><a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Data</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Data</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Models</em></a></li>
+<li><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Identity</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Trust</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Authentication</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Security</em></a></li>
+<li><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Data</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Model</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>API</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Attributes</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Behaviors</em></a></li>
+<li><a class="reference internal" href="../Operations/index.html"><em>Learning</em></a> <a class="reference internal" href="../Operations/index.html"><em>Registry</em></a> <a class="reference internal" href="../Operations/index.html"><em>Operations</em></a></li>
+</ul>
+<p>Different types of services are detailed independently.</p>
+<ul class="simple">
+<li><a class="reference internal" href="../Distribution_Services/index.html"><em>Distribution</em></a></li>
+<li><a class="reference internal" href="../Publish_Services/index.html"><em>Publish</em></a></li>
+<li><a class="reference internal" href="../Access_Services/index.html"><em>Access</em></a></li>
+<li><a class="reference internal" href="../Broker_Services/index.html"><em>Broker</em></a></li>
+<li><a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Management</em></a>/<a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Administration</em></a>/<a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Discovery</em></a></li>
+</ul>
+<div class="section" id="services-and-apis">
+<span id="h-d08onhltt4u1"></span><h2>6.1. Services and APIs<a class="headerlink" href="#services-and-apis" title="Permalink to this headline">¶</a></h2>
+<p>The services and their APIs provide the functionality that edge node producer and consumer agents use to push resource data into the distribution network and to discover and pull resource data from the network.
+They also define how to distribute the resource data throughout a network and how to manage, discover and observe resource distribution network behavior.</p>
+<p>The specification defined types of services follows.
+Any non gateway node MAY provide any of these services.
+A node MAY provide additional services not specified herein.</p>
+<ul class="simple">
+<li><a class="reference internal" href="../Distribution_Services/index.html"><em>Distribution</em></a><ul>
+<li><a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1HW_JJBiWxNHoA5L1TuZrjWeK-DaFF0FTeMZBNIL5MqI/edit?hl=en_US#heading=h.vb0xt6mhzmg2">Resource</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1HW_JJBiWxNHoA5L1TuZrjWeK-DaFF0FTeMZBNIL5MqI/edit?hl=en_US#heading=h.vb0xt6mhzmg2">Data</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1HW_JJBiWxNHoA5L1TuZrjWeK-DaFF0FTeMZBNIL5MqI/edit?hl=en_US#heading=h.vb0xt6mhzmg2">Distribution</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1HW_JJBiWxNHoA5L1TuZrjWeK-DaFF0FTeMZBNIL5MqI/edit?hl=en_US#heading=h.vb0xt6mhzmg2">Service</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="../Publish_Services/index.html"><em>Publish</em></a><ul>
+<li><a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1kgTyRk1kIM3QvfU2JB1C9ARMuL7fCqsba7mOLQ3IKlw/edit?hl=en_US#heading=h.aera9k-4u6l42">Basic</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1kgTyRk1kIM3QvfU2JB1C9ARMuL7fCqsba7mOLQ3IKlw/edit?hl=en_US#heading=h.aera9k-4u6l42">Publish</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1kgTyRk1kIM3QvfU2JB1C9ARMuL7fCqsba7mOLQ3IKlw/edit?hl=en_US#heading=h.aera9k-4u6l42">Service</a></li>
+<li><a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1kgTyRk1kIM3QvfU2JB1C9ARMuL7fCqsba7mOLQ3IKlw/edit?hl=en_US#heading=h.rfe7ga-6sbjly">Basic</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1kgTyRk1kIM3QvfU2JB1C9ARMuL7fCqsba7mOLQ3IKlw/edit?hl=en_US#heading=h.rfe7ga-6sbjly">Delete</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1kgTyRk1kIM3QvfU2JB1C9ARMuL7fCqsba7mOLQ3IKlw/edit?hl=en_US#heading=h.rfe7ga-6sbjly">Service</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="../Access_Services/index.html"><em>Access</em></a><ul>
+<li><a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.23ll5s-2p4zua">Basic</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.23ll5s-2p4zua">Obtain</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.23ll5s-2p4zua">Service</a></li>
+<li><a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.s3sst6-69kzq1">Basic</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.s3sst6-69kzq1">Harvest</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.s3sst6-69kzq1">Service</a></li>
+<li><a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.art057-hbjxj4">OAI</a>-<a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.art057-hbjxj4">PMH</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.art057-hbjxj4">Harvest</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.art057-hbjxj4">Service</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="../Broker_Services/index.html"><em>Broker</em></a> &#8211; none currently defined</li>
+<li><a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Management</em></a>/<a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Administration</em></a>/<a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Discovery</em></a><ul>
+<li><a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.x3qh8x-kqmikf">Network</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.x3qh8x-kqmikf">Node</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.x3qh8x-kqmikf">Status</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.x3qh8x-kqmikf">Service</a></li>
+<li><a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.ixbka3-k9h0vx">Network</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.ixbka3-k9h0vx">Node</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.ixbka3-k9h0vx">Description</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.ixbka3-k9h0vx">Service</a></li>
+<li><a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.5l0qus-ugg81l">Network</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.5l0qus-ugg81l">Node</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.5l0qus-ugg81l">Services</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.5l0qus-ugg81l">Service</a></li>
+<li><a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.jlubtj-czhato">Resource</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.jlubtj-czhato">Distribution</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.jlubtj-czhato">Network</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.jlubtj-czhato">Policy</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.jlubtj-czhato">Service</a></li>
+</ul>
+</li>
+</ul>
+<p><em>NB</em>: There is no mechanism to reserve names for APIs, tag them as authoritative (i.e., they are defined in this specification), etc.
+A future version of the specification MAY extend the service definition to include tags (e.g., authoritative, experimental, third-party) and other validation or conformance information.</p>
+<p>Services and APIs are RESTful and bound to a particular node in the resource distribution network.
+Service descriptions include the API call (HTTP binding), the API arguments, the message payload (using the JSON-like notation), the service results (using JSON-like notation), error codes, an informative pseudo code description of a <em>possible</em> implementation, and the network node service description data.</p>
+<p>The <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.z0spjmvlcbb9">Network</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.z0spjmvlcbb9">Node</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.z0spjmvlcbb9">Service</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.z0spjmvlcbb9">Description</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.z0spjmvlcbb9">Data</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.z0spjmvlcbb9">Model</a> provides a machine and human readable description of the service; an instance of the description document is stored at the node that provides the service.</p>
+<p>Additional constraints on API attributes, HTTP bindings (headers, HTTP errors), error processing and behaviors are  described in the <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Data</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Model</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>API</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Attributes</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Behaviors</em></a> part of the specification.</p>
+<p>Except as noted, services SHALL NOT be required to be provisioned at a node.
+An implementation SHALL NOT assume the provision of any service at any node, i.e., the implementation of one service cannot rely upon another service.</p>
+<p>▲Except as noted, services SHALL be fully independent; the implementation and provisioning of a service at a node SHALL NOT assume that any other service is deployed at the node.</p>
+</div>
+<div class="section" id="change-log">
+<span id="h-e1519o-y653zc"></span><h2>6.2. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
+<p><em>NB</em>: The change log only lists major updates to the specification.</p>
+<p><em>NB</em>: Updates and edits may not results in a version update.</p>
+<p><em>NB</em>: See the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a> for prior change history not listed below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="3%" />
+<col width="2%" />
+<col width="3%" />
+<col width="92%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Change</strong></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>20110921</td>
+<td>DR</td>
+<td>This document extracted from the monolithic V 0.24.0 document.`Archived &lt;<a class="reference external" href="https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US">https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US</a>&gt;`_ <a class="reference external" href="https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US">copy</a> (<a class="reference external" href="https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US">V</a> 0.24.0)</td>
+</tr>
+<tr class="row-odd"><td>0.50.0</td>
+<td>20110927</td>
+<td>DR</td>
+<td>Editorial updates to create stand alone version. Clarify non dependence of service deployment.Archived copy location TBD. (V SA 0.50.0)</td>
+</tr>
+<tr class="row-even"><td>Future</td>
+<td>TBD</td>
+<td>&nbsp;</td>
+<td>Archived copy location TBD. (V SA:x.xx.x)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="working-notes-and-placeholder-text">
+<span id="h-tph0s9vmrwxu"></span><h2>6.3. Working Notes and Placeholder Text<a class="headerlink" href="#working-notes-and-placeholder-text" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../Distribution_Services/index.html" title="7. Distribution Services: Learning Registry Technical Specification V DS:0.49.0"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../Data_Model_and_API_Attributes_and_Behaviors/index.html" title="5. Data Model and API Attributes and Behaviors: Learning Registry Technical Specification V RQ:0.49.0"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" >Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Learning Registry Contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

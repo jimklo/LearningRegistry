@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Learning Registry Technical Specification V 0.49.0 &mdash; Learning Registry 0.50.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.50.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Learning Registry 0.50.1 documentation" href="../../index.html" />
+    <link rel="next" title="1. General Matter: Learning Registry Technical Specification - V GM:0.50.0" href="../General_Matter/index.html" />
+    <link rel="prev" title="Welcome to Learning Registry’s documentation!" href="../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../General_Matter/index.html" title="1. General Matter: Learning Registry Technical Specification - V GM:0.50.0"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../../index.html" title="Welcome to Learning Registry’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Learning Registry Technical Specification V 0.49.0</a><ul>
+<li><a class="reference internal" href="#technical-specification-introduction">Technical Specification Introduction</a></li>
+<li><a class="reference internal" href="#technical-specification-contents">Technical Specification Contents</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-log">Change Log</a></li>
+<li><a class="reference internal" href="#working-notes-and-placeholder-text">Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../../index.html"
+                        title="previous chapter">Welcome to Learning Registry&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../General_Matter/index.html"
+                        title="next chapter">1. General Matter: Learning Registry Technical Specification - V GM:0.50.0</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/spec/Technical_Spec/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="learning-registry-technical-specification-v-0-49-0">
+<span id="h-yz89tlej50"></span><h1>Learning Registry Technical Specification V 0.49.0<a class="headerlink" href="#learning-registry-technical-specification-v-0-49-0" title="Permalink to this headline">¶</a></h1>
+<p><strong>Draft in Progress</strong>.</p>
+<p>See the  <a class="reference internal" href="#change-log">Change Log</a> for links to prior stable versions.</p>
+<p><span class="changes">Shading indicates major changes and additions from the prior version (0.24.0). Also indicated with ▲.</span></p>
+<p><span class="deletions">Significant deletions are shaded.</span></p>
+<p><span class="deprecation">Features to be deprecated in a future version are shaded and indicated with ▼.</span></p>
+<p><strong>This document is the whole of the Learning Registry Technical Specification.</strong></p>
+<div class="section" id="technical-specification-introduction">
+<span id="h-c7bnrod3e0k"></span><h2>Technical Specification Introduction<a class="headerlink" href="#technical-specification-introduction" title="Permalink to this headline">¶</a></h2>
+<p>This document provides the technical specification for the Learning Registry.
+It specifies the network model, data models and APIs.
+It does not specify policy-based operational procedures or the instantiation or deployment of the Learning Registry.
+It does not specify internal data models or internal APIs.
+The specification focuses on the APIs used by external agents and the data models and APIs required for overall operations of a network and general interoperability of external agents.
+While targeted at a document-oriented infrastructure, the specification itself is independent of any particular toolset.
+The document is currently a work in progress; its structure, organization and content are subject to change.</p>
+</div>
+<div class="section" id="technical-specification-contents">
+<span id="h-mus9vqexu2or"></span><h2>Technical Specification Contents<a class="headerlink" href="#technical-specification-contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../General_Matter/index.html">1. General Matter: Learning Registry Technical Specification - V GM:0.50.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../General_Matter/index.html#learning-registry-overview">1.1. Learning Registry Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General_Matter/index.html#specification-license">1.2. Specification License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General_Matter/index.html#notation">1.3. Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General_Matter/index.html#conformance">1.4. Conformance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General_Matter/index.html#specification-versioning">1.5. Specification Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General_Matter/index.html#technical-specification-overview">1.6. Technical Specification Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General_Matter/index.html#design-principles">1.7. Design Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General_Matter/index.html#glossary">1.8. Glossary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General_Matter/index.html#references">1.9. References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General_Matter/index.html#change-log">1.10. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../General_Matter/index.html#working-notes-and-placeholder-text">1.11. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html">2. Resource Distribution Network Model: Learning Registry Technical Specification V NM:0.5x.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html#resource-distribution-network-model">2.1. Resource Distribution Network Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html#network-nodes-and-node-services">2.2. Network Nodes and Node Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html#network-topology">2.3. Network Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html#network-data-models">2.4. Network Data Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html#network-node-description-data-model">2.5. Network Node Description Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html#network-node-service-description-data-model">2.6. Network Node Service Description Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html#network-node-connectivity-description-data-model">2.7. Network Node Connectivity Description Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html#network-node-filter-description-data-model">2.8. Network Node Filter Description Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html#resource-distribution-network-description-data-model">2.9. Resource Distribution Network Description Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html#resource-distribution-network-policy-data-model">2.10. Resource Distribution Network Policy Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html#network-community-description-data-model">2.11. Network Community Description Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html#network-description">2.12. Network Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html#change-log">2.13. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html#working-notes-and-placeholder-text">2.14. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource_Data_Data_Model/index.html">3. Resource Data Data Model: Learning Registry Technical Specification V RM:0.50.1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Data_Data_Model/index.html#resource-data-data-models">3.1. Resource Data Data Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Data_Data_Model/index.html#resource-data-description-data-model">3.2. Resource Data Description Data Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Data_Data_Model/index.html#metadata-formats">3.3. Metadata Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Data_Data_Model/index.html#paradata-formats">3.4. Paradata Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Data_Data_Model/index.html#resource-data">3.5. Resource Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Data_Data_Model/index.html#tombstones">3.6. Tombstones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Data_Data_Model/index.html#change-log">3.7. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Resource_Data_Data_Model/index.html#working-notes-and-placeholder-text">3.8. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html">4. Identity, Trust, Auth and Security: Learning Registry Technical Specification V IT:0.49.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html#h-xpzctzivy2zq">4.1. Identity and Digital Signatures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html#signing-a-resource-data-description-document">4.2. Signing a Resource Data Description Document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html#validation-the-signature-of-a-resource-data-description-document">4.3. Validation the Signature of a Resource Data Description Document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html#authorization-and-authentication">4.4. Authorization and Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html#authentication">4.5. Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html#authorization">4.6. Authorization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html#network-communications-security">4.7. Network Communications Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html#network-ports">4.8. Network Ports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html#trust">4.9. Trust</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html#security-and-information-assurance">4.10. Security and Information Assurance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html#change-log">4.11. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html#working-notes-and-placeholder-text">4.12. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html">5. Data Model and API Attributes and Behaviors: Learning Registry Technical Specification V RQ:0.49.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html#common-data-model-and-api-attributes-and-behaviors">5.1. Common Data Model and API Attributes and Behaviors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html#data-model-attributes">5.2. Data Model Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html#h-3yyq9awq43ia">5.3. Identifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html#strings-and-internationalization">5.4. Strings and Internationalization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html#time-and-date">5.5. Time and Date</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html#api-attributes-and-behaviors">5.6. API Attributes and Behaviors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html#service-instantiation-validation">5.7. Service Instantiation Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html#transactional-behaviors-and-data-consistency">5.8. Transactional Behaviors and Data Consistency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html#resource-data-validation-and-publication">5.9. Resource Data Validation and Publication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html#resource-data-tos-signatures-and-trust-policy-enforcement">5.10. Resource Data ToS, Signatures and Trust Policy Enforcement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html#operational-policy-enforcement">5.11. Operational Policy Enforcement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html#resource-data-filtering">5.12. Resource Data Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html#change-log">5.13. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html#working-notes-and-placeholder-text">5.14. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Services_and_APIs/index.html">6. Services and APIs: Learning Registry Technical Specification V SA:0.50.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Services_and_APIs/index.html#services-and-apis">6.1. Services and APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Services_and_APIs/index.html#change-log">6.2. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Services_and_APIs/index.html#working-notes-and-placeholder-text">6.3. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Distribution_Services/index.html">7. Distribution Services: Learning Registry Technical Specification V DS:0.49.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Distribution_Services/index.html#resource-data-distribution-service">7.1. Resource Data Distribution Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Distribution_Services/index.html#change-log">7.2. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Distribution_Services/index.html#working-notes-and-placeholder-text">7.3. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Publish_Services/index.html">8. Publish Services: Learning Registry Technical Specification V PS:0.50.1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Publish_Services/index.html#resource-data-publish-services">8.1. Resource Data Publish Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Publish_Services/index.html#basic-publish-service">8.2. Basic Publish Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Publish_Services/index.html#sword-publish-service">8.3. SWORD Publish Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Publish_Services/index.html#retrieve-service-document">8.4. Retrieve Service Document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Publish_Services/index.html#create-a-resource">8.5. Create a Resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Publish_Services/index.html#basic-delete-service">8.6. Basic Delete Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Publish_Services/index.html#change-log">8.7. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Publish_Services/index.html#working-notes-and-placeholder-text">8.8. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Access_Services/index.html">9. Access Services: Learning Registry Technical Specification V AS:0.49.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#resource-data-access-services">9.1. Resource Data Access Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#basic-obtain-service">9.2. Basic Obtain Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#basic-harvest-service">9.3. Basic Harvest Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#get-record">9.4. Get Record</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#list-records">9.5. List Records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#list-identifiers">9.6. List Identifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#identify">9.7. Identify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#list-metadata-formats">9.8. List Metadata Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#list-sets">9.9. List Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#oai-pmh-harvest-service">9.10. OAI-PMH Harvest Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#h-bto5ylf0qbe8">9.11. Get Record</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#h-8u0mmhr8juw2">9.12. List Records</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#h-ig18pu2ue7vp">9.13. List Identifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#h-1dvaj9ngizdi">9.14. Identify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#h-rmgxadwnkcu">9.15. List Metadata Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#h-v3mu36o8erz0">9.16. List Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#change-log">9.17. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Access_Services/index.html#working-notes-and-placeholder-text">9.18. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Broker_Services/index.html">10. Broker Services: Learning Registry Technical Specification V BS:0.50.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Broker_Services/index.html#broker-services">10.1. Broker Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Broker_Services/index.html#change-log">10.2. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Broker_Services/index.html#working-notes-and-placeholder-text">10.3. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html">11. Management, Administrative and Discovery Services: Learning Registry Technical Specification V MS:0.49.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html#administrative-services">11.1. Administrative Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html#network-node-status-service">11.2. Network Node Status Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html#network-node-description-service">11.3. Network Node Description Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html#network-node-services-service">11.4. Network Node Services Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html#resource-distribution-network-policy-service">11.5. Resource Distribution Network Policy Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html#change-log">11.6. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html#working-notes-and-placeholder-text">11.7. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Operations/index.html">12. Learning Registry Operations: Learning Registry Technical Specification V OP:0.49.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Operations/index.html#operations">12.1. Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Operations/index.html#networks-and-communities">12.2. Networks and Communities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Operations/index.html#building-the-network-description">12.3. Building the Network Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Operations/index.html#maintaining-networks-and-communities">12.4. Maintaining Networks and Communities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Operations/index.html#network-discovery">12.5. Network Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Operations/index.html#network-design">12.6. Network Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Operations/index.html#resource-data-publication-distribution-and-access">12.7. Resource Data Publication, Distribution and Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Operations/index.html#resource-data-persistence">12.8. Resource Data Persistence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Operations/index.html#network-administration">12.9. Network Administration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Operations/index.html#change-log">12.10. Change Log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Operations/index.html#working-notes-and-placeholder-text">12.11. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="change-log">
+<span id="h-q7vwu59mjki6"></span><h2>Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
+<p><em>NB</em>: The change log only lists major updates to the specification.</p>
+<p><em>NB</em>: Updates and edits may not results in a version update.</p>
+<p><em>NB</em>: See the individual partsg of the Technical Specification for specific changes to that part.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="94%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Change</strong></td>
+</tr>
+<tr class="row-even"><td>0.10.0</td>
+<td>20110117</td>
+<td>DR</td>
+<td>Initial public release (lacks resource data model). <a class="reference external" href="https://docs.google.com/document/d/1mJhXzZTwF7S8lfuV0j0axJJCahLDtGCZtCaeeB81x7Q/edit?hl=en">Archived copy</a> (V 0.10.0)</td>
+</tr>
+<tr class="row-odd"><td>0.15.0</td>
+<td>20110222</td>
+<td>DR</td>
+<td>Added filtering. Added basic harvest. Added resource data model. Added basic delete. <a class="reference external" href="https://docs.google.com/document/d/1LGwYxEqSRe4tdV4at6x8WWXI7nfXMGoY4x3kO5UqIgY/edit?hl=en">Archived copy</a> (V 0.15.0)</td>
+</tr>
+<tr class="row-even"><td>0.16.0</td>
+<td>20110310</td>
+<td>DR</td>
+<td>Added OAI-PMH harvest. Obtain extended to support by doc_ID or by resource_ID/locator access. Documented Obtain. Basic Harvest extended to support doc_ID or by resource_ID/locator access for GetRecord.  <a class="reference external" href="https://docs.google.com/document/d/1em8LdbX9tkvB66yqoe96MNKdAWTyt_lMSQjyzAREYWg/edit?hl=en">Archived copy</a> (V 0.16.0)</td>
+</tr>
+<tr class="row-odd"><td>0.17.0</td>
+<td>20110415</td>
+<td>DR</td>
+<td>Clarified that services are optional, described operational requirements to provision services. Revised XSD to support OAI-PMH harvest by resouce_ID. Clarified times are UTC 0. Clarified distributeAPI to uncouple it from other APIs. Add ToS checks to distribute and publish. Update reource doc to include ToS attribution. Added SWORD API. <a class="reference external" href="https://docs.google.com/document/d/1UyN_cacpCz4Xj8G4XEGcnzAC57hS3UZyng6aJGtvXdM/edit?hl=en">Archived copy</a> (V 0.17.0)</td>
+</tr>
+<tr class="row-even"><td>0.20.0</td>
+<td>20110422</td>
+<td>DR</td>
+<td>Added digital signature k-v pairs to resource documents. Added public key k-v pairs to all description documents. Updated network and node policy descripitons. Added signature, trust, ... verification to publish. Added identity section. Defined ALL behavior for obtain for size limited. Defined returning spec JSON vs. stored JSON for obtain and harvest. Authn (none, basic, SSH, Oauth, ...). Authz (access keys). <a class="reference external" href="https://docs.google.com/document/d/1wd_mwuFubtZsUS6p9_nyAgabzldf1bfhITN3sRlw7sc/edit?hl=en">Archived copy</a> (V 0.20.0)</td>
+</tr>
+<tr class="row-odd"><td>0.21.0</td>
+<td>20110706</td>
+<td>DR</td>
+<td>Updated how to sign documents. Modified resource document description to restructure identity. Added JSONP to APIs. Obtain flow control (to be moved to a common location to add to other APIs).  <a class="reference external" href="https://docs.google.com/document/d/1jREjZ9N9Bzifn_kWy2rmGNe6E1nx3B7vmG6k_Cjg6n8/edit?hl=en_US">Archived copy</a> (V 0.21.0)</td>
+</tr>
+<tr class="row-even"><td>0.22.0</td>
+<td>20110708</td>
+<td>DR</td>
+<td>Made resource doc type an open vocabulary. Added trust weight. Added requirement that a service document exist for a service. <a class="reference external" href="https://docs.google.com/document/d/1SW3ILArsGOOp1MmMzUnRuHw8R-JZfj7j79-w5sHDzT0/edit?hl=en_US">Archived copy</a> (V 0.22.0)</td>
+</tr>
+<tr class="row-odd"><td>0.23.0</td>
+<td>20110921</td>
+<td>DR</td>
+<td>Added k-v pair to mark documents as non distributable and process to block publication and distribution (take down process is policy, not part of the specification. Added checks on max doc size. Indicated that node time stamp is to be depricated. Indicated services to be deprecated. Documented obtain get interface. <a class="reference external" href="https://docs.google.com/document/d/1fRbDpM0BKvNc4WzDzX0pNUpfPtFAsKpKGnOyRhRok-8/edit?hl=en_US">Archived copy</a> (V 0.23.0)</td>
+</tr>
+<tr class="row-even"><td>0.24.0</td>
+<td>20110921</td>
+<td>DR</td>
+<td>Remove deprecated servcies (query, SRW, Sitemap). <a class="reference external" href="https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US">Archived copy</a> (V 0.24.0)</td>
+</tr>
+<tr class="row-odd"><td>NA</td>
+<td>20110921</td>
+<td>DR</td>
+<td>This document extracted from the monolithic V 0.24.0 document.Archived copy NA</td>
+</tr>
+<tr class="row-even"><td>0.49.0</td>
+<td>20110927</td>
+<td>DR</td>
+<td>Changed license from OWA CLA 0.9 to OWA CLA 1.0. Added GM section on versioning.Archived copy location TBD (V 0.49.0)</td>
+</tr>
+<tr class="row-odd"><td>Future</td>
+<td>TBD</td>
+<td>&nbsp;</td>
+<td>Add service code version to service documents (extracted from code on install). Renumber all document models and service documents. Added node policy to control storage of attachments (default is stored). Add page size as service doc setting with flow control.Archived copy location TBD (V x.xx.x)</td>
+</tr>
+<tr class="row-even"><td>Future</td>
+<td>TBD</td>
+<td>&nbsp;</td>
+<td>ToS attribution output to OAI. Harvest flow control. Flow control to OAI. Logging/tracking emit as paradata to services. Assertion (relation/sameas) and trust documents. Deduplication service. RESTful APIs. Details of attachments on publish, obtain, harvest. Depricate node_timestampArchived copy location TBD (V x.xx.x)</td>
+</tr>
+<tr class="row-odd"><td>Future</td>
+<td>TBD</td>
+<td>&nbsp;</td>
+<td>XXXArchived copy location TBD (V x.xx.x)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="working-notes-and-placeholder-text">
+<span id="h-glq08ftdxizl"></span><h2>Working Notes and Placeholder Text<a class="headerlink" href="#working-notes-and-placeholder-text" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../General_Matter/index.html" title="1. General Matter: Learning Registry Technical Specification - V GM:0.50.0"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../../index.html" title="Welcome to Learning Registry’s documentation!"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Learning Registry Contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

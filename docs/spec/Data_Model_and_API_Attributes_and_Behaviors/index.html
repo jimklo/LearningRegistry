@@ -1,0 +1,593 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>5. Data Model and API Attributes and Behaviors: Learning Registry Technical Specification V RQ:0.49.0 &mdash; Learning Registry 0.50.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.50.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Learning Registry 0.50.1 documentation" href="../../index.html" />
+    <link rel="up" title="Learning Registry Technical Specification V 0.49.0" href="../Technical_Spec/index.html" />
+    <link rel="next" title="6. Services and APIs: Learning Registry Technical Specification V SA:0.50.0" href="../Services_and_APIs/index.html" />
+    <link rel="prev" title="4. Identity, Trust, Auth and Security: Learning Registry Technical Specification V IT:0.49.0" href="../Identity_Trust_Auth_and_Security/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../Services_and_APIs/index.html" title="6. Services and APIs: Learning Registry Technical Specification V SA:0.50.0"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../Identity_Trust_Auth_and_Security/index.html" title="4. Identity, Trust, Auth and Security: Learning Registry Technical Specification V IT:0.49.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" accesskey="U">Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5. Data Model and API Attributes and Behaviors: Learning Registry Technical Specification V RQ:0.49.0</a><ul>
+<li><a class="reference internal" href="#common-data-model-and-api-attributes-and-behaviors">5.1. Common Data Model and API Attributes and Behaviors</a></li>
+<li><a class="reference internal" href="#data-model-attributes">5.2. Data Model Attributes</a></li>
+<li><a class="reference internal" href="#h-3yyq9awq43ia">5.3. Identifiers</a></li>
+<li><a class="reference internal" href="#strings-and-internationalization">5.4. Strings and Internationalization</a></li>
+<li><a class="reference internal" href="#time-and-date">5.5. Time and Date</a></li>
+<li><a class="reference internal" href="#api-attributes-and-behaviors">5.6. API Attributes and Behaviors</a></li>
+<li><a class="reference internal" href="#service-instantiation-validation">5.7. Service Instantiation Validation</a></li>
+<li><a class="reference internal" href="#transactional-behaviors-and-data-consistency">5.8. Transactional Behaviors and Data Consistency</a></li>
+<li><a class="reference internal" href="#resource-data-validation-and-publication">5.9. Resource Data Validation and Publication</a><ul>
+<li><a class="reference internal" href="#id3">5.9.1. Resource Data Validation and Publication</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#resource-data-tos-signatures-and-trust-policy-enforcement">5.10. Resource Data ToS, Signatures and Trust Policy Enforcement</a><ul>
+<li><a class="reference internal" href="#id4">5.10.1. Resource Data ToS, Signatures and Trust Policy Enforcement</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#operational-policy-enforcement">5.11. Operational Policy Enforcement</a><ul>
+<li><a class="reference internal" href="#id5">5.11.1. Operational Policy Enforcement</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#resource-data-filtering">5.12. Resource Data Filtering</a><ul>
+<li><a class="reference internal" href="#id6">5.12.1. Resource Data Filtering</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-log">5.13. Change Log</a></li>
+<li><a class="reference internal" href="#working-notes-and-placeholder-text">5.14. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../Identity_Trust_Auth_and_Security/index.html"
+                        title="previous chapter">4. Identity, Trust, Auth and Security: Learning Registry Technical Specification V IT:0.49.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../Services_and_APIs/index.html"
+                        title="next chapter">6. Services and APIs: Learning Registry Technical Specification V SA:0.50.0</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/spec/Data_Model_and_API_Attributes_and_Behaviors/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="data-model-and-api-attributes-and-behaviors-learning-registry-technical-specification-v-rq-0-49-0">
+<span id="h-u6sbhsuktqyj"></span><h1>5. Data Model and API Attributes and Behaviors: Learning Registry Technical Specification V RQ:0.49.0<a class="headerlink" href="#data-model-and-api-attributes-and-behaviors-learning-registry-technical-specification-v-rq-0-49-0" title="Permalink to this headline">¶</a></h1>
+<p>Draft in Progress.
+See the <a class="reference internal" href="#change-log">Change Log</a> for links to prior stable versions.</p>
+<p><span class="changes">Shading indicates major changes and additions from the prior version (0.24.0). Also indicated with ▲.</span></p>
+<p><span class="deletions">Significant deletions are shaded.</span></p>
+<p><span class="deprecation">Features to be deprecated in a future version are shaded and indicated with ▼.</span></p>
+<p>This document is part of one or more versions of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning Registry Technical Specification</em></a>. It may contain links to other parts of the Specification.
+These links may link to the most recent version of a part, not to the version of the part that corresponds to this version of this part.
+Go to the appropriate version of the Specification that links to this version of this part, and follow the links there to the referenced part to find the version of the part that corresponds to this version of this part.</p>
+<p>This document is part of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a>. It describes common requirements for all APIs and data models.</p>
+<p>This document is not standalone.
+The reader should be familiar with other parts of the specification, including, but not limited to:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../General_Matter/index.html"><em>General</em></a> <a class="reference internal" href="../General_Matter/index.html"><em>Matter</em></a>, including Licenses, Notation, Versioning, Glossary, References,</li>
+<li><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Distribution</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Network</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Model</em></a></li>
+<li><a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Data</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Data</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Models</em></a></li>
+<li><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Identity</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Trust</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Authentication</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Security</em></a></li>
+<li><a class="reference internal" href="../Services_and_APIs/index.html"><em>Services</em></a> including <a class="reference internal" href="../Distribution_Services/index.html"><em>Distribution</em></a>, <a class="reference internal" href="../Publish_Services/index.html"><em>Publish</em></a>, <a class="reference internal" href="../Access_Services/index.html"><em>Access</em></a>, <a class="reference internal" href="../Broker_Services/index.html"><em>Broker</em></a>, <a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Management</em></a>/<a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Administration</em></a>/<a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Discovery</em></a></li>
+<li><a class="reference internal" href="../Operations/index.html"><em>Learning</em></a> <a class="reference internal" href="../Operations/index.html"><em>Registry</em></a> <a class="reference internal" href="../Operations/index.html"><em>Operations</em></a></li>
+</ul>
+<p>In particular, the reader needs to be aware that information from this part of the Technical Specification applies to all services and data models.</p>
+<div class="section" id="common-data-model-and-api-attributes-and-behaviors">
+<span id="h-i6djle3var4b"></span><h2>5.1. Common Data Model and API Attributes and Behaviors<a class="headerlink" href="#common-data-model-and-api-attributes-and-behaviors" title="Permalink to this headline">¶</a></h2>
+<p>The definition of several common attributes shared across all data models and APIs, along with common API behaviors are specified here as a single point of specification.
+In case of a discrepancy, the definition here SHALL take precedence over the definition elsewhere in this specification.</p>
+</div>
+<div class="section" id="data-model-attributes">
+<span id="h-3h25kjtjey9j"></span><h2>5.2. Data Model Attributes<a class="headerlink" href="#data-model-attributes" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="h-3yyq9awq43ia">
+<span id="identifiers"></span><h2>5.3. Identifiers<a class="headerlink" href="#h-3yyq9awq43ia" title="Permalink to this headline">¶</a></h2>
+<p>Most data models include one or more <em>identifiers</em>.
+An identifier SHALL be unique within a defined scope or context.
+Unless otherwise specified, the scope for all identifiers SHALL be all implementations of the Learning Registry.
+Unless otherwise specified by an implementation, an identifier SHALL conform to ISO/IEC 11578:1998, ISO/IEC 9834-8, RFC 4122, and SHOULD use Version 5 (SHA-1 Hash).
+These specifications standardize the generic OSF DCE UUID.
+As a data type, an identifier is commonly encoded as a string.</p>
+<p><em>NB</em>: What is called an identifier in a data model is more precisely just a label.
+The use of the label to identify an instance of the data model within the scope or context of the Learning Registry makes it an identifier (within that scope).</p>
+<p><em>NB</em>: For many items, the scope could be all implementations of the Learning Registry within one network</p>
+<p>community.
+Extending the scope to all implementations is an intentional simplification.</p>
+<p><em>Open</em> <em>Question</em>: UUID Version 1 (MAC Address) Version 5 (SHA-1 Hash)?</p>
+</div>
+<div class="section" id="strings-and-internationalization">
+<span id="h-24hd1gg6oeak"></span><h2>5.4. Strings and Internationalization<a class="headerlink" href="#strings-and-internationalization" title="Permalink to this headline">¶</a></h2>
+<p>All character strings SHALL support full UTF-8 encoding of Unicode character representation.</p>
+<p><em>NB</em>: JSON strings default to UTF-8 encoding.
+ECMAScript strings are UTC-16.</p>
+</div>
+<div class="section" id="time-and-date">
+<span id="h-davnw03urmtp"></span><h2>5.5. Time and Date<a class="headerlink" href="#time-and-date" title="Permalink to this headline">¶</a></h2>
+<p>The format for all times and dates SHALL conform to ISO 8601-2004. All encoded dates and times SHALL  be UTC 0. All <em>stored</em> times SHALL be expressed to at least second precision.
+More precise values MAY be used.</p>
+<p>Unless specified elsewhere, the JSON encoding of a time and date SHALL be a single string that is the complete, extended ISO 8601-2004 format, e.g., &#8220;YYYY-MM-DDThh:mm:ss.sZ&#8221; The string SHALL have all of these elements and separators and MAY have any precision of decimal fraction of a second.</p>
+<p><em>NB</em>: The above notation follows ISO 8601-2004, and the underscore on the decimal fractional portion of second implies any number of digits (zero or more) may follow the decimal point.</p>
+<p><em>NB</em>: Some data models and APIs MAY place additional restrictions on times and dates, including requiring less precision (e.g., days only) in arguments and results.</p>
+</div>
+<div class="section" id="api-attributes-and-behaviors">
+<span id="h-iser5w-jiok98"></span><h2>5.6. API Attributes and Behaviors<a class="headerlink" href="#api-attributes-and-behaviors" title="Permalink to this headline">¶</a></h2>
+<p>Description here about RESTful APIs, CoolURIs, Context negotiation, application/JSON vs text/plain</p>
+<p>HTTP requests SHALL use HTTP 1.1. Communications MAY use TLS.</p>
+<p>HTTP requests SHOULD include a CONTENT-TYPE header.
+Unless noted, the header SHOULD be</p>
+<p>CONTENT-TYPE: application/JSON</p>
+<p>HTTP responses SHOULD include a CONTENT-TYPE header.
+Unless noted, the header SHOULD be CONTENT-TYPE: text/plain; charset=utf=8</p>
+<p>Unless noted, all APIs that return JSON via an HTTP GET request SHALL support return of JSON-P to enable processing of the results by a ECMA-Script client.
+GET requests SHALL support an optional jsonp argument.
+If the jsonp argument is present, the API SHALL return the result padded into the function named in the jsonp argument.</p>
+</div>
+<div class="section" id="service-instantiation-validation">
+<span id="h-bjbfxxm61faq"></span><h2>5.7. Service Instantiation Validation<a class="headerlink" href="#service-instantiation-validation" title="Permalink to this headline">¶</a></h2>
+<p>A service at a node SHALL verify that a valid <em>service</em> <em>description</em> <a href="#id1"><span class="problematic" id="id2">*</span></a>documen*t exists for the service.
+If the service description document does not exist, is invalid, or indicates that the service is not active, the service SHALL return an HTTP status code.</p>
+<p>If the service description document does not exist, the status code SHALL be 501 and the response SHALL include the statement: &#8220;Service not implemented&#8221;.</p>
+<p>If the service description document is not valid, the status code SHALL be 501 and the response SHALL include the statement: &#8220;Service misconfigured&#8221;.</p>
+<p>If the service description document indicates that the service is not active, the status code SHALL be 501 and the response SHALL include the statement: &#8220;Service is not active&#8221;.</p>
+<p><em>NB</em>: These validation checks are performed by the service.
+If the service is not instantiated at a node, the returned HTTP status code SHALL be 404.</p>
+<p><em>NB</em>: A service description document and installed code are both required in a valid service instantiation.
+One SHOULD NOT exist without the other.</p>
+</div>
+<div class="section" id="transactional-behaviors-and-data-consistency">
+<span id="h-xzwjyolpx52v"></span><h2>5.8. Transactional Behaviors and Data Consistency<a class="headerlink" href="#transactional-behaviors-and-data-consistency" title="Permalink to this headline">¶</a></h2>
+<p>Unless stated in an individual API specification, transactional atomicity SHALL BE document granularity.</p>
+<p>Requirements for consistency of documents across multiple nodes apply only when the nodes are consistent.
+Prior to, or during document distribution, documents MAY be inconsistent.</p>
+<p><em>NB</em>: The distribution model assumes the underlying system SHALL produce <em>eventual</em> <em>consistency</em>.</p>
+</div>
+<div class="section" id="resource-data-validation-and-publication">
+<span id="h-rw8jrb-9tha8"></span><h2>5.9. Resource Data Validation and Publication<a class="headerlink" href="#resource-data-validation-and-publication" title="Permalink to this headline">¶</a></h2>
+<p>All resource data publishing and distribution services SHALL validate all documents before the document is stored at the node.</p>
+<ul class="simple">
+<li>All required fields SHALL be present.</li>
+<li>Only mutable fields MAY be changed in an update.</li>
+<li>The node SHALL reject a submission where the payload does not correspond with the declared payload.</li>
+<li>The node MAY validate an attached or linked payload.</li>
+<li>The node MAY validate an inline payload.</li>
+<li>Prior attachments SHALL be deleted in an update.</li>
+<li>Default values SHALL be filled in.</li>
+<li>Node-specific fields SHALL be filled in.</li>
+</ul>
+<div class="section" id="id3">
+<h3>5.9.1. Resource Data Validation and Publication<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>// Validate a *resource* *data* *description* document
+
+// is the submission well formed
+
+IF any required element is missing
+
+    THEN
+
+                    REJECT the document
+
+                    EXIT
+
+// changes in mutable fields are only allowed in an update
+
+IF submission is an update
+
+    IF any immutable field in the new document does not match old field
+
+        THEN
+
+                            REJECT the document
+
+                            EXIT
+
+// does the payload match the declaration
+
+IF payload_placement = "linked" and no payload_locator provided
+
+    THEN
+
+                    REJECT the document
+
+                    EXIT
+
+IF payload_placement = "inline" and no resource_document in the submission
+
+    THEN
+
+                    REJECT the document
+
+                    EXIT
+
+IF payload_placement = "attached" and no attachment
+
+    THEN
+
+                    REJECT the document
+
+                    EXIT
+
+// payload must match the schema and validate
+
+IF payload_schema does not correspond to resource_data_type
+
+    THEN
+
+                    REJECT the document
+
+                    EXIT
+
+VALIDATE the payload
+
+// updates invalidate existing attachments
+
+IF submission is an update
+
+    THEN delete any attachments
+
+// Generate the ID if required
+
+    IF doc_ID isn’t provided
+
+    THEN generate a doc_ID
+
+// Set local node data
+
+publish_node := node_id
+
+IF submission is an update
+
+    THEN
+
+                    update_timestamp := ▼:deprecation:`node`:deprecation:`_`:deprecation:`timestamp` := current time // granularity of seconds
+
+    ELSE
+
+                    create_timestamp :=update_timestamp := ▼:deprecation:`node`:deprecation:`_`:deprecation:`timestamp` := current time
+
+IF frbr_level not specified
+
+    THEN frbr_level := "copy"</pre>
+</div>
+<p><em>Open</em> <em>Question</em>: Should an update delete the attachments automatically, or should this be an option?</p>
+</div>
+</div>
+<div class="section" id="resource-data-tos-signatures-and-trust-policy-enforcement">
+<span id="h-seu03yccp8ld"></span><h2>5.10. Resource Data ToS, Signatures and Trust Policy Enforcement<a class="headerlink" href="#resource-data-tos-signatures-and-trust-policy-enforcement" title="Permalink to this headline">¶</a></h2>
+<p>All resource data publishing services and resource data distribution services MAY apply ToS, digital signature and submitter identity checks to resource data.</p>
+<ul class="simple">
+<li>The node MAY reject an anonymous submission or any other submission according to its policy.</li>
+<li>The node MAY reject a submission from an untrusted submitter.</li>
+<li>The node MAY reject a submission without a known terms of service.</li>
+<li>The node MAY reject a submission that is not signed.</li>
+<li>The node MAY reject the submission if the signature cannot be verified.</li>
+</ul>
+<p><em>NB</em>: The acceptable node policies and terms of service are not defined in this specification.
+The specification requires that ToS, digital signatures and trust checks be performed according to node policies.
+The outcome of those checks, and the actions taken, are governed by node, network or community-specific policies that are out of scope for this specification.</p>
+<p><em>NB</em>: Declared policies SHOULD be applied consistently in both publication and distribution.</p>
+<p><em>NB</em>: A node MAY apply other policies or MAY apply policies without declaring them in the node description.</p>
+<p><em>NB</em>: An implementation MAY check policies in any order.
+It MAY evaluate all policies or do a short-circuit evaluation and stop when any policy violation is found.</p>
+<div class="section" id="id4">
+<h3>5.10.1. Resource Data ToS, Signatures and Trust Policy Enforcement<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>// Check Policies
+
+    IF the service applies ToS checks
+
+            AND the *resource* *data* *description* document TOS is unacceptable
+
+        THEN // indicate ToS was rejected
+
+            REJECT the document
+
+            EXIT
+
+IF the service does not accept anonymous submissions
+
+            AND the *resource* *data* *description* document has submitter_type=="anonymous"
+
+        THEN // indicate submitter type was rejected
+
+                    REJECT the document
+
+            EXIT
+
+    IF the service validates the submitter or submitter trust
+
+            AND the *resource* *data* *description* document submitter cannot be verified or trusted
+
+            THEN // indicate submitter was rejected
+
+                    REJECT the document
+
+            EXIT
+
+    IF the service requires a signature
+
+            AND the *resource* *data* *description* document signature not present
+
+            THEN // indicate signature was rejected
+
+                    REJECT the document
+
+            EXIT
+
+    IF the service validates the signature
+
+            AND the *resource* *data* *description* document signature cannot be verified
+
+            THEN // indicate signature was rejected
+
+                    REJECT the document
+
+            EXIT</pre>
+</div>
+</div>
+</div>
+<div class="section" id="operational-policy-enforcement">
+<span id="h-aj5me7w75zd3"></span><h2>5.11. Operational Policy Enforcement<a class="headerlink" href="#operational-policy-enforcement" title="Permalink to this headline">¶</a></h2>
+<p>All resource data publishing services and resource data distribution services MAY enforce operational policies</p>
+<ul class="simple">
+<li>The node MAY reject the size of a document as being too large according to its policy.</li>
+</ul>
+<p><em>NB</em>: Declared policies SHOULD be applied consistently in both publication and distribution.</p>
+<p><em>NB</em>: A node MAY apply other policies or MAY apply policies without declaring them in the node description.</p>
+<p><em>NB</em>: An implementation MAY check policies in any order.
+It MAY evaluate all policies or do a short-circuit evaluation and stop when any policy violation is found.</p>
+<div class="section" id="id5">
+<h3>5.11.1. Operational Policy Enforcement<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>// Check Policies
+
+IF the service applies ToS checks
+
+        AND the *resource* *data* *description* document TOS is unacceptable
+
+    THEN // indicate ToS was rejected
+
+        REJECT the document
+
+        EXIT</pre>
+</div>
+</div>
+</div>
+<div class="section" id="resource-data-filtering">
+<span id="h-mm60gf-1u077v"></span><h2>5.12. Resource Data Filtering<a class="headerlink" href="#resource-data-filtering" title="Permalink to this headline">¶</a></h2>
+<p>All resource data publishing services and resource data distribution services apply filters to resource data.
+If a <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.1cq79ogiyvxn">Network</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.1cq79ogiyvxn">Node</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.1cq79ogiyvxn">Filter</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.1cq79ogiyvxn">Document</a> is stored at a node, the filter SHALL be applied to a resource data description document before the document is stored at the node.</p>
+<p>Either a custom filter or expression-based filters MAY be defined.
+If there is a custom filter (expressed in custom code at the node), expression-based filters SHALL be ignored.
+A custom filter SHOULD NOT be used when the filters can be expressed using expression-based filters.</p>
+<p>A filter defines either the resource data documents that pass the filter (and are stored; all other resource data documents are not stored), or resource data documents that are rejected by the filter (and are not stored, all other documents are stored).</p>
+<p>An expression-based filter contains a list of regular expressions that are used to match keywords/names in the resource data description document, and a regular expression that is used to match values for the keywords.
+If the filter key matches any keyword/name in the resource data, and if any value for that key in the resource data matches the filter value, the filter is successful, i.e., for an “include” filter, the document is included; for an exclude filter, the document is “excluded”. Matching is an “or”. A successful match short circuits further matching.</p>
+<p>The filter SHALL be applied against all top-level elements in the resource data description document.
+Behavior for filtering against linked resource data, attachments or the inline resource data is not currently defined.</p>
+<p><em>NB</em>: Resource data filtering is in addition to the prerequisite manditory filtering of any document that contains a do_not_distribute key-value pair.</p>
+<div class="section" id="id6">
+<h3>5.12.1. Resource Data Filtering<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>// Filter a *resource* *data* *description* document
+
+// No filter test
+
+IF the *network* *node* *filter* *description* document does NOT exist
+
+    THEN store the *resource* *data* *description* document
+
+        EXIT
+
+// Filter not active test
+
+IF NOT active in the *network* *node* *filter* *description* document
+
+    THEN store the *resource* *data* *description* document
+
+        EXIT
+
+// Use custom filter if defined
+
+IF custom_filter in the the *network* *node* *filter* *description* document
+
+    THEN eval the custom filter code
+
+        IF the code returns true
+
+                            THEN store the *resource* *data* *description* document
+
+                    EXIT
+
+// Expression-based filtering
+
+// Does the filter match the document
+
+match := F
+
+FOR EACH filter in the *network* *node* *filter* *description* document
+
+    FOR EACH key/name in the *resource* *data* *description* document
+
+    IF the filter_key REGEX matches the key/name
+
+        IF the filter_value is NULL
+
+            THEN match := T
+
+                SKIP ALL
+
+        FOR EACH value of the key/name in the *resource* *data* *description* document
+
+            IF the filter_value REGEX matches the value
+
+                THEN match := T
+
+                    SKIP ALL
+
+// Store or reject
+
+IF include_exclude
+
+            IF match // matches what to include
+
+        THEN store the *resource* *data* *description* document
+
+            EXIT
+
+        ELSE EXIT // don’t store
+
+    IF NOT match // doesn’t match what to exclude
+
+        THEN store the *resource* *data* *description* document
+
+            EXIT
+
+        ELSE EXIT // don’t store</pre>
+</div>
+</div>
+</div>
+<div class="section" id="change-log">
+<span id="id7"></span><h2>5.13. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
+<p><em>NB</em>: The change log only lists major updates to the specification.</p>
+<p><em>NB</em>: Updates and edits may not results in a version update.</p>
+<p><em>NB</em>: See the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a> for prior change history not listed below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="3%" />
+<col width="4%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Change</strong></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>20110921</td>
+<td>DR</td>
+<td>This document extracted from the monolithic V 0.24.0 document.`Archived &lt;<a class="reference external" href="https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US">https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US</a>&gt;`_ <a class="reference external" href="https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US">copy</a> (V 0.24.0)</td>
+</tr>
+<tr class="row-odd"><td>0.49.0</td>
+<td>20110927</td>
+<td>DR</td>
+<td>Editorial updates to create stand alone version.Archived copy location TBD. (V RQ:0.49.0)</td>
+</tr>
+<tr class="row-even"><td>0.50.0</td>
+<td>TBD</td>
+<td>DR</td>
+<td>Renumber all document models and service documents. Archived copy location TBD. (V RQ:0.50.0)</td>
+</tr>
+<tr class="row-odd"><td>Future</td>
+<td>TBD</td>
+<td>&nbsp;</td>
+<td>RESTful APIsArchived copy location TBD. (V RQ:x.xx.x)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="working-notes-and-placeholder-text">
+<span id="h-tph0s9vmrwxu"></span><h2>5.14. Working Notes and Placeholder Text<a class="headerlink" href="#working-notes-and-placeholder-text" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Flow control consistency</li>
+<li>How does a service find its service doc</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../Services_and_APIs/index.html" title="6. Services and APIs: Learning Registry Technical Specification V SA:0.50.0"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../Identity_Trust_Auth_and_Security/index.html" title="4. Identity, Trust, Auth and Security: Learning Registry Technical Specification V IT:0.49.0"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" >Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Learning Registry Contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

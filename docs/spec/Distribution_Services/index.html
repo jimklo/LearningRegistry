@@ -1,0 +1,496 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>7. Distribution Services: Learning Registry Technical Specification V DS:0.49.0 &mdash; Learning Registry 0.50.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.50.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Learning Registry 0.50.1 documentation" href="../../index.html" />
+    <link rel="up" title="Learning Registry Technical Specification V 0.49.0" href="../Technical_Spec/index.html" />
+    <link rel="next" title="8. Publish Services: Learning Registry Technical Specification V PS:0.50.1" href="../Publish_Services/index.html" />
+    <link rel="prev" title="6. Services and APIs: Learning Registry Technical Specification V SA:0.50.0" href="../Services_and_APIs/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../Publish_Services/index.html" title="8. Publish Services: Learning Registry Technical Specification V PS:0.50.1"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../Services_and_APIs/index.html" title="6. Services and APIs: Learning Registry Technical Specification V SA:0.50.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" accesskey="U">Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">7. Distribution Services: Learning Registry Technical Specification V DS:0.49.0</a><ul>
+<li><a class="reference internal" href="#resource-data-distribution-service">7.1. Resource Data Distribution Service</a><ul>
+<li><a class="reference internal" href="#api-data-distribution">7.1.1. API: Data Distribution</a></li>
+<li><a class="reference internal" href="#resource-distribution-source-node-process">7.1.2. Resource Distribution: Source Node Process</a></li>
+<li><a class="reference internal" href="#resource-distribution-destination-node-process">7.1.3. Resource Distribution: Destination Node Process</a></li>
+<li><a class="reference internal" href="#api-destination-node-information">7.1.4. API: Destination Node Information</a></li>
+<li><a class="reference internal" href="#resource-distribution-destination-node-information">7.1.5. Resource Distribution: Destination Node Information</a></li>
+<li><a class="reference internal" href="#service-description">7.1.6. Service Description</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-log">7.2. Change Log</a></li>
+<li><a class="reference internal" href="#working-notes-and-placeholder-text">7.3. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../Services_and_APIs/index.html"
+                        title="previous chapter">6. Services and APIs: Learning Registry Technical Specification V SA:0.50.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../Publish_Services/index.html"
+                        title="next chapter">8. Publish Services: Learning Registry Technical Specification V PS:0.50.1</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/spec/Distribution_Services/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="distribution-services-learning-registry-technical-specification-v-ds-0-49-0">
+<span id="h-u6sbhsuktqyj"></span><h1>7. Distribution Services: Learning Registry Technical Specification V DS:0.49.0<a class="headerlink" href="#distribution-services-learning-registry-technical-specification-v-ds-0-49-0" title="Permalink to this headline">¶</a></h1>
+<p>Draft in Progress.
+See the <a class="reference internal" href="#change-log">Change Log</a> for links to prior stable versions.</p>
+<p><span class="changes">Shading indicates major changes and additions from the prior version (0.24.0). Also indicated with ▲.</span></p>
+<p><span class="deletions">Significant deletions are shaded.</span></p>
+<p><span class="deprecation">Features to be deprecated in a future version are shaded and indicated with ▼.</span></p>
+<p>This document is part of one or more versions of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning Registry Technical Specification</em></a>. It may contain links to other parts of the Specification.
+These links may link to the most recent version of a part, not to the version of the part that corresponds to this version of this part.
+Go to the appropriate version of the Specification that links to this version of this part, and follow the links there to the referenced part to find the version of the part that corresponds to this version of this part.</p>
+<p>This document is part of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a>. It describes the Learning Registry services used to distribute resource documents throughout a distribution network.</p>
+<p>This document is not standalone.
+The reader should be familiar with other parts of the specification, including, but not limited to:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../General_Matter/index.html"><em>General</em></a> <a class="reference internal" href="../General_Matter/index.html"><em>Matter</em></a>, including Licenses, Notation, Versioning, Glossary, References</li>
+<li><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Distribution</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Network</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Model</em></a></li>
+<li><a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Data</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Data</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Models</em></a></li>
+<li><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Identity</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Trust</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Authentication</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Security</em></a></li>
+<li><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Data</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Model</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>API</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Attributes</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Behaviors</em></a></li>
+<li><a class="reference internal" href="../Services_and_APIs/index.html"><em>Other</em></a> <a class="reference internal" href="../Services_and_APIs/index.html"><em>Services</em></a> including <a class="reference internal" href="../Publish_Services/index.html"><em>Publish</em></a>, <a class="reference internal" href="../Access_Services/index.html"><em>Access</em></a>, <a class="reference internal" href="../Broker_Services/index.html"><em>Broker</em></a>, <a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Management</em></a>/<a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Administration</em></a>/<a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Discovery</em></a></li>
+<li><a class="reference internal" href="../Operations/index.html"><em>Learning</em></a> <a class="reference internal" href="../Operations/index.html"><em>Registry</em></a> <a class="reference internal" href="../Operations/index.html"><em>Operations</em></a></li>
+</ul>
+<p>In particular, the reader needs to be aware that specific criteria for services and APIs are presented in the <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Data</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Model</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>API</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Attributes</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Behaviors</em></a> part, the <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Distribution</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Network</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Model</em></a> part describes the network model, the <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Data</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Data</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Models</em></a> part describes the data that distribution services process, and the <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Identity</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Trust</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Authentication</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Security</em></a> part describes security requirements.</p>
+<div class="section" id="resource-data-distribution-service">
+<span id="h-vb0xt6mhzmg2"></span><h2>7.1. Resource Data Distribution Service<a class="headerlink" href="#resource-data-distribution-service" title="Permalink to this headline">¶</a></h2>
+<p>The resource data distribution service is used to distribute (synchronize or replicate) the resource data from one node to its connected nodes (unidirectional).
+The resource data distribution service SHALL <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1p-6XFb_eBlVYiGb9fZYtcQ4Z363rjysgS2PiZLXzAyY/edit?hl=en_US#heading=h.tph0s9vmrwxu">apply</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1p-6XFb_eBlVYiGb9fZYtcQ4Z363rjysgS2PiZLXzAyY/edit?hl=en_US#heading=h.tph0s9vmrwxu">filters</a>, if present at the destination node, to restrict the resource data that is distributed.
+The resource data distribution service SHALL <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1p-6XFb_eBlVYiGb9fZYtcQ4Z363rjysgS2PiZLXzAyY/edit?hl=en_US#heading=h.rw8jrb-9tha8">apply</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1p-6XFb_eBlVYiGb9fZYtcQ4Z363rjysgS2PiZLXzAyY/edit?hl=en_US#heading=h.rw8jrb-9tha8">validation</a> to restrict the resource data that is stored at the destination node.
+A destination node MAY reject any resource data description document based on the node’s <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1p-6XFb_eBlVYiGb9fZYtcQ4Z363rjysgS2PiZLXzAyY/edit?hl=en_US#heading=h.seu03yccp8ld">p &lt;https://docs.google.com/a/learningregistry.org/document/d/1p-6XFb_eBlVYiGb9fZYtcQ4Z363rjysgS2PiZLXzAyY/edit?hl=en_US#heading=h.seu03yccp8ld&gt;`_`olicies</a>: from an unverified or untrusted submitter, that is not signed or where the signature cannot be verified, that does not contain an accepted ToS, etc.
+The destination node MAY reject any document that is larger than the node can store.
+The destination node SHALL reject any document with a &#8220;do_not_distribute&#8221; key-value pair; this verification SHALL be performed before any other verification and SHALL short circuit all other verification.</p>
+<p><em>NB</em>: There is no defined mechanism to define the acceptable ToS for a node.</p>
+<p><em>NB</em>: How the resource data distribution service decides if it accepts or rejects resource data that does not come from a verified submitter, is not signed or that does not conform to the destination node’s ToS is determined by the the node’s policy and is not defined in this specification.</p>
+<p>Future drafts or versions of this specification MAY define additional resource data distribution services.</p>
+<p>The resource data distribution service is used in resource distribution network operations.
+Access to the service SHOULD be restricted to network operational procedures.</p>
+<p>The resource data distribution service examines the network topology and verifies the rules that govern network structure for each connection and the associated nodes.
+On a connection-by-connection basis, a malformed connection between two nodes SHALL be skipped.
+Distribution occurs across all valid connections.</p>
+<p><em>NB</em>: There is no assumption that one type of document (node description or connection) is more authoritative.</p>
+<p>A task scheduler SHOULD trigger resource data distribution from a source node to all of its destination nodes according to the frequency specified by the sync_frequency in the node description document.</p>
+<p>The service provides three distinct functions:</p>
+<ul class="simple">
+<li>A service with an API at the source node which is used to trigger the resource data distribution.</li>
+<li>A service at each destination node that processes the incoming resource data.</li>
+<li>A service and API at each destination node that is used to return descriptive information from the destination node to the source node to validate the connection.</li>
+</ul>
+<div class="section" id="api-data-distribution">
+<h3>7.1.1. API: Data Distribution<a class="headerlink" href="#api-data-distribution" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>    POST &lt;node-service-endpoint-URL&gt;/distribute
+
+
+
+    Arguments:
+
+        None
+
+    Request Object:
+
+        None
+
+    Results Object:                    // results summary and errors
+
+    {
+
+     "OK":        boolean,        // T if successful
+
+     "error":        "string"            // text describing error
+
+    }
+
+
+
+Return Codes:
+
+    200    Successful
+
+    500    An error</pre>
+</div>
+</div>
+<div class="section" id="resource-distribution-source-node-process">
+<h3>7.1.2. Resource Distribution: Source Node Process<a class="headerlink" href="#resource-distribution-source-node-process" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>// Distribute a resource data description document collection from one node to its connected nodes
+
+VALIDATE resource_document_database.doc_type = "resource_data"
+
+// only distributing resource data
+
+    GET the *network* *node* *description* document for the source node to obtain
+
+        source.network_id
+
+        source.community_id
+
+        source.gateway_node
+
+    GET the *network* *community* *description* document for the source node to obtain
+
+        source.social_community
+
+    GET the *network* *node* *connectivity* documents for the source node
+
+    IF &gt; 1 connectivity document with active = T AND gateway_connection = T
+
+        THEN ABORT
+
+                    // only one active gateway is allowed, faulty network description
+
+    FOR EACH node connectivity document
+
+        GET the *network* *node* *description* document for the destination node
+
+                    (via the destination_node_url) to obtain
+
+                        destination.network_id
+
+                        destination.community_id
+
+                        destination.gateway_node
+
+                    GET the *network* *community* *description* document for the destination node
+
+                    to obtain
+
+                destination.social_community
+
+                    IF source.community_id &lt;&gt; destination.community_id
+
+                     AND ((NOT source,social_community)
+
+                            OR (NOT destination.social_community))
+
+                        THEN SKIP
+
+                    // cannot distribute across non social communities
+
+                    IF (NOT gateway_connection) AND
+
+                     source.network_id &lt;&gt; destination.network_id
+
+                        THEN SKIP
+
+                    // cannot distribute across networks (or communities) unless gateway
+
+                    IF gateway_connection AND
+
+                     source.network_id = destination.network_id
+
+                        THEN SKIP
+
+                    // gateway must only distribute across different networks
+
+                    IF gateway_connection
+
+                     AND    ((NOT source.gateway_node)
+
+                        (OR (NOT destination.gateway_node))
+
+                        THEN SKIP
+
+                    // gateways can only distribute to gateways
+
+                    COMMIT all outstanding resource data description database operations
+
+                    PERFORM distribution service between source and destination nodes
+
+                    // this is the distribution primitive</pre>
+</div>
+<p><em>NB</em>: There may be a better way to do the validations via map-reduce.</p>
+<p><em>NB</em>: Since all attributes of the network that model its topology are immutable, the replication process should be transactionally safe.</p>
+<p><em>NB</em>: The process is only designed to distribute resource data.
+It encodes specific business rules about gateway processing.
+It SHOULD NOT be used to distribute network descriptions.</p>
+<p><em>NB</em>: The process does not return errors when there are bad connection descriptions; they are skipped.
+A bad connection should never have been accepted; the checks are included to ensure consistency.</p>
+<p><em>NB</em>: The process does not return errors when a distribution fails, either directly or because the destination node is not available.
+The process SHOULD verify that the destination node is reachable and operational before performing data distribution.</p>
+</div>
+<div class="section" id="resource-distribution-destination-node-process">
+<h3>7.1.3. Resource Distribution: Destination Node Process<a class="headerlink" href="#resource-distribution-destination-node-process" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>// Process and filter inbound resource data description documents at a node
+
+ REJECT the *resource* *data* *description* document if it contains a do_not_distribute key.
+
+VALIDATE the *resource* *data* *description* document
+
+    // skip storing all documents that do not validate
+
+REJECT the *resource* *data* *description* document if the submitter cannot be verified
+
+REJECT the *resource* *data* *description* document if the submitter_TOS is unacceptable to the node
+
+ REJECT the *resource* *data* *description* document if it too large
+
+IF the *network* *node* *filter* *description* document exists and contains active filters
+
+        THEN PERFORM filtering and store only documents that pass the filter
+
+▼:deprecation:`UPDATE node_timestamp // when the document was stored at the node`</pre>
+</div>
+<p><em>NB</em>: The process does not return indicators when documents are filtered.</p>
+<p>▼:deprecation:<cite>*NB*</cite><span class="deprecation">: `:deprecation:`An</span>:deprecation:` <cite>:deprecation:`implementation</cite>:deprecation:` <cite>:deprecation:`SHALL</cite>:deprecation:` <cite>:deprecation:`maintain</cite>:deprecation:` <cite>:deprecation:`node</cite><span class="deprecation">_</span><span class="deprecation">timestamp</span>:deprecation:` <cite>:deprecation:`in</cite>:deprecation:` <cite>:deprecation:`a</cite>:deprecation:` <cite>:deprecation:`manner</cite>:deprecation:` <cite>:deprecation:`that</cite>:deprecation:` <cite>:deprecation:`does</cite>:deprecation:` <cite>:deprecation:`not</cite>:deprecation:` <cite>:deprecation:`trigger</cite>:deprecation:` <cite>:deprecation:`redistibution</cite>:deprecation:` <cite>:deprecation:`of</cite>:deprecation:` <cite>:deprecation:`the</cite>:deprecation:` <cite>:deprecation:`documen</cite><span class="deprecation">t</span><span class="deprecation">; `:deprecation:`node</span><span class="deprecation">_</span><span class="deprecation">timestamp</span>:deprecation:` <cite>:deprecation:`is</cite>:deprecation:` <cite>:deprecation:`a</cite>:deprecation:` <cite>:deprecation:`local</cite>:deprecation:` <cite>:deprecation:`node</cite>:deprecation:` <cite>:deprecation:`value</cite>:deprecation:<a href="#id2"><span class="problematic" id="id3">`</span></a>.
+&#8211; <a href="#id4"><span class="problematic" id="id5">`</span></a>TO BE replaced by a local value that is not maintained as part of the resource data description document</p>
+</div>
+<div class="section" id="api-destination-node-information">
+<h3>7.1.4. API: Destination Node Information<a class="headerlink" href="#api-destination-node-information" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>    GET &lt;node-service-endpoint-URL&gt;/destination
+
+
+
+    Arguments:
+
+        None
+
+    Request Object:
+
+        None
+
+    Results Object:                    // results summary and errors
+
+    {
+
+     "OK":        boolean,        // T if successful
+
+     "error":        "string",            // text describing error
+
+     "target_node_info":            // target distribution node data
+
+     {
+
+             "active":        boolean,    // is the destination network node active
+
+             "node_id":        "string",        // ID of the destination network node
+
+             "network_id":        "string",        // id of the network of the destination
+
+             "community_id":    "string",     // id of the community of the destination
+
+             "gateway_node":    boolean,    // destination node is a gateway node
+
+             "social_community":    boolean        // is community a social community
+
+            }
+
+    }
+
+
+
+Return Codes:
+
+    200    Successful
+
+    500    An error</pre>
+</div>
+</div>
+<div class="section" id="resource-distribution-destination-node-information">
+<h3>7.1.5. Resource Distribution: Destination Node Information<a class="headerlink" href="#resource-distribution-destination-node-information" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>// Return the description of a destination network node
+
+DEFINE VIEW on
+
+            *network* *node* *description* document containing the required output fields
+
+            + *network* *community* *description* document containing the required output fields
+
+QUERY
+
+    RETURN Results document</pre>
+</div>
+</div>
+<div class="section" id="service-description">
+<h3>7.1.6. Service Description<a class="headerlink" href="#service-description" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>{
+
+    "doc_type": "service_description",
+
+    "doc_version": "0.20.0",
+
+    "doc_scope": "node",
+
+    "active": true,
+
+    "service_id": "&lt;uniqueid&gt;",
+
+    "service_type": "distribute",
+
+    "service_name": "Resource Data Distribution",
+
+    "service_description": "Service used to distribute resource documents from one node to other nodes",
+
+    "service_version": "0.23.0",
+
+    "service_endpoint": "&lt;node-service-endpoint-URL&gt;",
+
+    "service_auth":
+                                            // service authentication and authorization descriptions
+    {
+
+        "service_authz": ["&lt;authvalue&gt;"],
+                                            // authz values for the service
+
+        "service_key": &lt; T / F &gt; ,
+                                            // does service use an access key
+
+        "service_https": &lt; T / F &gt; // does service require https
+    }
+
+}</pre>
+</div>
+<p>The service definition is only for the source node.
+There is no service definition for the target node API used to get the target node information.</p>
+<p>When the service is deployed at a node, appropriate values for the placeholders (service_id, service_endpoint, service_auth) SHALL be provided.
+The descriptive values (service_name, service_description) MAY be changed from what is specified herein.</p>
+</div>
+</div>
+<div class="section" id="change-log">
+<span id="h-e1519o-y653zc"></span><h2>7.2. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
+<p><em>NB</em>: The change log only lists major updates to the specification.</p>
+<p><em>NB</em>: Updates and edits may not results in a version update.</p>
+<p><em>NB</em>: See the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a> for prior change history not listed below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="5%" />
+<col width="6%" />
+<col width="83%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Change</strong></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>20110921</td>
+<td>DR</td>
+<td>This document extracted from the monolithic V 0.24.0 document.Archived copy (V 0.24.0)</td>
+</tr>
+<tr class="row-odd"><td>0.49.0</td>
+<td>20110927</td>
+<td>DR</td>
+<td>Editorial updates to create stand alone version.Archived copy location TBD. (V DS:0.49.0)</td>
+</tr>
+<tr class="row-even"><td>0.50.0</td>
+<td>TBD</td>
+<td>DR</td>
+<td>Renumber all document models and service documents. Added node policy to control storage of attachments (default is stored). Archived copy location TBD. (V DS:0.50.0)</td>
+</tr>
+<tr class="row-odd"><td>Future</td>
+<td>TBD</td>
+<td>&nbsp;</td>
+<td>Deprecate node_timestamp. Details of attachments on publish, obtain, harvest.Archived copy location TBD. (V DS:x.xx.x)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="working-notes-and-placeholder-text">
+<span id="h-tph0s9vmrwxu"></span><h2>7.3. Working Notes and Placeholder Text<a class="headerlink" href="#working-notes-and-placeholder-text" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../Publish_Services/index.html" title="8. Publish Services: Learning Registry Technical Specification V PS:0.50.1"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../Services_and_APIs/index.html" title="6. Services and APIs: Learning Registry Technical Specification V SA:0.50.0"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" >Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Learning Registry Contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

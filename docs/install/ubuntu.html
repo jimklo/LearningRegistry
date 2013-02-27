@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>LR Install on Ubuntu 12.04 LTS &mdash; Learning Registry 0.50.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.50.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Learning Registry 0.50.1 documentation" href="../index.html" />
+    <link rel="up" title="Node Installation" href="index.html" />
+    <link rel="prev" title="Node Installation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Node Installation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Node Installation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">LR Install on Ubuntu 12.04 LTS</a><ul>
+<li><a class="reference internal" href="#gotchas">Gotchas</a></li>
+<li><a class="reference internal" href="#steps">Steps</a><ul>
+<li><a class="reference internal" href="#optional-install-ssh-server-so-we-can-remote-ssh-into-server-so-copy-paste-works">1. (optional) Install SSH server so we can remote ssh into server so copy/paste works.</a></li>
+<li><a class="reference internal" href="#update-and-upgrade-system">2. Update and Upgrade system</a></li>
+<li><a class="reference internal" href="#install-system-dependencies">3. Install system dependencies</a></li>
+<li><a class="reference internal" href="#make-users-for-couchdb-and-learning-registry">4. Make Users for CouchDB and Learning Registry</a></li>
+<li><a class="reference internal" href="#build-couchdb-1-2-0-with-some-additional-plugins">5. Build CouchDB 1.2.0 with some additional plugins</a></li>
+<li><a class="reference internal" href="#install-learning-registry-code">6. Install Learning Registry code</a></li>
+<li><a class="reference internal" href="#configure-couchdb">7. Configure CouchDB</a></li>
+<li><a class="reference internal" href="#configure-gpg-nginx-and-lr">8. Configure GPG, NGINX, and LR</a></li>
+<li><a class="reference internal" href="#start-lr-for-the-first-time">9. Start LR for the first time</a></li>
+<li><a class="reference internal" href="#configure-lr-as-a-service">10. Configure LR As a service</a></li>
+<li><a class="reference internal" href="#learning-registry-node-should-be-up-and-running">11. Learning Registry Node Should be up and running</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Node Installation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/install/ubuntu.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="lr-install-on-ubuntu-12-04-lts">
+<h1>LR Install on Ubuntu 12.04 LTS<a class="headerlink" href="#lr-install-on-ubuntu-12-04-lts" title="Permalink to this headline">¶</a></h1>
+<p>The following is a series of instructions designed to assist in the configuration of the Learning Registry Node software.</p>
+<div class="section" id="gotchas">
+<h2>Gotchas<a class="headerlink" href="#gotchas" title="Permalink to this headline">¶</a></h2>
+<p>While we try to keep documentation up-to-date. Some dependencies update more frequently than these instructions. The following are some
+commonly known stumbling blocks:</p>
+<ul>
+<li><dl class="first docutils">
+<dt>CouchDB with BrowserID plugin</dt>
+<dd><ul class="first last simple">
+<li>the BrowserID integrates with <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Persona">Mozilla&#8217;s Persona</a> whose protocol is still developmental, however relatively stable.  Revisions to the protocol have often required configuration changes to the updated plugin. Please refer to the <a class="reference external" href="https://github.com/iriscouch/browserid_couchdb">developer&#8217;s site</a> for more information</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="optional-install-ssh-server-so-we-can-remote-ssh-into-server-so-copy-paste-works">
+<h3>1. (optional) Install SSH server so we can remote ssh into server so copy/paste works.<a class="headerlink" href="#optional-install-ssh-server-so-we-can-remote-ssh-into-server-so-copy-paste-works" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>sudo apt-get install openssh-server</pre>
+</div>
+</div>
+<div class="section" id="update-and-upgrade-system">
+<h3>2. Update and Upgrade system<a class="headerlink" href="#update-and-upgrade-system" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>sudo apt-get update
+sudo apt-get upgrade</pre>
+</div>
+</div>
+<div class="section" id="install-system-dependencies">
+<h3>3. Install system dependencies<a class="headerlink" href="#install-system-dependencies" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>sudo apt-get install flex dctrl-tools libsctp-dev ed zlib1g-dev
+sudo apt-get install libxslt1-dev automake make ruby libtool g++
+sudo apt-get install zip libcap2-bin
+sudo apt-get install python-dev python-setuptools python-virtualenv
+sudo apt-get install nginx libyajl1 git-core curl rake swig vim</pre>
+</div>
+</div>
+<div class="section" id="make-users-for-couchdb-and-learning-registry">
+<h3>4. Make Users for CouchDB and Learning Registry<a class="headerlink" href="#make-users-for-couchdb-and-learning-registry" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>sudo adduser couchdb
+sudo adduser learnreg</pre>
+</div>
+</div>
+<div class="section" id="build-couchdb-1-2-0-with-some-additional-plugins">
+<h3>5. Build CouchDB 1.2.0 with some additional plugins<a class="headerlink" href="#build-couchdb-1-2-0-with-some-additional-plugins" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>sudo mkdir /opt/couchdb
+sudo chown couchdb:couchdb /opt/couchdb
+sudo su - couchdb
+git clone git://github.com/jimklo/build-couchdb        ## TODO move to LearningRegistry
+cd build-couchdb
+git submodule init
+git submodule update
+rake install=/opt/couchdb/1.2.0 git="git://github.com/apache/couchdb tags/1.2.0" plugins="git://github.com/iriscouch/browserid_couchdb origin/master,git://github.com/couchbase/geocouch origin/couchdb1.2.x"</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ol class="last arabic simple">
+<li>Ensure that the rake command uses the correct git path and branch/tag for the plugins parameter.</li>
+<li>At the time of this writing, <tt class="docutils literal"><span class="pre">git://github.com/iriscouch/build-couchdb</span></tt> had reliablity issues for Ubuntu 12.04, which may be fixed. If the listed location in the source does not work, try the original.</li>
+<li>You may omit the geocouch plugin as it not currently utilized, but may have planned future use.  It may be added in the future when needed.  If you wish to omit, remove <tt class="docutils literal"><span class="pre">git://github.com/couchbase/geocouch</span> <span class="pre">origin/couchdb1.2.x</span></tt> from the rake command</li>
+</ol>
+</div>
+<p>While CouchDB builds (it takes a long time), you can log into a separate session and begin installing Learning Registry at 5b</p>
+</div>
+<div class="section" id="install-learning-registry-code">
+<h3>6. Install Learning Registry code<a class="headerlink" href="#install-learning-registry-code" title="Permalink to this headline">¶</a></h3>
+<p>Clone from GitHub:</p>
+<div class="highlight-python"><pre>sudo su - learnreg
+git clone git://github.com/LearningRegistry/LearningRegistry</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you require a different branch other than head, please refer to the git documentation for checking out an alternate version</p>
+</div>
+<p>Create the Python virtualenv and install uwsgi and the node software:</p>
+<div class="highlight-python"><pre>virtualenv --no-site-packages env
+. env/bin/activate
+pip install uwsgi
+pip install -e ./LearningRegistry/LR/</pre>
+</div>
+</div>
+<div class="section" id="configure-couchdb">
+<h3>7. Configure CouchDB<a class="headerlink" href="#configure-couchdb" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>cd /opt/couchdb/
+ln -s ./1.2.0 current
+cd 1.2.0
+vim env.sh</pre>
+</div>
+<p>Within the main() function, after the last dir_to_path line (about line 40) add the following by using arrow keys to navigate, then press &#8220;&lt;ESC&gt; o&#8221; and type:</p>
+<div class="highlight-python"><pre>export ERL_FLAGS="-pa /opt/couchdb/1.2.0/lib/couchdb/plugins/geocouch/ebin /opt/couchdb/1.2.0/lib/couchdb/plugins/browserid_couchdb/ebin"</pre>
+</div>
+<p>Save and exit by pressing &#8220;&lt;ESC&gt; :wq&#8221;</p>
+<div class="highlight-python"><pre>vim etc/init.d/couchdb</pre>
+</div>
+<p>Navigate using the arrow keys after the line with <tt class="docutils literal"><span class="pre">LSB_LIBRARY=...</span></tt> (around line 35), add the following line by pressing &#8220;&lt;ESC&gt; o&#8221; and type:</p>
+<div class="highlight-python"><pre>export ERL_FLAGS="-pa /opt/couchdb/1.2.0/lib/couchdb/plugins/geocouch/ebin /opt/couchdb/1.2.0/lib/couchdb/plugins/browserid_couchdb/ebin"</pre>
+</div>
+<p>Save and exit by pressing &#8220;&lt;ESC&gt; :wq&#8221;</p>
+<div class="highlight-python"><pre>vim etc/couchdb/local.ini</pre>
+</div>
+<p>Navigate to the end of the file and locate the [admins] section. Create an admin user (equivalent to a DBA) by pressing &#8220;&lt;ESC&gt; o&#8221; and type below <tt class="docutils literal"><span class="pre">[admins]</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">admins</span><span class="p">]</span>
+<span class="n">admin</span> <span class="o">=</span> <span class="n">password</span>
+</pre></div>
+</div>
+<p>Substituting the password of your choice. The password will be hashed after startup. Save and exit by pressing &#8220;&lt;ESC&gt; :wq&#8221;.</p>
+<p>Try starting couchdb:</p>
+<div class="highlight-python"><pre>/opt/couchdb/current/etc/init.d/couchdb start
+curl http://localhost:5984</pre>
+</div>
+<p>You should see:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;couchdb&quot;</span><span class="p">:</span><span class="s">&quot;Welcome&quot;</span><span class="p">,</span><span class="s">&quot;version&quot;</span><span class="p">:</span><span class="s">&quot;1.2.0&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Next let&#8217;s make sure we can authenticate:</p>
+<div class="highlight-python"><pre>curl 'http://admin:password@localhost:5984/_session'</pre>
+</div>
+<p>We should get a response like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;ok&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s">&quot;userCtx&quot;</span><span class="p">:{</span><span class="s">&quot;name&quot;</span><span class="p">:</span><span class="s">&quot;admin&quot;</span><span class="p">,</span><span class="s">&quot;roles&quot;</span><span class="p">:[</span><span class="s">&quot;_admin&quot;</span><span class="p">]},</span><span class="s">&quot;info&quot;</span><span class="p">:{</span><span class="s">&quot;authentication_db&quot;</span><span class="p">:</span><span class="s">&quot;_users&quot;</span><span class="p">,</span><span class="s">&quot;authentication_handlers&quot;</span><span class="p">:[</span><span class="s">&quot;oauth&quot;</span><span class="p">,</span><span class="s">&quot;cookie&quot;</span><span class="p">,</span><span class="s">&quot;default&quot;</span><span class="p">],</span><span class="s">&quot;authenticated&quot;</span><span class="p">:</span><span class="s">&quot;default&quot;</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>Next we want to make sure our plugin got installed correctly:</p>
+<div class="highlight-python"><pre>curl http://localhost:5984/_browserid/main.js</pre>
+</div>
+<p>You should see the contents of a Javascript code returned.  If you see a single line that indicates an error, read on. A common problem is to use the wrong plugin url which produces a plugin directories that end in &#8221;.git&#8221;. Check in <tt class="docutils literal"><span class="pre">/opt/couchdb/1.2.0/lib/couchdb/plugins</span></tt>, and if you see any directories that end in &#8221;.git&#8221; (ie browserid_couchdb.git or geocouch.git) this is incorrect and plugins will need to be rebuilt. Recheck the &#8216;rake&#8217; command you used and try rebuilding. Ensure that the git URI&#8217;s for the plugins parameters do NOT end in &#8221;.git&#8221; (however they should begin with &#8220;git://&#8221;).</p>
+<p>Stop couchdb for now and exit couchdb user shell:</p>
+<div class="highlight-python"><pre>/opt/couchdb/current/etc/init.d/couchdb stop
+exit</pre>
+</div>
+<p>Next configure couchdb basic management and start couchdb again:</p>
+<div class="highlight-python"><pre>sudo ln -s /opt/couchdb/current/etc/init.d/couchdb /etc/init.d/couchdb
+sudo ln -s /opt/couchdb/current/etc/logrotate.d/couchdb /etc/logrotate.d/couchdb
+sudo update-rc.d couchdb defaults
+sudo service couchdb start</pre>
+</div>
+<p>We are done with configuration of CouchDB for now, you can refer to <tt class="docutils literal"><span class="pre">/opt/couchdb/current/etc/couchdb/local.ini</span></tt> and <tt class="docutils literal"><span class="pre">/opt/couchdb/current/etc/couchdb/default.ini</span></tt> for further configurations options as well as the CouchDB wiki: <a class="reference external" href="http://wiki.apache.org/couchdb/">http://wiki.apache.org/couchdb/</a></p>
+</div>
+<div class="section" id="configure-gpg-nginx-and-lr">
+<h3>8. Configure GPG, NGINX, and LR<a class="headerlink" href="#configure-gpg-nginx-and-lr" title="Permalink to this headline">¶</a></h3>
+<p>If you do not have an existing GPG Keypair for the node, create a new one via:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">gpg</span> <span class="o">--</span><span class="n">gen</span><span class="o">-</span><span class="n">key</span>
+</pre></div>
+</div>
+<p>After doing this, take note of the key id, which is the last 16 characters of the key fingerprint.  You can get this by doing:</p>
+<div class="highlight-python"><pre>gpg --list-secret-keys --fingerprint
+
+/home/learnreg/.gnupg/secring.gpg
+---------------------------------
+sec   2048R/017491D1 2012-06-15
+      Key fingerprint = B418 70F5 A781 24F2 5AE5  243D E33C DDFF 0174 91D1
+uid                  Jim Klo (Resource Data Signing Key) &lt;jim.klo@sri.com&gt;</pre>
+</div>
+<p>&#8220;E33CDDFF017491D1&#8221; is the key ID from the example above.</p>
+<div class="highlight-python"><pre>cd /home/learnreg/LearningRegistry/config
+python ./setup_node.py</pre>
+</div>
+<p>Follow the prompts.  Be sure to enable OAuth and Node Signing. Tip: Login a separate shell if you need to investigate some of the questions (path to NGINX, certs, etc)</p>
+<p>In a separate shell (one that has sudo privleges) do the following:</p>
+<div class="highlight-python"><pre>sudo rm /etc/nginx/sites-enabled/default
+sudo cp /home/learnreg/LearningRegistry/config/learningregistry.conf /etc/nginx/sites-available/
+sudo ln -s /etc/nginx/sites-available/learningregistry.conf  /etc/nginx/sites-enabled/learningregistry.conf
+sudo cp -r /home/learnreg/LearningRegistry/etc/nginx/conf.d/* /etc/nginx/conf.d/
+sudo cp -r /home/learnreg/LearningRegistry/etc/nginx/learningregistry_cgi /etc/nginx/learningregistry_cgi
+sudo service nginx restart</pre>
+</div>
+</div>
+<div class="section" id="start-lr-for-the-first-time">
+<h3>9. Start LR for the first time<a class="headerlink" href="#start-lr-for-the-first-time" title="Permalink to this headline">¶</a></h3>
+<p>Switch back to the learnreg user account:</p>
+<div class="highlight-python"><pre>cd /home/learnreg
+. env/bin/activate
+uwsgi --ini-paste ./LearningRegistry/LR/development.ini -H ./env</pre>
+</div>
+<p>In a browser, you should be able to load the &#8216;home page&#8217; of the node
+by going to the URL. I used the external IP as my node address so:</p>
+<div class="highlight-python"><pre>http://192.168.96.134</pre>
+</div>
+<p>You should also try the following:</p>
+<div class="highlight-python"><pre>http://192.168.96.134/status
+http://192.168.96.134/services
+http://192.168.96.134/destination
+http://192.168.96.134/obtain
+http://192.168.96.134/harvest/listrecords
+http://192.168.96.134/pubkey</pre>
+</div>
+<p>Since your node is empty, don&#8217;t expect any data, but there shouldn&#8217;t
+be any errors.</p>
+<p>You should also verify that you can reach the user registration for node signing, this should redirect to the login interface.</p>
+<div class="highlight-python"><pre>http://192.168.96.134/auth</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you have problems with accessing the registration page, check the NGINX configuration file to ensure it is appropriate for your environment.  The configuration should be located <tt class="docutils literal"><span class="pre">/etc/nginx/sites-enabled/learningregistry.conf</span></tt>.</p>
+</div>
+<p>Switch back to the shell that&#8217;s running uwsgi, and type &#8220;&lt;control&gt; c&#8221;, to stop
+the process</p>
+</div>
+<div class="section" id="configure-lr-as-a-service">
+<h3>10. Configure LR As a service<a class="headerlink" href="#configure-lr-as-a-service" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>sudo su - learnreg cd /home/learnreg/LearningRegistry/config .
+../../env/bin/activate python ./service\_util.py exit sudo cp
+/home/learnreg/LearningRegistry/config/learningregistry.sh
+/etc/init.d/learningregistry sudo chmod +x
+/etc/init.d/learningregistry sudo update-rc.d learningregistry
+defaults sudo service learningregistry start sudo cp
+/home/learnreg/LearningRegistry/etc/logrotate.d/learningregistry
+/etc/logrotate.d/</pre>
+</div>
+</div>
+<div class="section" id="learning-registry-node-should-be-up-and-running">
+<h3>11. Learning Registry Node Should be up and running<a class="headerlink" href="#learning-registry-node-should-be-up-and-running" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Node Installation"
+             >previous</a> |</li>
+        <li><a href="../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" >Node Installation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Learning Registry Contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

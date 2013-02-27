@@ -1,0 +1,1021 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>12. Learning Registry Operations: Learning Registry Technical Specification V OP:0.49.0 &mdash; Learning Registry 0.50.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.50.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Learning Registry 0.50.1 documentation" href="../../index.html" />
+    <link rel="up" title="Learning Registry Technical Specification V 0.49.0" href="../Technical_Spec/index.html" />
+    <link rel="next" title="Node Installation" href="../../install/index.html" />
+    <link rel="prev" title="11. Management, Administrative and Discovery Services: Learning Registry Technical Specification V MS:0.49.0" href="../Mgmt_Admin_and_Discovery_Services/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../../install/index.html" title="Node Installation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../Mgmt_Admin_and_Discovery_Services/index.html" title="11. Management, Administrative and Discovery Services: Learning Registry Technical Specification V MS:0.49.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" accesskey="U">Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">12. Learning Registry Operations: Learning Registry Technical Specification V OP:0.49.0</a><ul>
+<li><a class="reference internal" href="#operations">12.1. Operations</a></li>
+<li><a class="reference internal" href="#networks-and-communities">12.2. Networks and Communities</a></li>
+<li><a class="reference internal" href="#building-the-network-description">12.3. Building the Network Description</a></li>
+<li><a class="reference internal" href="#maintaining-networks-and-communities">12.4. Maintaining Networks and Communities</a></li>
+<li><a class="reference internal" href="#network-discovery">12.5. Network Discovery</a></li>
+<li><a class="reference internal" href="#network-design">12.6. Network Design</a></li>
+<li><a class="reference internal" href="#resource-data-publication-distribution-and-access">12.7. Resource Data Publication, Distribution and Access</a></li>
+<li><a class="reference internal" href="#resource-data-persistence">12.8. Resource Data Persistence</a></li>
+<li><a class="reference internal" href="#network-administration">12.9. Network Administration</a></li>
+<li><a class="reference internal" href="#change-log">12.10. Change Log</a></li>
+<li><a class="reference internal" href="#working-notes-and-placeholder-text">12.11. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../Mgmt_Admin_and_Discovery_Services/index.html"
+                        title="previous chapter">11. Management, Administrative and Discovery Services: Learning Registry Technical Specification V MS:0.49.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../install/index.html"
+                        title="next chapter">Node Installation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/spec/Operations/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="learning-registry-operations-learning-registry-technical-specification-v-op-0-49-0">
+<span id="h-u6sbhsuktqyj"></span><h1>12. Learning Registry Operations: Learning Registry Technical Specification V OP:0.49.0<a class="headerlink" href="#learning-registry-operations-learning-registry-technical-specification-v-op-0-49-0" title="Permalink to this headline">¶</a></h1>
+<p>Draft in Progress.</p>
+<p>See the <a class="reference internal" href="../Services_and_APIs/index.html#h-e1519o-y653zc"><em>Change</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-e1519o-y653zc"><em>Log</em></a> for links to prior stable versions.</p>
+<p><span class="changes">Shading indicates major changes and additions from the prior version (0.24.0). Also indicated with ▲.</span></p>
+<p><span class="deletions">Significant deletions are shaded.</span></p>
+<p><span class="deprecation">Features to be deprecated in a future version are shaded and indicated with ▼.</span></p>
+<p>This document is part of one or more versions of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a>. It may contain links to other parts of the Specification.
+These links may link to the most recent version of a part, not to the version of the part that corresponds to this version of this part.
+Go to the appropriate version of the Specification that links to this version of this part, and follow the links there to the referenced part to find the version of the part that corresponds to this version of this part.</p>
+<blockquote>
+<div><p><a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Learning</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Registry</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Operations</em></a><a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>:</em></a><a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Learning</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Registry</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Technical</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Specification</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>V</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>OP</em></a><a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>:0.49.0</em></a></p>
+<blockquote>
+<div><p><a class="reference internal" href="#h-mkv6i5cksheq"><em>Operations</em></a></p>
+<blockquote>
+<div><p><a class="reference internal" href="#h-brri0fmvece8"><em>Networks</em></a> <a class="reference internal" href="#h-brri0fmvece8"><em>and</em></a> <a class="reference internal" href="#h-brri0fmvece8"><em>Communities</em></a></p>
+<blockquote>
+<div><p><a class="reference internal" href="#h-rawjykojy7ox"><em>Building</em></a> <a class="reference internal" href="#h-rawjykojy7ox"><em>the</em></a> <a class="reference internal" href="#h-rawjykojy7ox"><em>Network</em></a> <a class="reference internal" href="#h-rawjykojy7ox"><em>Description</em></a></p>
+<p><a class="reference internal" href="#h-kffq2k69jiwa"><em>Maintaining</em></a> <a class="reference internal" href="#h-kffq2k69jiwa"><em>Networks</em></a> <a class="reference internal" href="#h-kffq2k69jiwa"><em>and</em></a> <a class="reference internal" href="#h-kffq2k69jiwa"><em>Communities</em></a></p>
+<p><a class="reference internal" href="#h-tcjl0w4wifiy"><em>Network</em></a> <a class="reference internal" href="#h-tcjl0w4wifiy"><em>Discovery</em></a></p>
+</div></blockquote>
+<p><a class="reference internal" href="#h-3udx6s-e0sz0s"><em>Network</em></a> <a class="reference internal" href="#h-3udx6s-e0sz0s"><em>Design</em></a></p>
+<p><a class="reference internal" href="#h-gqn64jl41k4j"><em>Resource</em></a> <a class="reference internal" href="#h-gqn64jl41k4j"><em>Data</em></a> <a class="reference internal" href="#h-gqn64jl41k4j"><em>Publication</em></a><a class="reference internal" href="#h-gqn64jl41k4j"><em>,</em></a><a class="reference internal" href="#h-gqn64jl41k4j"><em>Distribution</em></a> <a class="reference internal" href="#h-gqn64jl41k4j"><em>and</em></a> <a class="reference internal" href="#h-gqn64jl41k4j"><em>Access</em></a></p>
+<blockquote>
+<div><a class="reference internal" href="#h-a9luwl-3jrses"><em>Resource</em></a> <a class="reference internal" href="#h-a9luwl-3jrses"><em>Data</em></a> <a class="reference internal" href="#h-a9luwl-3jrses"><em>Persistence</em></a></div></blockquote>
+<p><a class="reference internal" href="#h-u18wsr3gn1zm"><em>Network</em></a> <a class="reference internal" href="#h-u18wsr3gn1zm"><em>Administration</em></a></p>
+</div></blockquote>
+<p><a class="reference internal" href="../Services_and_APIs/index.html#h-e1519o-y653zc"><em>Change</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-e1519o-y653zc"><em>Log</em></a></p>
+<p><a class="reference internal" href="../Services_and_APIs/index.html#h-tph0s9vmrwxu"><em>Working</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-tph0s9vmrwxu"><em>Notes</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-tph0s9vmrwxu"><em>and</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-tph0s9vmrwxu"><em>Placeholder</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-tph0s9vmrwxu"><em>Text</em></a></p>
+</div></blockquote>
+</div></blockquote>
+<p>This document is part of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a>. It describes how to setup and operate a distribution network and community.</p>
+<p>This document is not standalone.
+The reader should be familiar with other parts of the specification, including, but not limited to:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../General_Matter/index.html"><em>General</em></a> <a class="reference internal" href="../General_Matter/index.html"><em>Matter</em></a>, including Licenses, Notation, Versioning, Glossary, References</li>
+<li><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Distribution</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Network</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Model</em></a></li>
+<li><a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Data</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Data</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Models</em></a></li>
+<li><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Identity</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Trust</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Authentication</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Security</em></a></li>
+<li><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Data</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Model</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>API</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Attributes</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Behaviors</em></a></li>
+<li><a class="reference internal" href="../Services_and_APIs/index.html"><em>Services</em></a> including <a class="reference internal" href="../Distribution_Services/index.html"><em>Distribution</em></a>, <a class="reference internal" href="../Publish_Services/index.html"><em>Publish</em></a>, <a class="reference internal" href="../Access_Services/index.html"><em>Access</em></a>, <a class="reference internal" href="../Broker_Services/index.html"><em>Broker</em></a>, <a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Management</em></a>/<a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Administration</em></a>/<a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Discovery</em></a></li>
+</ul>
+<p>In particular, the reader needs to be aware of the details of the <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Distribution</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Network</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Model</em></a>.</p>
+<div class="section" id="operations">
+<span id="h-mkv6i5cksheq"></span><h2>12.1. Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h2>
+<p>This section outlines one approach of how to use the specified network model, data models and APIs to set up and operate a Learning Registry network community.</p>
+</div>
+<div class="section" id="networks-and-communities">
+<span id="h-brri0fmvece8"></span><h2>12.2. Networks and Communities<a class="headerlink" href="#networks-and-communities" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="building-the-network-description">
+<span id="h-rawjykojy7ox"></span><h2>12.3. Building the Network Description<a class="headerlink" href="#building-the-network-description" title="Permalink to this headline">¶</a></h2>
+<p>Node-specific information (i.e., description, filters, services and connectivity) SHALL be maintained on a per node basis.
+Authorized document updates MAY be applied only at the node.
+All node-specific information MAY be maintained in a node document collection per node.</p>
+<p>Network-specific information (i.e., network description, network policy) SHALL be replicated on a per node basis.
+The initial document MAY be stored at any node in the network.
+Authorized document updates MAY be applied at any node in the network.
+Replication, using the node’s connectivity information, MAY be used to propagate the documents throughout the network.
+All network-specific information MAY be maintained in a network document collection per node.</p>
+<p>Community-specific information (i.e., community description) SHALL be replicated on a per node basis.
+The initial document MAY be stored at any node in the network.
+Authorized document updates MAY be applied at any node in the community.
+Replication, using the node’s connectivity information, MAY be used to propagate the documents throughout the network, including across network gateways between different communities.
+All community-specific information MAY be maintained in a community document collection per node.</p>
+<p>The overall network description MAY be inconsistent when publishing individual documents that describe the network.
+When using document propagation, the node’s document collections MAY be out of sync, temporarily violating the requirement for identical values at all nodes.
+Eventual consistency SHALL be enforced.
+<em>NB</em>: Need to determine if lack of sync can introduce any security holes.</p>
+<p>An implementation MAY place the node-specific information in one document database that is not replicated, network-specific information in a second database that is replicated throughout the network, and community-specific information in a third database that is replicated across the community.
+Resource data is stored in another database that is replicated throughout the community using the defined connectivity.</p>
+<p>Except for a optional local node storage used to maintain private state that is not replicated, other document databases SHALL NOT be defined for the purpose of holding node-specific, network-specific or community-specific information.</p>
+<p><em>Open</em> <em>Issue</em>:  As defined, gateways permit networks that allow documents to be replicated <strong>into</strong> the network from another network, but do not permit documents to be replicated <strong>out</strong> of the network (unless there is a corresponding bi-directional link).
+With such a topology, community-specific information cannot reach all nodes if it is published to a node within a network with no outbound flow; the information will not reach other networks.
+Possible solutions:</p>
+<ul class="simple">
+<li>publish the community-specific information to a node in each network that does not have outbound connectivity.</li>
+<li>define a distribution strategy (and possible extensions of node connectivity information) to allow bi-directional flow across network gateways or that limit flow based on document type.</li>
+<li>define node connections that provide only for distribution of network or community information, not resource data.</li>
+</ul>
+<p>Likewise, gateways transmit documents across network boundaries.
+They do not limit distribution to be within a single network.
+Thus network-specific documents can cross network boundaries.
+Possible solutions:</p>
+<ul class="simple">
+<li>define a distribution strategy that is limited to a network and not across gateways.</li>
+<li>define node connections that provide only for distribution of network information.</li>
+</ul>
+<p><em>NB</em>: The procedures described below are currently incomplete and do not implement any of these solutions.
+They call for “network wide” (meaning network restricted) or “community wide” distribution.</p>
+<p><em>Open</em> <em>Question</em>: How to establish a security model so that only an authorized user may update a description at any node.
+Is it necessary to sign the descriptions or to store a public key in a description?</p>
+<p><em>Open</em> <em>Question</em>: How to constrain the network so that if someone finds a connection, they cannot exploit it.</p>
+<p>The network model MAY be instantiated in a set of procedures.
+The procedures assume the <em>resource</em> <em>distribution</em> <em>network</em> <em>description</em> document, <em>resource</em> <em>distribution</em> <em>network</em> <em>policy</em> document and <em>network</em> <em>community</em> <em>description</em> document are published before the network is expanded from the base node.
+If network expansion is done prior to these documents being created, appropriate <em>Distribution</em> processes SHALL be triggered after the documents are published to distribute them to all nodes in the network or community.</p>
+<p><em>NB</em>: The procedures only establish the network structure and descriptive documents.
+They do not populate the network with resource data.
+In particular, adding a new node to a network does not load resource data into the node’s resource data description document database.</p>
+<p><em>NB</em>: The procedure does not state what services need to be provisioned at a node.
+Any organization can provision their own nodes, determine what services to offer (under what access constraints) and add the node to the network and community.
+To participate in resource distribution, each source and target resource data distribution node SHALL provision the appropriate source or destination process of the <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1HW_JJBiWxNHoA5L1TuZrjWeK-DaFF0FTeMZBNIL5MqI/edit?hl=en_US#heading=h.vb0xt6mhzmg2">Resource</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1HW_JJBiWxNHoA5L1TuZrjWeK-DaFF0FTeMZBNIL5MqI/edit?hl=en_US#heading=h.vb0xt6mhzmg2">Data</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1HW_JJBiWxNHoA5L1TuZrjWeK-DaFF0FTeMZBNIL5MqI/edit?hl=en_US#heading=h.vb0xt6mhzmg2">Distribution</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1HW_JJBiWxNHoA5L1TuZrjWeK-DaFF0FTeMZBNIL5MqI/edit?hl=en_US#heading=h.vb0xt6mhzmg2">Service</a>.</p>
+<p>The procedures include VALIDATE steps which are explicit semantic rules that need to be enforced, generally involving values in different documents.
+The procedures also include REJECT steps.
+These are general rules designed to check if a document is well formed, that all mandatory fields are present, that values are from constrained vocabularies, that immutable values are not changed on update, etc.
+The procedure exits without changing the state of any database if validation fails (i.e., the procedure is a transaction).</p>
+<p><strong>Establish</strong> <strong>a</strong> <strong>Network</strong> <strong>Node</strong></p>
+<div class="highlight-python"><pre>                                // Create one new node
+
+FIND a source for the node software, e.g., the Learning Registry `GitHub &lt;http://www.google.com/url?q=https%3A%2F%2Fgithub.com%2FLearningRegistry%2FLearningRegistry&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNHAIkwLpeW5nAGVfizrLcIwxe21wg&gt;`_
+
+                                // out of band process
+
+INSTALL the node software on a hardware node
+                                // physical or virtual
+
+CONFIGURE the node software
+
+CREATE an identity for the node owner
+
+                                // used to own node documents, proxy for document owner
+
+CREATE a *network* *node* *description* document for the node
+
+PUBLISH the *network* *node* *description* document to the new node
+
+        by the node owner
+
+        to the node’s *node* *document* database
+
+        REJECT if the *network* *node* *description* document is not valid
+
+        REJECT if a *network* *node* *description* document exists
+
+IF the node filters published or distributed data
+
+        CREATE a *network* *node* *filter* *description* document for the node
+
+        PUBLISH the *network* *node* *filter* *description* document to the new node
+
+                by the node owner
+
+                to the node’s *node* *document* database
+
+                REJECT if the *network* *node* *filter* *description* document is not valid
+
+                REJECT if a *network* *node* *filter* *description* document exists
+
+FOR EACH service that the node provides:
+
+        CREATE a *network* *node* *service* *description* document for the service
+
+        PUBLISH the *network* *node* *services* *description* document to the node
+
+                by the node owner
+
+                to the node’s *node* *document* database
+
+        REJECT if the *network* *node* *service* *description* document is not valid</pre>
+</div>
+<p><strong>Establish</strong> <strong>a</strong> <strong>Resource</strong> <strong>Distribution</strong> <strong>Network</strong></p>
+<div class="highlight-python"><pre>                                    // Create a base, one-node network with a network description
+
+PREREQUISITE: one active node
+                                    // denoted the base node
+
+                                    // via the *Establish* *a* *Node* process
+
+    CREATE an identity for the network owner
+
+CREATE a *resource* *distribution* *network* *description* document
+
+PUBLISH the *resource* *distribution* *network* *description* document to the first node
+
+            by the owner of the *resource* *distribution* *network* *description* document
+
+            to the node’s *network* *document* database
+
+            VALIDATE
+                                    // same network
+
+                    network_id in the *network* *node* *description* document =
+
+                network_id in the *resource* *distribution* *network* *description* document
+
+            REJECT if the *resource* *distribution* *network* *description* document is not valid
+
+            REJECT if a *resource* *distribution* *network* *description* document exists
+
+CREATE a *resource* *distribution* *network* *policy* document
+
+PUBLISH the *resource* *distribution* *network* *policy* document to the base node
+
+            by the owner of the *resource* *distribution* *network* *policy* document
+
+            to the node’s *network* *document* database
+
+            VALIDATE
+                                    // same network
+
+                    network_id in the *network* *node* *description* document =
+
+                network_id in the *resource* *distribution* *network* *policy* document
+
+            REJECT if the *resource* *distribution* *network* *policy* document is not valid
+
+            REJECT if a *resource* *distribution* *network* *policy* document exists</pre>
+</div>
+<p><strong>Establish</strong> <strong>a</strong> <strong>Network</strong> <strong>Community</strong></p>
+<div class="highlight-python"><pre>                                    // Create a base, one-network community with a network description
+
+PREREQUISITE: one active node
+                                    // denoted the base node
+
+                                    // via the *Establish* *a* *Network* *Node* process
+
+    PREREQUISITE: one active network
+
+                                    // via the *Establish* *a* *Resource* *Distribution* *Network* process
+
+    CREATE an identity for the network community owner
+
+CREATE a *network* *community* *description* document
+
+PUBLISH the *network* *community* *description* document to the base node
+
+            by the owner of the network community
+
+            to the node’s *network* *community* *document* database
+
+            VALIDATE
+                                    // same community in network and community descriptions
+
+                community_id in the *resource* *distribution* *network* *description* document =
+
+                    community_id in the *network* *community* *description* document
+
+            VALIDATE
+                                    // same community in node and community descriptions
+
+                    community_id in the *network* *node* *description* document =
+
+                community_id in the *network* *community* *description* document
+
+            REJECT if the *network* *community* *description* document is not valid
+
+            REJECT if a *network* *community* *description* document exists</pre>
+</div>
+<p><strong>Add</strong> <strong>a</strong> <strong>Network</strong> <strong>Node</strong> <strong>to</strong> <strong>a</strong> <strong>Resource</strong> <strong>Distribution</strong> <strong>Network</strong></p>
+<div class="highlight-python"><pre>                                    // Add a node to an existing network
+
+                                    // NB: Nothing in this process loads resource data into the node
+
+PREREQUISITE: an established active network
+                                    // one or more active nodes
+
+PERFORM the *Establish* *a* *Network* *Node* process to create a node
+                                    // denoted the new node
+
+FIND another active node in the network to connect to
+                                    // denoted the existing node
+
+                                    // discovery and agreement to connect is out of band
+
+PERFORM the *Adding* *Connections* *within* *a* *Resource* *Distribution* *Network* process
+
+    source node is the existing node
+
+    destination node is the new node
+
+PERFORM the *Distribution* process to replicate the *network* *document* database
+
+            from the source node to the destination node
+
+                                    // propagates network description and policy to only the new node
+
+                                    // may proceed asynchronously</pre>
+</div>
+<p><strong>Adding</strong> <strong>Connections</strong> <strong>within</strong> <strong>a</strong> <strong>Resource</strong> <strong>Distribution</strong> <strong>Network</strong></p>
+<div class="highlight-python"><pre>                                    // Add connectivity between two existing nodes in a network
+
+                                    // A source node connects to a destination node
+
+PREREQUISITE: an established network with two or more nodes
+
+PREREQUISITE: the active source node is known (connecting node)
+
+PREREQUISITE: the active destination node is known (connected node)
+
+                                    // discovery and agreement to connect is out of band
+
+    VALIDATE
+                                    // same network
+
+            network_id in the source node’s *network* *node* *description* document =
+
+            network_id in the destination node’s *network* *node* *description* document
+
+    VALIDATE
+                                    // same community
+
+            community_id in the source node’s *network* *node* *description* document =
+
+            community_id in the destination node’s *network* *node* *description* document
+
+CREATE a *network* *node* *connectivity* *description* document with
+
+    source_node_url := source node URL
+
+    destination_node_url := destination node URL
+
+    gateway_connection := F
+
+PUBLISH the *network* *node* *connectivity* *description* document
+
+    by the source node owner
+
+            to the source node’s *node* *document* database
+
+    REJECT if the *network* *node* *connectivity* *description* document is not VALID
+
+    REJECT if the same source -&gt; destination active connection exists</pre>
+</div>
+<p><strong>Connect</strong> <strong>Networks</strong> <strong>within</strong> <strong>a</strong> <strong>Community</strong></p>
+<div class="highlight-python"><pre>                                    // Add a gateway connection between two networks
+
+                                    // NB: Nothing in this process distributes resource data across the gateway
+
+PREREQUISITE: two established networks
+
+PREREQUISITE: the active source node is known (connecting node)
+
+PREREQUISITE: the active destination node is known (connected node)
+
+                                    // discovery and agreement to connect is out of band
+
+    VALIDATE
+                                    // different network
+
+            network_id in the source node’s *network* *node* *description* document &lt;&gt;
+
+            network_id in the destination node’s *network* *node* *description* document
+
+    VALIDATE
+                                    // same community
+
+            community_id in the source node’s *network* *node* *description* document =
+
+            community_id in the destination node’s *network* *node* *description* document
+
+    VALIDATE
+                                    // no gateway
+
+        FOR EACH source node’s *network* *node* *connectivity* *description* document
+
+            NOT gateway_connection
+
+CREATE a *network* *node* *connectivity* *description* document with
+
+    source_node_url := source node URL
+
+    destination_node_url := destination node URL
+
+    gateway_connection := T
+
+PUBLISH the *network* *node* *connectivity* *description* document
+
+    by the source node owner
+
+            to the source node’s *node* *document* database
+
+    REJECT if the *network* *node* *connectivity* *description* document is not VALID
+
+    REJECT if the same source -&gt; destination active connection exists</pre>
+</div>
+<p><strong>Connect</strong> <strong>Communities</strong></p>
+<div class="highlight-python"><pre>                                    // Add a gateway connection between two communities
+
+                                    // NB: Nothing in this process distributes resource data across the gateway
+
+PREREQUISITE: two communities networks
+
+PREREQUISITE: the active source node is known (connecting node)
+
+PREREQUISITE: the active destination node is known (connected node)
+
+                                    // discovery and agreement to connect is out of band
+
+    VALIDATE
+                                    // social communities
+
+            social_community T in the source node’s *network* *community* *description* document
+
+            social_community T in the destination node’s *network* *community* *description* document
+
+    VALIDATE
+                                    // different network
+
+            network_id in the source node’s *network* *node* *description* document &lt;&gt;
+
+            network_id in the destination node’s *network* *node* *description* document
+
+    VALIDATE
+                                    // different community
+
+            community_id in the source node’s *network* *node* *description* document &lt;&gt;
+
+            community_id in the destination node’s *network* *node* *description* document
+
+    VALIDATE
+                                    // no gateway
+
+        FOR EACH source node’s *network* *node* *connectivity* *description* document
+
+            NOT gateway_connection
+
+CREATE a *network* *node* *connectivity* *description* document with
+
+    source_node_url := source node URL
+
+    destination_node_url := destination node URL
+
+    gateway_connection := T
+
+PUBLISH the *network* *node* *connectivity* *description* document
+
+    by the source node owner
+
+            to the source node’s *node* *document* database
+
+    REJECT if the *network* *node* *connectivity* *description* document is not VALID
+
+    REJECT if the same source -&gt; destination active connection exists</pre>
+</div>
+</div>
+<div class="section" id="maintaining-networks-and-communities">
+<span id="h-kffq2k69jiwa"></span><h2>12.4. Maintaining Networks and Communities<a class="headerlink" href="#maintaining-networks-and-communities" title="Permalink to this headline">¶</a></h2>
+<p>An established network or community MAY be maintained by updating descriptions of network nodes, their services, their connectivity, descriptions of resource distribution networks and of network communities.
+By definition, elements of the network model SHALL NOT be deleted; they are transitioned from active to not active.
+<em>NB*</em>:* The data models contain forward links to other models.
+Deleting a document would require network-level garbage collection to determine when all links to a document have been deleted.</p>
+<p>If updating the description of a network node, its services or connectivity, the description of a the distribution network or the network community causes the descriptions to violate the requirements for the <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.ugg6hzrtv6ho">Network</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.ugg6hzrtv6ho">Description</a>, the node SHALL NOT be considered to be a part of the corresponding distribution network and network community and SHALL NOT participate in any network or resource operations.</p>
+<p><strong>Change</strong> <strong>Network</strong> <strong>Node</strong> <strong>Description</strong></p>
+<div class="highlight-python"><pre>                                // update the description of any node
+
+PUBLISH the updated *network* *node* *description* document to the node
+
+        by the node owner
+
+        to the node’s *node* *document* database
+
+        REJECT if the *network* *node* *description* document is not valid
+
+        REJECT if the *network* *node* *description* document is not an update
+
+                                // node may have only one network node description</pre>
+</div>
+<p><strong>Delete</strong> <strong>a</strong> <strong>Network</strong> <strong>Node</strong></p>
+<div class="highlight-python"><pre>                                    // remove a node from a network
+
+                                    // but the node remains, inaccessible
+
+                                    // first sync the documents so that others have them
+
+                                    // sync before delete is an operational policy choice; could be modeled in policy
+
+    COMMIT all outstanding resource data description database operations
+
+PERFORM the Distribute Resource process
+
+FOR EACH *resource* *data* *description* document
+
+    delete the document from the node’s *resource* *data* *description* *document* *database*
+
+                                    // this is an explicit delete
+
+    PUBLISH the updated *network* *node* *description* document to the node
+
+            by the node owner
+
+            ACTIVE = F
+
+            to the node’s *node* *document* database
+
+            REJECT if the *network* *node* *description* document is not valid
+
+            REJECT if the *network* *node* *description* document is not an update
+
+                                    // node may have only one network node description
+
+FOR EACH *network* *node* *services* *description* document
+
+    PERFORM the Delete Node Service process
+
+FOR EACH *network* *node* *connectivity* *description* document
+
+    PERFORM the Delete Node Network Connection process</pre>
+</div>
+<p><strong>Change</strong> <strong>Node</strong> <strong>Service</strong> <strong>Description</strong></p>
+<div class="highlight-python"><pre>                                // update the description of a service at any node
+
+PUBLISH the updated *network* *node* *services* *description* document to the node
+
+        by the node owner
+
+        to the node’s *node* *document* database
+
+REJECT if the *network* *node* *service* *description* document is not valid
+
+REJECT if the *network* *node* *service* *description* document is not an update</pre>
+</div>
+<p><strong>Add</strong> <strong>Node</strong> <strong>Service</strong></p>
+<div class="highlight-python"><pre>                                // add a service to any node
+
+PUBLISH the new *network* *node* *services* *description* document to the node
+
+        by the node owner
+
+        to the node’s *node* *document* database
+
+REJECT if the *network* *node* *service* *description* document is not valid
+
+REJECT if the *network* *node* *service* *description* document is not an addition</pre>
+</div>
+<p><strong>Delete</strong> <strong>Node</strong> <strong>Service</strong></p>
+<div class="highlight-python"><pre>                                // delete a service from any node
+
+PUBLISH the updated *network* *node* *services* *description* document to the node
+
+    ACTIVE = F
+
+        by the node owner
+
+        to the node’s *node* *document* database
+
+REJECT if the *network* *node* *service* *description* document is not valid
+
+REJECT if the *network* *node* *service* *description* document is not an update</pre>
+</div>
+<p><strong>Change</strong> <strong>Node</strong> <strong>Network</strong> <strong>Connectivity</strong></p>
+<div class="highlight-python"><pre>                                    // change the connectivity description of a connection from a node
+
+                                    // unless there are mutable extension data elements, the process is a NO-OP
+
+                                    // all other data elements are immutable
+
+PUBLISH the updated *network* *node* *connectivity* *description* document
+
+    by the source node owner
+
+            to the source node’s *node* *document* database
+
+    REJECT if the *network* *node* *connectivity* *description* document is not valid
+
+    REJECT if the *network* *node* *connectivity* *description* document is not an update</pre>
+</div>
+<p><strong>Delete</strong> <strong>Node</strong> <strong>Network</strong> <strong>Connectivity</strong></p>
+<div class="highlight-python"><pre>                                    // remove the connection from a node to another node
+
+                                    // applies to intra-network or inter-network or inter-community
+
+PUBLISH the updated *network* *node* *connectivity* *description* document
+
+            ACTIVE = F
+
+    by the source node owner
+
+            to the source node’s *node* *document* database
+
+    REJECT if the *network* *node* *connectivity* *description* document is not valid
+
+    REJECT if the *network* *node* *connectivity* *description* document is not an update</pre>
+</div>
+<p><strong>Change</strong> <strong>Node</strong> <strong>Filters</strong></p>
+<div class="highlight-python"><pre>                                    // change the filters at a node
+
+PUBLISH the updated *network* *node* *filter* *description* document
+
+    by the source node owner
+
+            to the source node’s *node* *document* database
+
+    REJECT if the *network* *node* *filter* *description* document is not valid
+
+    REJECT if the *network* *node* *filter* *description* document is not an update</pre>
+</div>
+<p><strong>Delete</strong> <strong>Node</strong> <strong>Filters</strong></p>
+<div class="highlight-python"><pre>                                    // delete ALL filters at a node
+
+PUBLISH the updated *network* *node* *filter* *description* document
+
+            ACTIVE = F
+
+    by the source node owner
+
+            to the source node’s *node* *document* database
+
+    REJECT if the *network* *node* *filter* *description* document is not valid
+
+    REJECT if the *network* *node* *filter* *description* document is not an update</pre>
+</div>
+<p><strong>Change</strong> <strong>Resource</strong> <strong>Distribution</strong> <strong>Network</strong> <strong>Description</strong></p>
+<div class="highlight-python"><pre>                                    // change the resource distribution network description
+
+                                    // applied at some node
+
+PUBLISH the updated *resource* *distribution* *network* *description* document
+
+    by the *resource* *distribution* *network* *description* document owner
+
+            to the node’s *network* *document* database
+
+    REJECT if the *resource* *distribution* *network* *description* document is not valid
+
+    REJECT if the *resource* *distribution* *network* *description* document is not an update
+
+    PERFORM a network-wide *Distribution* process to replicate the *network* *document* database
+
+            to the other nodes in the network
+
+                                    // propagates resource distribution network description to all nodes in the network
+
+                                    // may proceed asynchronously</pre>
+</div>
+<p><strong>Delete</strong> <strong>Resource</strong> <strong>Distribution</strong> <strong>Network</strong> <strong>Description</strong></p>
+<div class="highlight-python"><pre>                                    // delete the resource distribution network description
+
+                                    // applied at some node
+
+PUBLISH the updated *resource* *distribution* *network* *description* document
+
+            ACTIVE = F
+
+    by the *resource* *distribution* *network* *description* document owner
+
+            to the node’s *network* *document* database
+
+    REJECT if the *resource* *distribution* *network* *description* document is not valid
+
+    REJECT if the *resource* *distribution* *network* *description* document is not an update
+
+    PERFORM a network-wide *Distribution* process to replicate the *network* *document* database
+
+            to the other nodes in the network
+
+                                    // propagates resource distribution network description to all nodes in the network
+
+                                    // may proceed asynchronously</pre>
+</div>
+<p><strong>Change</strong> <strong>Resource</strong> <strong>Distribution</strong> <strong>Network</strong> <strong>Policy</strong></p>
+<div class="highlight-python"><pre>                                    // change the resource distribution network policy
+
+                                    // applied at some node
+
+PUBLISH the updated *resource* *distribution* *network* *policy* document
+
+    by the *resource* *distribution* *network* *policy* document owner
+
+            to the node’s *network* *document* database
+
+    REJECT if the *resource* *distribution* *network* *policy* document is not valid
+
+    REJECT if the *resource* *distribution* *network* *policy* document is not an update
+
+    PERFORM a network-wide *Distribution* process to replicate the *network* *document* database
+
+            to the other nodes in the network
+
+                                    // propagates resource distribution network policy to all nodes in the network
+
+                                    // may proceed asynchronously</pre>
+</div>
+<p><strong>Delete</strong> <strong>Resource</strong> <strong>Distribution</strong> <strong>Network</strong> <strong>Policy</strong></p>
+<div class="highlight-python"><pre>                                    // delete the resource distribution network policy
+
+                                    // applied at some node
+
+PUBLISH the updated *resource* *distribution* *network* *policy* document
+
+            ACTIVE = F
+
+    by the *resource* *distribution* *network* *policy* document owner
+
+            to the node’s *network* *document* database
+
+    REJECT if the *resource* *distribution* *network* *policy* document is not valid
+
+    REJECT if the *resource* *distribution* *network* *policy* document is not an update
+
+    PERFORM a network-wide *Distribution* process to replicate the *network* *document* database
+
+            to the other nodes in the network
+
+                                    // propagates resource distribution network policy to all nodes in the network
+
+                                    // may proceed asynchronously</pre>
+</div>
+<p><strong>Change</strong> <strong>Network</strong> <strong>Community</strong> <strong>Description</strong></p>
+<div class="highlight-python"><pre>                                    // change the network community description
+
+                                    // applied at some node in some network in the community
+
+                                    // node must have connectivity to reach all other networks
+
+                                    // otherwise apply to multiple nodes
+
+PUBLISH the updated *network* *community* *description* document
+
+    by the *network* *community* *description* document owner
+
+            to the node’s *network* *community* *document* database
+
+    REJECT if the *network* *community* *description* document is not valid
+
+    REJECT if the *network* *community* *description* document is not an update
+
+    PERFORM a community-wide *Distribution* process to replicate the
+
+            *community* *document* database to the other nodes in the community
+
+                                    // propagates community description to all nodes in the community
+
+                                    // may proceed asynchronously</pre>
+</div>
+<p><strong>Delete</strong> <strong>Network</strong> <strong>Community</strong> <strong>Description</strong></p>
+<div class="highlight-python"><pre>                                    // delete the network community description
+
+                                    // applied at some node in some network in the community
+
+                                    // node must have connectivity to reach all other networks
+
+                                    // otherwise apply to multiple nodes
+
+PUBLISH the updated *network* *community* *description* document
+
+    ACTIVE = F
+
+    by the *network* *community* *description* document owner
+
+            to the node’s *network* *community* *document* database
+
+    REJECT if the *network* *community* *description* document is not valid
+
+    REJECT if the *network* *community* *description* document is not an update
+
+    PERFORM a community-wide *Distribution* process to replicate the
+
+            *community* *document* database to the other nodes in the community
+
+                                    // propagates community description to all nodes in the communities
+
+                                    // may proceed asynchronously</pre>
+</div>
+</div>
+<div class="section" id="network-discovery">
+<span id="h-tcjl0w4wifiy"></span><h2>12.5. Network Discovery<a class="headerlink" href="#network-discovery" title="Permalink to this headline">¶</a></h2>
+<p>Finding all the nodes in a network or community is a non core service.
+One approach is to use replication and distribution to build a complete list of all network links at each node (an alternative is to traverse the network and build the link structure).
+Given a database of node-specific documents that includes a node’s connectivity that is not replicated (private to the node), and a second duplicate database that is replicated across the entire network or community, first replicate the connectivity document from the private node database to the network or community database stored at the node.
+This replication is done at each node in the network.
+It is a one-way replication from the private node database to the second database, not a full synchronization.
+Then distribute (synchronize) the second database across all nodes.
+Distribution (synchronization) across nodes of the network or community database will build a network connectivity link table at each node.</p>
+<p>The completeness of the table in showing the entire network or part of the network will depend on the connectivity and gateways, i.e., the connectivity of a network will not be propagated to nodes outside the network unless there is a directional gateway.
+The tables of networks or communities with only inbound connectivity will include the entries of the external networks.</p>
+<p><em>NB</em>: This process only builds the network link table at a point in time.
+It does not provide real-time connectivity status.</p>
+</div>
+<div class="section" id="network-design">
+<span id="h-3udx6s-e0sz0s"></span><h2>12.6. Network Design<a class="headerlink" href="#network-design" title="Permalink to this headline">¶</a></h2>
+<p>Any resource distribution network is technically open; any node MAY connect.
+Managing connectivity and details of the topology and operations of any specific resource distribution network (and its connection to other resource distribution networks and network communities) SHALL be determined by the governance and policy rules of a resource distribution network or network node, not via this specification.</p>
+<p>Multiple resource distribution networks and network communities MAY be established and connected.
+In addition to external governance and policies, this specification imposes restrictions on connections between network communities and resource distribution networks, i.e., 1:1 connections only using gateway nodes.
+Because of the technical burden imposed, multiple resource distribution networks and network communities SHOULD only be created when these specification-imposed criteria are needed to enable additional security and technical criteria that cannot be adequately satisfied by policy alone.</p>
+<p>For example, connecting an open community in an open IP space to a more restricted community might involve establishing a gateway node in the open community in a public IP space, providing a gateway node in for the restricted community in a DMZ, opening limited network ports between the DMZ and the other nodes in restricted community that operate within a closed IP space (possibly using an additional gateway), and locking down the connections between the open community and the DMZ gateway node.
+The illustration shows an example of such a gateway structure.</p>
+<p><img alt="picture_0" src="../../_images/picture_0.png" /></p>
+</div>
+<div class="section" id="resource-data-publication-distribution-and-access">
+<span id="h-gqn64jl41k4j"></span><h2>12.7. Resource Data Publication, Distribution and Access<a class="headerlink" href="#resource-data-publication-distribution-and-access" title="Permalink to this headline">¶</a></h2>
+<p>Once a resource distribution network has been established, external agents use the publish services at network nodes to publish or update resource data to nodes in the resource distribution network.
+Network nodes SHALL store the valid, published resource data in their resource data description documents database.
+Publication MAY be performed via any of the <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1kgTyRk1kIM3QvfU2JB1C9ARMuL7fCqsba7mOLQ3IKlw/edit?hl=en_US#heading=h.xf8fiul5s5dl">Resource</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1kgTyRk1kIM3QvfU2JB1C9ARMuL7fCqsba7mOLQ3IKlw/edit?hl=en_US#heading=h.xf8fiul5s5dl">Data</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1kgTyRk1kIM3QvfU2JB1C9ARMuL7fCqsba7mOLQ3IKlw/edit?hl=en_US#heading=h.xf8fiul5s5dl">Publish</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1kgTyRk1kIM3QvfU2JB1C9ARMuL7fCqsba7mOLQ3IKlw/edit?hl=en_US#heading=h.xf8fiul5s5dl">Services</a>, value-added services or via tools and applications that are built upon these services.
+Other mechanisms to publish resource data (e.g., direct access to the underlying data stores) SHALL NOT be supported.</p>
+<p>Publication SHALL reject any resource data that is tagged as not distributable.</p>
+<p>Publication SHALL satisfy trust and identity conditions.
+The same resource data may be published to one or more nodes in one or more resource distribution networks subject to their policies and the trust and identity conditions.</p>
+<p>Publication SHALL satisfy network node filters.
+Only resource data that passes the filters (if they exist) SHALL be published.
+Filters are optional.</p>
+<p>Publication SHALL add or update any node-specific data.</p>
+<p>In distribution, destination nodes SHALL reject any resource data that is tagged as not distributable.</p>
+<p>In distribution, destination nodes SHALL filter all incoming resource data.
+Only resource data that passes the filters (if they exist) SHALL be persisted.
+Filters are optional.</p>
+<p>Distribution SHALL add or update any node-specific data.</p>
+<p>Resource distribution network nodes distribute their data to other nodes.
+If a network node provides the resource data distribution service, it SHALL periodically launch the <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1HW_JJBiWxNHoA5L1TuZrjWeK-DaFF0FTeMZBNIL5MqI/edit?hl=en_US#heading=h.vb0xt6mhzmg2">Resource</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1HW_JJBiWxNHoA5L1TuZrjWeK-DaFF0FTeMZBNIL5MqI/edit?hl=en_US#heading=h.vb0xt6mhzmg2">Data</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1HW_JJBiWxNHoA5L1TuZrjWeK-DaFF0FTeMZBNIL5MqI/edit?hl=en_US#heading=h.vb0xt6mhzmg2">Distribution</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1HW_JJBiWxNHoA5L1TuZrjWeK-DaFF0FTeMZBNIL5MqI/edit?hl=en_US#heading=h.vb0xt6mhzmg2">Service</a> service to distribute resource data from the node to its connected nodes.
+Any node that wants to establish a connection with another node, i.e., wants to be the target of distribution, SHALL support the necessary services that allow the source node to distribute data to it.</p>
+<p>Resource data is available for access by external agents through the access services at network nodes.
+Access MAY be provided via any of the supplied <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.kbv3x699el4w">Resource</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.kbv3x699el4w">Data</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.kbv3x699el4w">Access</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.kbv3x699el4w">Services</a>, value-added services or via tools and applications that are built using these services.
+Other mechanisms to access resource data (e.g., direct access to the underlying data stores) SHALL NOT be supported.</p>
+<p>Access SHALL satisfy trust and identity conditions.
+When available via distribution, the same resource data may be accessed from one or more nodes in one or more resource distribution networks, subject to their policies and the trust and identity conditions.</p>
+<p>There is no requirement to block access to resource data that is tagged as non distributatble.</p>
+<p>Resource distribution network nodes MAY provide <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1-dasdKJ_gDW-YEi4S7-g8ODGOp5To9xfXR-qbZVwt-Q/edit?hl=en_US#heading=h.i6ioshmsfczo">Broker</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1-dasdKJ_gDW-YEi4S7-g8ODGOp5To9xfXR-qbZVwt-Q/edit?hl=en_US#heading=h.i6ioshmsfczo">Services</a>. Operation of a broker service SHALL be determined by the governance and policy rules of a resource distribution network or network node, not via this specification.</p>
+<p>Service provisioning (publish, access, distribution, broker) SHALL be determined by the governance and policy rules of a resource distribution network or network node, not via this specification.</p>
+</div>
+<div class="section" id="resource-data-persistence">
+<span id="h-a9luwl-3jrses"></span><h2>12.8. Resource Data Persistence<a class="headerlink" href="#resource-data-persistence" title="Permalink to this headline">¶</a></h2>
+<p>A node SHALL persist resource data stored at a node for at least as many days as specified by the TTL (time to live) in the resource distribution network policy description.
+A node MAY “delete” documents that have been stored longer than the network’s TTL.</p>
+<p>If the node supports harvest, the node SHALL maintain a value for earliestDatestamp.
+This value is the oldest publish, update or delete time for a resource data description document that can be accessed at the node via harvest.
+The timestamp SHALL be precise to the nearest second.
+The value is based on the time the resource data description documents are published at the node (▼node_timestamp).</p>
+<p>Access to information about the deletion of resource data is governed by a node-specific policy, deleted_data_policy:</p>
+<ul class="simple">
+<li>no &#8211; the node SHALL not <em>expose</em> any data about deleted resource data description documents.
+The node MAY maintain information about deletions.</li>
+<li>persistent &#8211; the node SHALL maintain and expose data about deleted resource data description documents.
+Information about deleted resource data SHALL be persisted as long as the node remains active, i.e., information about deletion is not governed by the TTL.</li>
+<li>transient &#8211; the node MAY maintain and expose data about deleted resource data description documents.
+The node MAY establish any policy for how long or if it maintains and exposes data about deleted resource data description documents.</li>
+</ul>
+<p><em>NB</em>: This is the information about the deletion, not the actual deletion.
+What it means to “delete” a document is not specified, e.g., it is removed or just marked as deleted.
+Tracking of deletions MAY be independent of the actual TTL and the actual deletion of the resource data.</p>
+<p><em>Open</em> <em>Question</em>: Should the data persistence policies be network, not node, specific.</p>
+<p><em>Open</em> <em>Issue</em>: Using pure replication, when one node deletes a document, the delete will propagate.
+This MAY invalidate the required information about the tracking and persistence of deletions.
+What is the model for deletion versus TTL and access to deletion status for harvest?</p>
+</div>
+<div class="section" id="network-administration">
+<span id="h-u18wsr3gn1zm"></span><h2>12.9. Network Administration<a class="headerlink" href="#network-administration" title="Permalink to this headline">¶</a></h2>
+<p>Resource distribution network nodes MAY provide <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.kuf0re8u58qs">Administrative</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.kuf0re8u58qs">Services</a>. Operation of an administrative service SHALL be determined by the governance and policy rules of a resource distribution network or network node, not via this specification.</p>
+<p>Provisioning of administrative services SHALL be determined by the governance and policy rules of a resource distribution network or network node, not via this specification.</p>
+<p><em>Open</em> <em>Question</em>: Do we need a mechanism to control access to network data models beyond authentication controls?</p>
+</div>
+<div class="section" id="change-log">
+<span id="h-e1519o-y653zc"></span><h2>12.10. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
+<p><em>NB</em>: The change log only lists major updates to the specification.</p>
+<p><em>NB</em>: Updates and edits may not results in a version update.</p>
+<p><em>NB</em>: See the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a> for prior change history not listed below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="3%" />
+<col width="4%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Change</strong></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>20110921</td>
+<td>DR</td>
+<td>This document extracted from the monolithic V 0.24.0 document.`Archived &lt;<a class="reference external" href="https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US">https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US</a>&gt;`_ <a class="reference external" href="https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US">copy</a> (V 0.24.0)</td>
+</tr>
+<tr class="row-odd"><td>0.49.0</td>
+<td>20110927</td>
+<td>DR</td>
+<td>Editorial updates to create stand alone version.Archived copy location TBD. (V OP:0.49.0)</td>
+</tr>
+<tr class="row-even"><td>0.50.0</td>
+<td>TBD</td>
+<td>DR</td>
+<td>Renumber all document models and service documents.Archived copy location TBD. (V OP:0.50.0)</td>
+</tr>
+<tr class="row-odd"><td>Future</td>
+<td>TBD</td>
+<td>&nbsp;</td>
+<td>Archived copy location TBD. (V OP:x.xx.x)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="working-notes-and-placeholder-text">
+<span id="h-tph0s9vmrwxu"></span><h2>12.11. Working Notes and Placeholder Text<a class="headerlink" href="#working-notes-and-placeholder-text" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../../install/index.html" title="Node Installation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../Mgmt_Admin_and_Discovery_Services/index.html" title="11. Management, Administrative and Discovery Services: Learning Registry Technical Specification V MS:0.49.0"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" >Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Learning Registry Contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

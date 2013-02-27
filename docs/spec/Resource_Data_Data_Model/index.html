@@ -1,0 +1,1178 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3. Resource Data Data Model: Learning Registry Technical Specification V RM:0.50.1 &mdash; Learning Registry 0.50.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.50.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Learning Registry 0.50.1 documentation" href="../../index.html" />
+    <link rel="up" title="Learning Registry Technical Specification V 0.49.0" href="../Technical_Spec/index.html" />
+    <link rel="next" title="4. Identity, Trust, Auth and Security: Learning Registry Technical Specification V IT:0.49.0" href="../Identity_Trust_Auth_and_Security/index.html" />
+    <link rel="prev" title="2. Resource Distribution Network Model: Learning Registry Technical Specification V NM:0.5x.0" href="../Resource_Distribution_Network_Model/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../Identity_Trust_Auth_and_Security/index.html" title="4. Identity, Trust, Auth and Security: Learning Registry Technical Specification V IT:0.49.0"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../Resource_Distribution_Network_Model/index.html" title="2. Resource Distribution Network Model: Learning Registry Technical Specification V NM:0.5x.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" accesskey="U">Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3. Resource Data Data Model: Learning Registry Technical Specification V RM:0.50.1</a><ul>
+<li><a class="reference internal" href="#resource-data-data-models">3.1. Resource Data Data Models</a></li>
+<li><a class="reference internal" href="#resource-data-description-data-model">3.2. Resource Data Description Data Model</a><ul>
+<li><a class="reference internal" href="#json-schema">3.2.1. JSON Schema</a><ul>
+<li><a class="reference internal" href="#file-lr-schema-v-0-49-resource-data-json">3.2.1.1. file:lr/schema/v_0_49/resource_data.json</a></li>
+<li><a class="reference internal" href="#file-lr-schema-v-0-49-inline-resource-data-json">3.2.1.2. file:lr/schema/v_0_49/inline_resource_data.json</a></li>
+<li><a class="reference internal" href="#file-lr-schema-abstract-inline-resource-data-json">3.2.1.3. file:lr/schema/abstract_inline_resource_data.json</a></li>
+<li><a class="reference internal" href="#file-lr-schema-v-0-49-deleted-resource-data-json">3.2.1.4. file:lr/schema/v_0_49/deleted_resource_data.json</a></li>
+<li><a class="reference internal" href="#file-lr-schema-v-0-49-linked-resource-data-json">3.2.1.5. file:lr/schema/v_0_49/linked_resource_data.json</a></li>
+<li><a class="reference internal" href="#file-lr-schema-abstract-linked-resource-data-json">3.2.1.6. file:lr/schema/abstract_linked_resource_data.json</a></li>
+<li><a class="reference internal" href="#file-lr-schema-abstract-resource-data-json">3.2.1.7. file:lr/schema/abstract_resource_data.json</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#metadata-formats">3.3. Metadata Formats</a></li>
+<li><a class="reference internal" href="#paradata-formats">3.4. Paradata Formats</a></li>
+<li><a class="reference internal" href="#resource-data">3.5. Resource Data</a></li>
+<li><a class="reference internal" href="#tombstones">3.6. Tombstones</a><ul>
+<li><a class="reference internal" href="#id2">3.6.1. JSON SCHEMA</a><ul>
+<li><a class="reference internal" href="#file-lr-schema-v-0-49-tombstone-json">3.6.1.1. file:lr/schema/v_0_49/tombstone.json</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#change-log">3.7. Change Log</a></li>
+<li><a class="reference internal" href="#working-notes-and-placeholder-text">3.8. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../Resource_Distribution_Network_Model/index.html"
+                        title="previous chapter">2. Resource Distribution Network Model: Learning Registry Technical Specification V NM:0.5x.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../Identity_Trust_Auth_and_Security/index.html"
+                        title="next chapter">4. Identity, Trust, Auth and Security: Learning Registry Technical Specification V IT:0.49.0</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/spec/Resource_Data_Data_Model/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="resource-data-data-model-learning-registry-technical-specification-v-rm-0-50-1">
+<span id="h-u6sbhsuktqyj"></span><h1>3. Resource Data Data Model: Learning Registry Technical Specification V RM:0.50.1<a class="headerlink" href="#resource-data-data-model-learning-registry-technical-specification-v-rm-0-50-1" title="Permalink to this headline">¶</a></h1>
+<p>Draft in Progress.</p>
+<p>See the <a class="reference internal" href="../Services_and_APIs/index.html#h-e1519o-y653zc"><em>Change Log</em></a> for links to prior stable versions.</p>
+<p><span class="changes">Shading indicates major changes and additions from the prior version (0.24.0). Also indicated with ▲.</span></p>
+<p><span class="deletions">Significant deletions are shaded.</span></p>
+<p><span class="deprecation">Features to be deprecated in a future version are shaded and indicated with ▼.</span></p>
+<p>This document is part of one or more versions of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning Registry Technical Specification</em></a>. It may contain links to other parts of the Specification.
+These links may link to the most recent version of a part, not to the version of the part that corresponds to this version of this part.
+Go to the appropriate version of the Specification that links to this version of this part, and follow the links there to the referenced part to find the version of the part that corresponds to this version of this part.</p>
+<p>This document is part of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning Registry Technical Specification</em></a>. It describes the model of resource data that is transported through the network.</p>
+<p>This document is not standalone.
+The reader should be familiar with other parts of the specification, including, but not limited to:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../General_Matter/index.html"><em>General Matter</em></a>, including Licenses, Notation, Versioning, Glossary, References</li>
+<li><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Resource Distribution Network Model</em></a></li>
+<li><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Identity, Trust, Authentication, Security</em></a></li>
+<li><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Data</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Model</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>API</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Attributes</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Behaviors</em></a></li>
+<li><a class="reference internal" href="../Services_and_APIs/index.html"><em>Services</em></a> including <a class="reference internal" href="../Distribution_Services/index.html"><em>Distribution</em></a>, <a class="reference internal" href="../Publish_Services/index.html"><em>Publish</em></a>, <a class="reference internal" href="../Access_Services/index.html"><em>Access</em></a>, <a class="reference internal" href="../Broker_Services/index.html"><em>Broker</em></a>, <a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Management</em></a>/<a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Administration</em></a>/<a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Discovery</em></a></li>
+<li><a class="reference internal" href="../Operations/index.html"><em>Learning</em></a> <a class="reference internal" href="../Operations/index.html"><em>Registry</em></a> <a class="reference internal" href="../Operations/index.html"><em>Operations</em></a></li>
+</ul>
+<p>In particular, the reader needs to be aware that specific criteria for the Network Model are presented in the <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Data</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Model</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>API</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Attributes</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Behaviors</em></a> part.</p>
+<div class="section" id="resource-data-data-models">
+<span id="h-cbvxf-xys34q"></span><h2>3.1. Resource Data Data Models<a class="headerlink" href="#resource-data-data-models" title="Permalink to this headline">¶</a></h2>
+<p>The resource distribution network and its nodes process and distribute <strong>resource</strong> <strong>data</strong> (e.g., network messages about resources, metadata, paradata, etc.).
+Producer edge nodes publish resource data to a node of the network; the resource distribution network moves it to other nodes, and consumer edge nodes pull resource data for external use from nodes.</p>
+<p>All data models MAY be extended with additional elements.
+The name of any extension element SHALL begin with the characters &#8220;X_&#8221; designating an extension element.
+Any document that includes any element that is not is the defined data model or is not an extension element is non conforming and SHALL be rejected by any service.</p>
+<p>All data models have a named attribute that is a “type” element (doc_type).
+The data model description specifies the literal value for this element for all instances of each type of document.</p>
+<p>All data models have a named attribute that is a “version” element (doc_version).
+The data model description specifies the literal value for this element for all document instances.</p>
+<p>Additional constraints on attributes values are detailed in <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1p-6XFb_eBlVYiGb9fZYtcQ4Z363rjysgS2PiZLXzAyY/edit?hl=en_US#heading=h.3h25kjtjey9j">Data</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1p-6XFb_eBlVYiGb9fZYtcQ4Z363rjysgS2PiZLXzAyY/edit?hl=en_US#heading=h.3h25kjtjey9j">Model</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1p-6XFb_eBlVYiGb9fZYtcQ4Z363rjysgS2PiZLXzAyY/edit?hl=en_US#heading=h.3h25kjtjey9j">Attributes</a>.</p>
+</div>
+<div class="section" id="resource-data-description-data-model">
+<span id="h-kdtam7-568cce"></span><h2>3.2. Resource Data Description Data Model<a class="headerlink" href="#resource-data-description-data-model" title="Permalink to this headline">¶</a></h2>
+<p>The data model describing resources, metadata, paradata, etc., that is distributed by the resource distribution network.
+The data model MAY be extended with additional optional, mutable elements that describe a resource and have a character string value space.
+The name of such an element SHALL begin with the characters &#8220;resource_&#8221;.
+Once the data model has been instantiated the value of an immutable element SHALL NOT change.
+Other values MAY be changed only by the owner of the document.</p>
+<div class="highlight-python"><pre>{
+
+    "doc_type": "resource_data",
+                                    // the literal "resource_data"
+                                    // required, immutable
+
+    "doc_version": "0.49.0",
+                                    // the literal for the current version -- "0.49.0"
+                                    // required, immutable
+                                    // general elements about the submission
+
+    "doc_ID": "string",
+                                    // unique ID for this resource data description document
+                                    // unique within scope of the LR
+                                    // immutable
+                                    // user optional, required for storage
+                                    // system generated when publishing
+                                    // the document if not provided
+
+    "resource_data_type": "string",
+                                    // open (best practices) vocabulary
+                                    // ["metadata", "paradata", "resource", "assertion", ...]
+                                    // required, immutable
+
+    "active": boolean,
+                                    // is the resource data description document active
+                                    // required, mutable from T to F only
+                                    // information about the submission, independent of the resource data
+
+    "identity": {
+                                    // identity and curation
+
+        "submitter_type": "string",
+                                    // fixed vocabulary ["anonymous", "user", "agent"]
+                                    // required, immutable
+                                    // "anonymous" -- submitter is unknown
+                                    // "user" -- submitter is a user or has a user identity
+                                    // "agent" -- submitter is an agent, e.g., a repository, LMS
+                                    // or an organization
+
+        "submitter": "string",
+                                    // identity of the submitter of the resource data
+                                    // required, immutable
+                                    // use "anonymous" for type "anonymous"
+
+        "curator": "string",
+                                    // identity of the curator of the resource data description
+                                    // who manages the resource data description
+                                    // optional
+
+        "owner": "string",
+                                    // identity of the owner of the resource
+                                    // who owns what is referenced in the resource locator
+                                    // optional
+
+        "signer": "string"
+                                    // identity of key owner used to sign the submission
+                                    // optional
+    },
+
+    // submission and distribution workflow information
+    "submitter_timestamp": "string",
+                                    // submitter-created timestamp
+                                    // time/date encoding
+                                    // optional
+
+    "submitter_TTL": "string",
+                                    // submitter statement of TTL of validity of submission
+                                    // time/date encoding
+                                    // optional
+
+    "publishing_node": "string",
+                                    // node_id of node where injected into the network
+                                    // required
+                                    // provided by the initial publish node (not distribution)
+
+    “update_timestamp”:    “string”,
+                                    // timestamp of when published to the network
+                                    // of latest update
+                                    // time/date encoding
+                                    // required
+                                    // provided by the initial publishing node
+                                    // not by a distribution node
+                                    // ▲ Inadvertently removed from previous version of spec.
+
+    "node_timestamp": "string",
+                                    // timestamp of when received by the current node
+                                    // time/date encoding
+                                    // required
+                                    // provided by the current distribution node
+                                    // NOT distributed to other nodes
+                                    // ▲ Removed from deprecation
+
+    "create_timestamp": "string",
+                                    // timestamp of when first published to the network
+                                    // independent of updates
+                                    // time/date encoding
+                                    // required, immutable
+                                    // provided by the initial publishing node on first publish
+                                    // not by a distribution node or not an update
+    "TOS": {
+                                    // terms of service
+        "submission_TOS": "string",
+                                    // agreed terms of service by submitter
+                                    // required
+
+        "submission_attribution": "string"
+                                    // attribution statement from submitter
+                                    // optional
+    },
+
+    "do_not_distribute": "string",
+                                    // system provided key-value pair
+                                    // optional
+
+    "weight": "integer",
+                                    // submitter assigned weight (strength)
+                                    // -100:100
+                                    // optional
+
+    "digital_signature": {
+                                    // digital signature of the submission, optional
+
+        "signature": "string",
+                                    // signature string, required
+        "key_location": ["string"],
+                                    // array of public key locations,, required
+
+        "signing_method": "string"
+                                    // fixed vocabulary ["LR-PGP.1.0"]
+                                    // required
+    },
+
+    // information about the resource, independent of the resource data
+    "resource_locator": "string",
+                                    // unique locator for the resource described
+                                    // SHALL resolve to a single unique resource
+                                    // ▲ required unless "replaces" is non-empty indicating deletion.
+
+    "keys": ["string"],
+                                    // array of hashtag, keyword value list used for filtering
+                                    // optional
+
+    "resource_TTL": integer,
+                                    // TTL from resource owner for the resource itself, in days
+                                    // optional
+                                    // the actual resource data description elements
+                                    // these elements are optional as a block if the submission is a resource
+
+    "payload_placement": "string",
+                                    // fixed vocabulary ["inline", "linked", "attached"]
+                                    // "inline" -- resource data is in an object that follows
+                                    // "linked" -- resource data is at the link provided
+                                    // "attached" -- resource data is in an attachment
+                                    // ▲ required unless "replaces" is non-empty indicating deletion.
+
+    "payload_schema": ["string"],
+                                    // array of schema description/keywords
+                                    // for the resource data
+                                    // ▲ required if "replaces" is non-empty
+                                    // defined :ref:`metadata schema values&lt;h.ykraw8-ientp5&gt;`
+                                    // defined :ref:`paradata schema values&lt;h.5bpp9l-ncbjqy&gt;`
+
+    "payload_schema_locator": "string",
+                                    // schema locator for the resource data
+                                    // optional
+
+    "payload_schema_format": "string",
+                                    // schema MIME type
+                                    // optional
+
+    "payload_locator": "string",
+                                    // locator if payload_placement value is "linked"
+                                    // required if "linked", otherwise ignored
+
+    "resource_data": &lt;the resource data object&gt;,
+                                    // the actual inline resource data
+                                    // the resource data itself (resource_metadata, paradata)
+                                    // maybe a JSON object, or
+                                    // a string encoding XML or some other format, or
+                                    // a string encoding binary
+                                    // ▲ required if "inline" or "replaces" is non-empty indicating deletion, otherwise ignored
+
+
+    "replaces": ["string"],
+                                    // A list of doc_ID that refer to resource data that this resource data should replace
+                                    // optional
+                                    // ▲ new field handilng replacements.
+
+    "X_xxx": ? ? ? ? ?
+                                    // placeholder for extensibility, optional
+}</pre>
+</div>
+<div class="section" id="json-schema">
+<h3>3.2.1. JSON Schema<a class="headerlink" href="#json-schema" title="Permalink to this headline">¶</a></h3>
+<p>Following is Resource Data Description Data Model described using <a class="reference external" href="http://tools.ietf.org/html/draft-zyp-json-schema-03">JSON Schema V3</a>.
+Instances of the data model describing resources MUST validate against one of the following schemas:</p>
+<blockquote>
+<div><ul class="simple">
+<li>file:lr/schema/v_0_49/inline_resource_data.json : a data model where the resource data is included in the instance inline.</li>
+<li>file:lr/schema/v_0_49/linked_resource_data.json : a data model where the resource data is linked externaly.</li>
+<li>file:lr/schema/v_0_49/deleted_resource_data.json : a data model that indicates that a previously published inline or linked data model instance should be removed from the node.</li>
+<li>file:lr/schema/v_0_49/resource_data.json : a union of the previous schemas</li>
+</ul>
+</div></blockquote>
+<div class="section" id="file-lr-schema-v-0-49-resource-data-json">
+<h4>3.2.1.1. file:lr/schema/v_0_49/resource_data.json<a class="headerlink" href="#file-lr-schema-v-0-49-resource-data-json" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;$schema&quot;</span><span class="o">:</span> <span class="s2">&quot;http://tools.ietf.org/html/draft-zyp-json-schema-03&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;resource_data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Resource Data version 0.49.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;$ref&quot;</span><span class="o">:</span> <span class="s2">&quot;file:lr/schema/v_0_49/inline_resource_data.json&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;$ref&quot;</span><span class="o">:</span> <span class="s2">&quot;file:lr/schema/v_0_49/linked_resource_data.json&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;$ref&quot;</span><span class="o">:</span> <span class="s2">&quot;file:lr/schema/v_0_49/deleted_resource_data.json&quot;</span>
+        <span class="p">}</span>
+        
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="file-lr-schema-v-0-49-inline-resource-data-json">
+<h4>3.2.1.2. file:lr/schema/v_0_49/inline_resource_data.json<a class="headerlink" href="#file-lr-schema-v-0-49-inline-resource-data-json" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;$schema&quot;</span><span class="o">:</span> <span class="s2">&quot;http://tools.ietf.org/html/draft-zyp-json-schema-03&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;resource_data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Resource Data version 0.49 for inline payload&quot;</span><span class="p">,</span>
+    
+    <span class="s2">&quot;extends&quot;</span><span class="o">:</span><span class="p">{</span>
+        <span class="s2">&quot;$ref&quot;</span><span class="o">:</span> <span class="s2">&quot;file:lr/schema/abstract_inline_resource_data.json&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;properties&quot;</span><span class="o">:</span><span class="p">{</span>
+        <span class="s2">&quot;doc_type&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;doc_ID&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;resource_data_type&quot;</span><span class="o">:</span><span class="p">{},</span>
+        <span class="s2">&quot;active&quot;</span><span class="o">:</span><span class="p">{},</span>
+        <span class="s2">&quot;identity&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;submitter_timestamp&quot;</span><span class="o">:</span><span class="p">{},</span>
+        <span class="s2">&quot;submitter_TTL&quot;</span><span class="o">:</span><span class="p">{},</span>
+        <span class="s2">&quot;publishing_node&quot;</span><span class="o">:</span><span class="p">{},</span>
+        <span class="s2">&quot;node_timestamp&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;create_timestamp&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;update_timestamp&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;TOS&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;do_not_distribute&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;digital_signature&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;resource_locator&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="s2">&quot;string&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;minItems&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;keys&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;resource_TTL&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;payload_schema&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;payload_placement&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;payload_schema_locator&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;payload_schema_format&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;resource_data&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;replaces&quot;</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;minItems&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;items&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A list of doc_ID that refer to RD3 that this RD3 should replace&quot;</span>
+    
+        <span class="p">},</span>
+        <span class="s2">&quot;doc_version&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0.49.0&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+
+    <span class="p">},</span>
+    <span class="s2">&quot;patternProperties&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;X_.*&quot;</span> <span class="o">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;additionalProperties&quot;</span><span class="o">:</span> <span class="kc">false</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="file-lr-schema-abstract-inline-resource-data-json">
+<h4>3.2.1.3. file:lr/schema/abstract_inline_resource_data.json<a class="headerlink" href="#file-lr-schema-abstract-inline-resource-data-json" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;$schema&quot;</span><span class="o">:</span> <span class="s2">&quot;http://tools.ietf.org/html/draft-zyp-json-schema-03&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;abstract_inline_resource_data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Abstract Inline Resource Data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;extends&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;$ref&quot;</span><span class="o">:</span> <span class="s2">&quot;file:lr/schema/abstract_resource_data.json&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;properties&quot;</span><span class="o">:</span><span class="p">{</span>
+        <span class="s2">&quot;payload_placement&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;\&quot;inline\&quot; -- resource data is in an object that follows; \&quot;linked\&quot; -- resource data is at the link provided; \&quot;attached\&quot; -- resource data is in an attachment&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;inline&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;resource_data&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;any&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="file-lr-schema-v-0-49-deleted-resource-data-json">
+<h4>3.2.1.4. file:lr/schema/v_0_49/deleted_resource_data.json<a class="headerlink" href="#file-lr-schema-v-0-49-deleted-resource-data-json" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;$schema&quot;</span><span class="o">:</span> <span class="s2">&quot;http://tools.ietf.org/html/draft-zyp-json-schema-03&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;deleted_resource_data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Resource Data version 0.49 for delete&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;extends&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;$ref&quot;</span><span class="o">:</span> <span class="s2">&quot;file:lr/schema/abstract_resource_data.json&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;doc_type&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;doc_ID&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;resource_data_type&quot;</span><span class="o">:</span><span class="p">{},</span>
+        <span class="s2">&quot;active&quot;</span><span class="o">:</span><span class="p">{},</span>
+        <span class="s2">&quot;identity&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;submitter_timestamp&quot;</span><span class="o">:</span><span class="p">{},</span>
+        <span class="s2">&quot;submitter_TTL&quot;</span><span class="o">:</span><span class="p">{},</span>
+        <span class="s2">&quot;publishing_node&quot;</span><span class="o">:</span><span class="p">{},</span>
+        <span class="s2">&quot;node_timestamp&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;create_timestamp&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;update_timestamp&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;TOS&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;do_not_distribute&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;digital_signature&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;resource_locator&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="s2">&quot;string&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;since this signals a delete, no resource_locator is required, as resource may no longer exist.&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;keys&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;resource_TTL&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;payload_schema&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;payload_placement&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;none&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;limited vocabulary, none: no resource data follows, signaling deletion&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;replaces&quot;</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;minItems&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;items&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A list of doc_ID that refer to RD3 that this RD3 should replace&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;doc_version&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0.49.0&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;patternProperties&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;X_.*&quot;</span> <span class="o">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;additionalProperties&quot;</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="file-lr-schema-v-0-49-linked-resource-data-json">
+<h4>3.2.1.5. file:lr/schema/v_0_49/linked_resource_data.json<a class="headerlink" href="#file-lr-schema-v-0-49-linked-resource-data-json" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;$schema&quot;</span><span class="o">:</span> <span class="s2">&quot;http://tools.ietf.org/html/draft-zyp-json-schema-03&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;resource_data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Resource Data version 0.23 for linked payload&quot;</span><span class="p">,</span>
+    
+    <span class="s2">&quot;extends&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;$ref&quot;</span><span class="o">:</span> <span class="s2">&quot;file:lr/schema/abstract_linked_resource_data.json&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;properties&quot;</span><span class="o">:</span><span class="p">{</span>
+        <span class="s2">&quot;doc_type&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;doc_ID&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;resource_data_type&quot;</span><span class="o">:</span><span class="p">{},</span>
+        <span class="s2">&quot;active&quot;</span><span class="o">:</span><span class="p">{},</span>
+        <span class="s2">&quot;identity&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;submitter_timestamp&quot;</span><span class="o">:</span><span class="p">{},</span>
+        <span class="s2">&quot;submitter_TTL&quot;</span><span class="o">:</span><span class="p">{},</span>
+        <span class="s2">&quot;publishing_node&quot;</span><span class="o">:</span><span class="p">{},</span>
+        <span class="s2">&quot;node_timestamp&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;create_timestamp&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;update_timestamp&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;TOS&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;do_not_distribute&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;digital_signature&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;resource_locator&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;array&quot;</span><span class="p">,</span> <span class="s2">&quot;string&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;minItems&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;keys&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;resource_TTL&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;payload_schema&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;payload_placement&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;payload_schema_locator&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;payload_schema_format&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;payload_locator&quot;</span><span class="o">:</span><span class="p">{},</span>
+        <span class="s2">&quot;replaces&quot;</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;minItems&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;items&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A list of doc_ID that refer to RD3 that this RD3 should replace&quot;</span>
+    
+        <span class="p">},</span>
+        <span class="s2">&quot;doc_version&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0.49.0&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+
+    <span class="p">},</span>
+    <span class="s2">&quot;patternProperties&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;X_.*&quot;</span> <span class="o">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;additionalProperties&quot;</span><span class="o">:</span> <span class="kc">false</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="file-lr-schema-abstract-linked-resource-data-json">
+<h4>3.2.1.6. file:lr/schema/abstract_linked_resource_data.json<a class="headerlink" href="#file-lr-schema-abstract-linked-resource-data-json" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;$schema&quot;</span><span class="o">:</span> <span class="s2">&quot;http://tools.ietf.org/html/draft-zyp-json-schema-03&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;abstract_linked_resource_data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Abstract Linked Resource Data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;extends&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;$ref&quot;</span><span class="o">:</span> <span class="s2">&quot;file:lr/schema/abstract_resource_data.json&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;properties&quot;</span><span class="o">:</span><span class="p">{</span>
+        <span class="s2">&quot;payload_placement&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;\&quot;inline\&quot; -- resource data is in an object that follows; \&quot;linked\&quot; -- resource data is at the link provided; \&quot;attached\&quot; -- resource data is in an attachment&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;linked&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;payload_locator&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="file-lr-schema-abstract-resource-data-json">
+<h4>3.2.1.7. file:lr/schema/abstract_resource_data.json<a class="headerlink" href="#file-lr-schema-abstract-resource-data-json" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;$schema&quot;</span><span class="o">:</span> <span class="s2">&quot;http://tools.ietf.org/html/draft-zyp-json-schema-03&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;abstract_resource_data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Abstract Resource Data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;doc_type&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;resource_data&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;doc_ID&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;doc_version&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;resource_data_type&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;active&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;identity&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;submitter_type&quot;</span><span class="o">:</span> <span class="p">{</span>
+
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;anonymous&quot;</span><span class="p">,</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;agent&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;submitter&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;identity of the submitter of the resource data; immutable&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;curator&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;identity of the curator of the resource data description who manages the resource data description; immutable&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;owner&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;identity of the owner of the resource who owns what is referenced in the resource locator; immutable&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;signer&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;identity of key owner used to sign the submission; immutable&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;additionalProperties&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;submitter_timestamp&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;submitter-created timestamp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;format&quot;</span><span class="o">:</span> <span class="s2">&quot;date-time-us&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;submitter_TTL&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;submitter statement of TTL of validity of submission&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;format&quot;</span><span class="o">:</span> <span class="s2">&quot;date-time-us&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;publishing_node&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;node_id of node where injected into the network; provided by the initial publish node (not distribution)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;node_timestamp&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;timestamp of when received by the current node&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;format&quot;</span><span class="o">:</span> <span class="s2">&quot;date-time-us&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;create_timestamp&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;timestamp of when first published to the network independent of updates; immutable; provided by the initial publishing node on first publish not by a distribution node or not an update&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;format&quot;</span><span class="o">:</span> <span class="s2">&quot;date-time-us&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;update_timestamp&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;??? UNKNOWN !!!&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;format&quot;</span><span class="o">:</span> <span class="s2">&quot;date-time-us&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;TOS&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;terms of service&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;submission_TOS&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;agreed terms of service by submitter&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;submission_attribution&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;attribution statement from submitter&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;additionalProperties&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;do_not_distribute&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;system provided key-value pair&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;weight&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;submitter assigned weight (strength)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;minimum&quot;</span><span class="o">:</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span>
+            <span class="s2">&quot;maximum&quot;</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;digital_signature&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;digital signature of the submission, optional&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;signature&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;key_location&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;minItems&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;items&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;signing_method&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;LR-PGP.1.0&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;key_owner&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;additionalProperties&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;resource_locator&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;unique locator for the resource described&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;keys&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;array of hashtag, keyword value list used for filtering&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;items&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+            <span class="p">}</span>
+
+        <span class="p">},</span>
+        <span class="s2">&quot;resource_TTL&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;TTL from resource owner for the resource itself, in days&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;payload_schema&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;array of  schema description/keywords for the resource data&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;minItems&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;items&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;payload_placement&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;\&quot;inline\&quot; -- resource data is in an object that follows; \&quot;linked\&quot; -- resource data is at the link provided; \&quot;attached\&quot; -- resource data is in an attachment&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;inline&quot;</span><span class="p">,</span> <span class="s2">&quot;linked&quot;</span><span class="p">,</span> <span class="s2">&quot;attached&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;payload_schema_locator&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;schema locator for the resource data&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;payload_schema_format&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;schema MIME type&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;patternProperties&quot;</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;X_.*&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="s2">&quot;any&quot;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Timestamp values for update_timestamp, <span class="changes">▲ node_timestamp</span>, and create_timestamp SHALL be UTC 0.</p>
+<p><em>Open</em> <em>Question</em>: Is there a use case that requires create_timestamp?</p>
+<p><em>Open</em> <em>Question</em>: Is locator sufficient, or do we still need an ID for the resource?</p>
+<p><em>NB</em>: The doc_ID is not required when a user creates a resource data description document.
+If missing, it SHALL be provided by a publishing service when the document is first published.</p>
+<p><em>NB</em>: Need to agree on the conventions for valid submitter, owner and TOS strings.</p>
+<p><em>NB</em>: Separating owner from submitter enables 3rd party submissions.</p>
+<p><em>NB</em>: If the key owner is not included in the digital signature, the submitter is assumed to be the key owner.</p>
+<p><em>NB</em>: Separating the key owner from the submitter enables 3rd party signing of submissions.</p>
+<p><em>NB</em>: The signing mechanism is described under <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1vK66RY4S6AVtMJXB7jSqwl30J6NVBj6Gs8UWBcP-IPY/edit?hl=en_US#heading=h.xpzctzivy2zq">Identity</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1vK66RY4S6AVtMJXB7jSqwl30J6NVBj6Gs8UWBcP-IPY/edit?hl=en_US#heading=h.xpzctzivy2zq">and</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1vK66RY4S6AVtMJXB7jSqwl30J6NVBj6Gs8UWBcP-IPY/edit?hl=en_US#heading=h.xpzctzivy2zq">Digital</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1vK66RY4S6AVtMJXB7jSqwl30J6NVBj6Gs8UWBcP-IPY/edit?hl=en_US#heading=h.xpzctzivy2zq">Signatures</a>.</p>
+<p><em>NB</em>: Providing the signing method enables different signing algorithms.</p>
+<p><em>NB</em>: The supplied resource_locator SHALL be a unique ID within the scope of the Learning Registry and SHALL resolve to a single resource from which someone may uniquely access the resource.
+The resource_locator is used to correlate multiple resource data descriptions about a single resource.
+Thus the locator needs to be specific to the resource.</p>
+<p><em>NB</em>: A resource data description document contains only one set of resource data (metadata, paradata).</p>
+<p><em>NB</em>: The weight is used let the submitter assign a confidence level to the data.</p>
+<p><em>NB</em>: To submit data only for a resource (no metadata or paradata), the payload attributes MAY be omitted.</p>
+<p><em>NB</em>: There is currently no mechanism to update the resource_* attributes without resubmitting the metadata or paradata about the resource.
+This is consistent with document-oriented transactional atomicity.</p>
+<p><em>NB</em>: There are no restrictions on the actual resource data.
+The format and encoding are based on the defined payload_schema and payload_schema_format values.</p>
+<p><em>NB</em>: Best practices of how to use the resource_* attributes and how to encode values are not provided.</p>
+<p><em>NB</em>: Some elements MAY be mapped to DC terms or LOM schema elements.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="19%" />
+<col width="58%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Resource</strong> <strong>Data</strong> <strong>Description</strong></td>
+<td><strong>Dublin</strong> <strong>Core</strong></td>
+<td><strong>IEEE</strong> <strong>LOM</strong></td>
+</tr>
+<tr class="row-even"><td>resource_data_owner</td>
+<td>&nbsp;</td>
+<td>3.3.2: LifeCycle.Contribute.Entity when 2.3.1: LifeCycle.Contribute.Role has a value of “Submitter.”</td>
+</tr>
+<tr class="row-odd"><td>resource_description</td>
+<td>dc:description</td>
+<td>1.4: General.Description</td>
+</tr>
+<tr class="row-even"><td>resource_format</td>
+<td>dc:format</td>
+<td>4.1: Technical.Format</td>
+</tr>
+<tr class="row-odd"><td>resource_language</td>
+<td>dc:language</td>
+<td>1.3: General.Language</td>
+</tr>
+<tr class="row-even"><td>resource_locator</td>
+<td>dc:ID</td>
+<td>1.1: General.Identifier or 4.3: Technical.Location</td>
+</tr>
+<tr class="row-odd"><td>resource_owner</td>
+<td>dc:publisher</td>
+<td>2.3.2: LifeCycle.Contribute.Entity when 2.3.1:LifeCycle.Contribute.Role has a value of “Publisher.”</td>
+</tr>
+<tr class="row-even"><td>resource_rights</td>
+<td>dc:rights</td>
+<td>6.3: Rights.Description</td>
+</tr>
+<tr class="row-odd"><td>resource_relationship</td>
+<td>dc:resource refinement qualifier</td>
+<td>7.1: Relation.Kind</td>
+</tr>
+<tr class="row-even"><td>resource_subject</td>
+<td>dc:subject</td>
+<td>1.5: General.Keyword</td>
+</tr>
+<tr class="row-odd"><td>resource_title</td>
+<td>dc:title</td>
+<td>1.2: General.Title</td>
+</tr>
+<tr class="row-even"><td>resource_TTL</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>resource_type</td>
+<td>dc:type</td>
+<td>5.2: Educational.LearningResourceType</td>
+</tr>
+<tr class="row-even"><td>related_resource</td>
+<td>dc:resource</td>
+<td>7.2.1: Relation.Identifier.Identifier</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="metadata-formats">
+<span id="h-ykraw8-ientp5"></span><h2>3.3. Metadata Formats<a class="headerlink" href="#metadata-formats" title="Permalink to this headline">¶</a></h2>
+<p>The metadata in a resource data description MAY be defined using any metadata standard.
+Metadata documents SHALL include the reference to the defining standard or schema.
+The following list of schema values SHALL be used to refer to common schemata.
+Implementations MAY extend this list.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Metadata</strong> <strong>Standard</strong></td>
+<td>payload_schema <strong>value</strong></td>
+</tr>
+<tr class="row-even"><td>Dublin Core 1.1</td>
+<td>&#8220;DC 1.1&#8221;</td>
+</tr>
+<tr class="row-odd"><td>IEEE LOM 2002</td>
+<td>&#8220;IEEE LOM 2002&#8221;</td>
+</tr>
+<tr class="row-even"><td>OAI-PMH Dublin Core</td>
+<td>&#8220;oai_dc&#8221;</td>
+</tr>
+</tbody>
+</table>
+<p>Attached and linked metadata SHALL include appropriate schema definitions and schema locators in the metadata file.</p>
+<p><em>NB</em>.
+There is currently no machine-readable list of schemata.
+Such a list could be defined in additional network description documents.</p>
+<p>Inline metadata SHALL be encoded in JSON structure or as a single JSON string wrapping the entire metadata document.</p>
+<p>JSON encodings of metadata schemata (primarily for inline resource data) will be provided in a future draft of the specification.</p>
+</div>
+<div class="section" id="paradata-formats">
+<span id="h-5bpp9l-ncbjqy"></span><h2>3.4. Paradata Formats<a class="headerlink" href="#paradata-formats" title="Permalink to this headline">¶</a></h2>
+<p>The paradata in a resource data description MAY be defined using any paradata standard.
+Paradata documents SHALL include the reference to the defining standard or schema.
+The following list of schema values SHALL be used to refer to common schemata.
+Implementations MAY extend this list.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Paradata</strong> <strong>Standard</strong></td>
+<td>payload_schema <strong>value</strong></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>Attached and linked paradata SHALL include appropriate schema definitions and schema locators in the paradata file.</p>
+<p><em>NB</em>.
+There is currently no machine-readable list of schemata.
+Such a list could be defined in additional network description documents.</p>
+<p>Inline paradata SHALL be encoded in JSON structure or as a single JSON string wrapping the entire paradata document.</p>
+<p>JSON encodings of paradata schemata (primarily for inline resource data) will be provided in a future draft of the specification.</p>
+</div>
+<div class="section" id="resource-data">
+<span id="h-hphvlw-1cw6xc"></span><h2>3.5. Resource Data<a class="headerlink" href="#resource-data" title="Permalink to this headline">¶</a></h2>
+<p>The resource data SHALL be maintained in a set of documents stored at each node in the network.</p>
+<ul class="simple">
+<li>Each node MAY store one or more instances of the <a class="reference internal" href="#h-kdtam7-568cce"><em>resource</em></a> <a class="reference internal" href="#h-kdtam7-568cce"><em>data</em></a> <a class="reference internal" href="#h-kdtam7-568cce"><em>description</em></a> <a class="reference internal" href="#h-kdtam7-568cce"><em>documents</em></a>.
+All document instances stored at a node SHALL be unique.
+A document MAY be replicated at many nodes.</li>
+</ul>
+<p>Any resource description document with a &#8220;do_not_distribute&#8221; key is consdered to be a local document stored only at the node (independent of the value of the key).
+A document with this key-value pair SHALL be unconditionally rejected during publishing or distribution.</p>
+<p>Additional types of resource data documents (documents that differ in purpose from resource data description documents) MAY be defined, but SHALL be defined as unique per node.
+Other types of resource data description documents SHALL NOT be defined and SHALL NOT be replicated.
+Other organizational classifications SHALL NOT be used.
+<em>NB</em>: These constraints are meant to restrict placing resource data in multiple different databases.</p>
+</div>
+<div class="section" id="tombstones">
+<h2>3.6. Tombstones<a class="headerlink" href="#tombstones" title="Permalink to this headline">¶</a></h2>
+<p>A tombstone is node local document that acts a terminal marker for an RD3.  It SHALL be the only allowed mutability of a RD3. A tombstone MUST NOT be distributed to other nodes.</p>
+<p>The data model for a tombstone SHALL adhere to the following <a class="reference external" href="http://tools.ietf.org/html/draft-zyp-json-schema-03">JSON Schema</a>:</p>
+<div class="section" id="id2">
+<h3>3.6.1. JSON SCHEMA<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="file-lr-schema-v-0-49-tombstone-json">
+<h4>3.6.1.1. file:lr/schema/v_0_49/tombstone.json<a class="headerlink" href="#file-lr-schema-v-0-49-tombstone-json" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;$schema&quot;</span><span class="o">:</span> <span class="s2">&quot;http://tools.ietf.org/html/draft-zyp-json-schema-03&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;tombstone&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Tombstone for Resource Data version 0.49.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;doc_ID&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;The document id of the RD3 that this tombstone replaces&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;doc_type&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;tombstone&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;The document type to indicate the node such that it if excluded from default harvest&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;doc_version&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;0.49.0&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;The literal for the version number of this tombstone document&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;replaces&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;items&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;The ‘replaces’ property of the RD3 that this tombstone replaces.&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;replaced_by&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;doc_ID&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;The doc_ID of the first RD3 encountered by node to signal tombstone creation&quot;</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;public_key_fingerprint&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;The OpenPGP fingerprint of the signing key used to verify the first RD3 that signaled tombstone&quot;</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;public_key_locations&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                    <span class="s2">&quot;minItems&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s2">&quot;items&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;A list of URLs that the public_key used for verifying the first RD3 that signaled tombstone may be retrieved&quot;</span>
+                <span class="p">}</span>
+
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;create_timestamp&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;format&quot;</span><span class="o">:</span> <span class="s2">&quot;date-time-us&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;timestamp of when tombstone was first created&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;resource_locator&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;array&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;items&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;The resource locator(s) of the RD3 this tombstone marks.&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;do_not_distribute&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span><span class="kc">true</span><span class="p">],</span>
+            <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Flag to indicate that this instance MUST not be distributed to other nodes.&quot;</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>NB</em>: ALL harvest services SHOULD be updated to exclude tombstones.
+<em>NB</em>: Any harvest service MAY be updated to allow explicit request for tombstone by “doc_ID”. It is RECOMMENDED this feature only be available via Basic Harvest and Obtain.</p>
+</div>
+</div>
+</div>
+<div class="section" id="change-log">
+<span id="h-e1519o-y653zc"></span><h2>3.7. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
+<p><em>NB</em>: The change log only lists major updates to the specification.</p>
+<p><em>NB</em>: Updates and edits may not results in a version update.</p>
+<p><em>NB</em>: See the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a> for prior change history not listed below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="3%" />
+<col width="4%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Change</strong></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>20110921</td>
+<td>DR</td>
+<td>This document extracted from the monolithic V 0.24.0 document.`Archived copy &lt;<a class="reference external" href="https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US">https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US</a>&gt;`_ (V 0.24.0)</td>
+</tr>
+<tr class="row-odd"><td>0.49.0</td>
+<td>20110927</td>
+<td>DR</td>
+<td>Editorial updates to create stand alone version.Archived copy location TBD. (V RM:0.49.0)</td>
+</tr>
+<tr class="row-even"><td>0.50.0</td>
+<td>TBD</td>
+<td>DR</td>
+<td>Renumber all document models and service documents. Added node policy to control storage of attachments (default is stored). Add page size as service doc setting with flow control.Archived copy location TBD. (V RM:0.50.0)</td>
+</tr>
+<tr class="row-odd"><td>0.50.1</td>
+<td>20130226</td>
+<td>JK</td>
+<td>Convert to RestructuredText formatting.  Adding model changes Replacement Documents and Tombstones per <a class="reference external" href="https://docs.google.com/document/d/1JpwEQ4J6ruQUe502K4XzLnWqvC5L67vjasTTFKQo9e8/edit">Amendment</a> (V 0.3).</td>
+</tr>
+<tr class="row-even"><td>Future</td>
+<td>TBD</td>
+<td>&nbsp;</td>
+<td>Assertion (relation/sameas) and trust documents.Archived copy location TBD. (V RM:x.xx.x)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="working-notes-and-placeholder-text">
+<span id="h-tph0s9vmrwxu"></span><h2>3.8. Working Notes and Placeholder Text<a class="headerlink" href="#working-notes-and-placeholder-text" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../Identity_Trust_Auth_and_Security/index.html" title="4. Identity, Trust, Auth and Security: Learning Registry Technical Specification V IT:0.49.0"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../Resource_Distribution_Network_Model/index.html" title="2. Resource Distribution Network Model: Learning Registry Technical Specification V NM:0.5x.0"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" >Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Learning Registry Contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

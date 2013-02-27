@@ -1,0 +1,205 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>10. Broker Services: Learning Registry Technical Specification V BS:0.50.0 &mdash; Learning Registry 0.50.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.50.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Learning Registry 0.50.1 documentation" href="../../index.html" />
+    <link rel="up" title="Learning Registry Technical Specification V 0.49.0" href="../Technical_Spec/index.html" />
+    <link rel="next" title="11. Management, Administrative and Discovery Services: Learning Registry Technical Specification V MS:0.49.0" href="../Mgmt_Admin_and_Discovery_Services/index.html" />
+    <link rel="prev" title="9. Access Services: Learning Registry Technical Specification V AS:0.49.0" href="../Access_Services/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../Mgmt_Admin_and_Discovery_Services/index.html" title="11. Management, Administrative and Discovery Services: Learning Registry Technical Specification V MS:0.49.0"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../Access_Services/index.html" title="9. Access Services: Learning Registry Technical Specification V AS:0.49.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" accesskey="U">Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">10. Broker Services: Learning Registry Technical Specification V BS:0.50.0</a><ul>
+<li><a class="reference internal" href="#broker-services">10.1. Broker Services</a></li>
+<li><a class="reference internal" href="#change-log">10.2. Change Log</a></li>
+<li><a class="reference internal" href="#working-notes-and-placeholder-text">10.3. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../Access_Services/index.html"
+                        title="previous chapter">9. Access Services: Learning Registry Technical Specification V AS:0.49.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../Mgmt_Admin_and_Discovery_Services/index.html"
+                        title="next chapter">11. Management, Administrative and Discovery Services: Learning Registry Technical Specification V MS:0.49.0</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/spec/Broker_Services/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="broker-services-learning-registry-technical-specification-v-bs-0-50-0">
+<span id="h-u6sbhsuktqyj"></span><h1>10. Broker Services: Learning Registry Technical Specification V BS:0.50.0<a class="headerlink" href="#broker-services-learning-registry-technical-specification-v-bs-0-50-0" title="Permalink to this headline">¶</a></h1>
+<p>Draft in Progress.</p>
+<p>See the <a class="reference internal" href="../Services_and_APIs/index.html#h-e1519o-y653zc"><em>Change</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-e1519o-y653zc"><em>Log</em></a> for links to prior stable versions.</p>
+<p><span class="changes">Shading indicates major changes and additions from the prior version (0.24.0). Also indicated with ▲.</span></p>
+<p><span class="deletions">Significant deletions are shaded.</span></p>
+<p><span class="deprecation">Features to be deprecated in a future version are shaded and indicated with ▼.</span></p>
+<p>This document is part of one or more versions of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a>. It may contain links to other parts of the Specification.
+These links may link to the most recent version of a part, not to the version of the part that corresponds to this version of this part.
+Go to the appropriate version of the Specification that links to this version of this part, and follow the links there to the referenced part to find the version of the part that corresponds to this version of this part.</p>
+<blockquote>
+<div><p><a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Broker</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Services</em></a><a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>:</em></a><a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Learning</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Registry</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Technical</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Specification</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>V</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>BS</em></a><a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>:0.50.0</em></a></p>
+<blockquote>
+<div><p><a class="reference internal" href="#h-i6ioshmsfczo"><em>Broker</em></a> <a class="reference internal" href="#h-i6ioshmsfczo"><em>Services</em></a></p>
+<p><a class="reference internal" href="../Services_and_APIs/index.html#h-e1519o-y653zc"><em>Change</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-e1519o-y653zc"><em>Log</em></a></p>
+<p><a class="reference internal" href="../Services_and_APIs/index.html#h-tph0s9vmrwxu"><em>Working</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-tph0s9vmrwxu"><em>Notes</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-tph0s9vmrwxu"><em>and</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-tph0s9vmrwxu"><em>Placeholder</em></a> <a class="reference internal" href="../Services_and_APIs/index.html#h-tph0s9vmrwxu"><em>Text</em></a></p>
+</div></blockquote>
+</div></blockquote>
+<p>This document is part of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a>. It describes one type of services and APIs deployable at nodes in a Learning Registry Distribution Network.</p>
+<p>This document is not standalone.
+The reader should be familiar with other parts of the specification, including, but not limited to:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../General_Matter/index.html"><em>General</em></a> <a class="reference internal" href="../General_Matter/index.html"><em>Matter</em></a>, including Licenses, Notation, Versioning, Glossary, References</li>
+<li><a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Distribution</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Network</em></a> <a class="reference internal" href="../Resource_Distribution_Network_Model/index.html"><em>Model</em></a></li>
+<li><a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Data</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Data</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Models</em></a></li>
+<li><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Identity</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Trust</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Authentication</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Security</em></a></li>
+<li><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Data</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Model</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>API</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Attributes</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Behaviors</em></a></li>
+<li><a class="reference internal" href="../Services_and_APIs/index.html"><em>Other</em></a> <a class="reference internal" href="../Services_and_APIs/index.html"><em>Services</em></a> including <a class="reference internal" href="../Distribution_Services/index.html"><em>Distribution</em></a>, <a class="reference internal" href="../Publish_Services/index.html"><em>Publish</em></a>, <a class="reference internal" href="../Access_Services/index.html"><em>Access</em></a>, <a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Management</em></a>/<a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Administration</em></a>/<a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Discovery</em></a></li>
+<li><a class="reference internal" href="../Operations/index.html"><em>Learning</em></a> <a class="reference internal" href="../Operations/index.html"><em>Registry</em></a> <a class="reference internal" href="../Operations/index.html"><em>Operations</em></a></li>
+</ul>
+<p>In particular, the reader needs to be aware that specific criteria for the services and APIs are presented in the <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Data</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Model</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>API</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Attributes</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>and</em></a> <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Behaviors</em></a> part, the <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Resource</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Data</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Data</em></a> <a class="reference internal" href="../Resource_Data_Data_Model/index.html"><em>Models</em></a> part describes the data that broker services process, and the <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Identity</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Trust</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Authentication</em></a>, <a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Security</em></a> part describes security requirements.</p>
+<div class="section" id="broker-services">
+<span id="h-i6ioshmsfczo"></span><h2>10.1. Broker Services<a class="headerlink" href="#broker-services" title="Permalink to this headline">¶</a></h2>
+<p>Broker services operate at a network node to process, transform, augment, amplify or otherwise manipulate the resource data held at a node.
+No broker services are currently defined.
+Broker services may be defined in future drafts or versions of the specification.</p>
+</div>
+<div class="section" id="change-log">
+<span id="h-e1519o-y653zc"></span><h2>10.2. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
+<p><em>NB</em>: The change log only lists major updates to the specification.</p>
+<p><em>NB</em>: Updates and edits may not results in a version update.</p>
+<p><em>NB</em>: See the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a> for prior change history not listed below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="3%" />
+<col width="4%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Change</strong></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>20110921</td>
+<td>DR</td>
+<td>This document extracted from the monolithic V 0.24.0 document.`Archived &lt;<a class="reference external" href="https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US">https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US</a>&gt;`_ <a class="reference external" href="https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US">copy</a> (V 0.24.0)</td>
+</tr>
+<tr class="row-odd"><td>0.50.0</td>
+<td>20110926</td>
+<td>DR</td>
+<td>Editorial updates to create stand alone version.Archived copy location TBD. (V BS:0.50.0)</td>
+</tr>
+<tr class="row-even"><td>Future</td>
+<td>TBD</td>
+<td>&nbsp;</td>
+<td>Archived copy location TBD. (V BS:x.xx.x)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="working-notes-and-placeholder-text">
+<span id="h-tph0s9vmrwxu"></span><h2>10.3. Working Notes and Placeholder Text<a class="headerlink" href="#working-notes-and-placeholder-text" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../Mgmt_Admin_and_Discovery_Services/index.html" title="11. Management, Administrative and Discovery Services: Learning Registry Technical Specification V MS:0.49.0"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../Access_Services/index.html" title="9. Access Services: Learning Registry Technical Specification V AS:0.49.0"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" >Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Learning Registry Contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

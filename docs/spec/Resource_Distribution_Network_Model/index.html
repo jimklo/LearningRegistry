@@ -1,0 +1,888 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. Resource Distribution Network Model: Learning Registry Technical Specification V NM:0.5x.0 &mdash; Learning Registry 0.50.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.50.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Learning Registry 0.50.1 documentation" href="../../index.html" />
+    <link rel="up" title="Learning Registry Technical Specification V 0.49.0" href="../Technical_Spec/index.html" />
+    <link rel="next" title="3. Resource Data Data Model: Learning Registry Technical Specification V RM:0.50.1" href="../Resource_Data_Data_Model/index.html" />
+    <link rel="prev" title="1. General Matter: Learning Registry Technical Specification - V GM:0.50.0" href="../General_Matter/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../Resource_Data_Data_Model/index.html" title="3. Resource Data Data Model: Learning Registry Technical Specification V RM:0.50.1"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../General_Matter/index.html" title="1. General Matter: Learning Registry Technical Specification - V GM:0.50.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" accesskey="U">Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Resource Distribution Network Model: Learning Registry Technical Specification V NM:0.5x.0</a><ul>
+<li><a class="reference internal" href="#resource-distribution-network-model">2.1. Resource Distribution Network Model</a></li>
+<li><a class="reference internal" href="#network-nodes-and-node-services">2.2. Network Nodes and Node Services</a></li>
+<li><a class="reference internal" href="#network-topology">2.3. Network Topology</a></li>
+<li><a class="reference internal" href="#network-data-models">2.4. Network Data Models</a></li>
+<li><a class="reference internal" href="#network-node-description-data-model">2.5. Network Node Description Data Model</a></li>
+<li><a class="reference internal" href="#network-node-service-description-data-model">2.6. Network Node Service Description Data Model</a></li>
+<li><a class="reference internal" href="#network-node-connectivity-description-data-model">2.7. Network Node Connectivity Description Data Model</a></li>
+<li><a class="reference internal" href="#network-node-filter-description-data-model">2.8. Network Node Filter Description Data Model</a></li>
+<li><a class="reference internal" href="#resource-distribution-network-description-data-model">2.9. Resource Distribution Network Description Data Model</a></li>
+<li><a class="reference internal" href="#resource-distribution-network-policy-data-model">2.10. Resource Distribution Network Policy Data Model</a></li>
+<li><a class="reference internal" href="#network-community-description-data-model">2.11. Network Community Description Data Model</a></li>
+<li><a class="reference internal" href="#network-description">2.12. Network Description</a></li>
+<li><a class="reference internal" href="#change-log">2.13. Change Log</a></li>
+<li><a class="reference internal" href="#working-notes-and-placeholder-text">2.14. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../General_Matter/index.html"
+                        title="previous chapter">1. General Matter: Learning Registry Technical Specification - V GM:0.50.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../Resource_Data_Data_Model/index.html"
+                        title="next chapter">3. Resource Data Data Model: Learning Registry Technical Specification V RM:0.50.1</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/spec/Resource_Distribution_Network_Model/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="resource-distribution-network-model-learning-registry-technical-specification-v-nm-0-5x-0">
+<span id="h-u6sbhsuktqyj"></span><h1>2. Resource Distribution Network Model: Learning Registry Technical Specification V NM:0.5x.0<a class="headerlink" href="#resource-distribution-network-model-learning-registry-technical-specification-v-nm-0-5x-0" title="Permalink to this headline">¶</a></h1>
+<p>Draft in Progress.
+See the <a class="reference internal" href="../Services_and_APIs/index.html#h-e1519o-y653zc"><em>Change Log</em></a> for links to prior stable versions.</p>
+<p><span class="changes">Shading indicates major changes and additions from the prior version (0.24.0). Also indicated with ▲.</span></p>
+<p><span class="deletions">Significant deletions are shaded.</span></p>
+<p><span class="deprecation">Features to be deprecated in a future version are shaded and indicated with ▼.</span></p>
+<p>This document is part of one or more versions of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning Registry Technical Specification</em></a>. It may contain links to other parts of the Specification.
+These links may link to the most recent version of a part, not to the version of the part that corresponds to this version of this part.
+Go to the appropriate version of the Specification that links to this version of this part, and follow the links there to the referenced part to find the version of the part that corresponds to this version of this part.</p>
+<blockquote>
+<div><p><a class="reference internal" href="../Services_and_APIs/index.html#h-u6sbhsuktqyj"><em>Resource Distribution Network Model :  Learning Registry Technical Specification V NM :0.49.0</em></a></p>
+<blockquote>
+<div><p><a class="reference internal" href="#h-v9pspv7cuh5h"><em>Resource Distribution Network Model</em></a></p>
+<blockquote>
+<div><p><a class="reference internal" href="#h-vpp8gzlkb4ag"><em>Network Nodes and Node Services</em></a></p>
+<p><a class="reference internal" href="#h-7a6j0fur21i3"><em>Network Topology</em></a></p>
+<p><a class="reference internal" href="#h-2hcwpd1wq9oo"><em>Network Data Models</em></a></p>
+<blockquote>
+<div><p><a class="reference internal" href="#h-18vbt1hxuutv"><em>Network Node Description Data Model</em></a></p>
+<p><a class="reference internal" href="#h-z0spjmvlcbb9"><em>Network Node Service Description Data Model</em></a></p>
+<p><a class="reference internal" href="#h-1cq79ogiyvxn"><em>Network Node Connectivity Description Data Model</em></a></p>
+<p><a class="reference internal" href="#h-1cq79ogiyvxn"><em>Network Node Filter Description Data Model</em></a></p>
+<p><a class="reference internal" href="#h-425s9yjzhp5f"><em>Resource Distribution Network Description Data Model</em></a></p>
+<p><a class="reference internal" href="#h-5txlehgykaso"><em>Resource Distribution Network Policy Data Model</em></a></p>
+<p><a class="reference internal" href="#h-uthscj877bjr"><em>Network Community Description Data Model</em></a></p>
+</div></blockquote>
+<p><a class="reference internal" href="#h-ugg6hzrtv6ho"><em>Network Description</em></a></p>
+</div></blockquote>
+<p><a class="reference internal" href="../Services_and_APIs/index.html#h-e1519o-y653zc"><em>Change Log</em></a></p>
+<p><a class="reference internal" href="../Services_and_APIs/index.html#h-tph0s9vmrwxu"><em>Working Notes and Placeholder Text</em></a></p>
+</div></blockquote>
+</div></blockquote>
+<p>This document is part of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning Registry Technical Specification</em></a>. It describes the model of resource data that is transported through the network.</p>
+<p>This document is not standalone.
+The reader should be familiar with other parts of the specification, including, but not limited to:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../General_Matter/index.html"><em>General Matter</em></a>, including Licenses, Notation, Versioning, Glossary, References</li>
+<li><a class="reference internal" href=""><em>Resource Distribution Network Model</em></a></li>
+<li><a class="reference internal" href="../Identity_Trust_Auth_and_Security/index.html"><em>Identity, Trust, Authentication, Security</em></a></li>
+<li><a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Data Model and API Attributes and Behaviors</em></a></li>
+<li><a class="reference internal" href="../Services_and_APIs/index.html"><em>Services</em></a> including <a class="reference internal" href="../Distribution_Services/index.html"><em>Distribution</em></a>, <a class="reference internal" href="../Publish_Services/index.html"><em>Publish</em></a>, <a class="reference internal" href="../Access_Services/index.html"><em>Access</em></a>, <a class="reference internal" href="../Broker_Services/index.html"><em>Broker</em></a>, <a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Management</em></a>/<a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Administration</em></a>/<a class="reference internal" href="../Mgmt_Admin_and_Discovery_Services/index.html"><em>Discovery</em></a></li>
+<li><a class="reference internal" href="../Operations/index.html"><em>Learning</em></a> <a class="reference internal" href="../Operations/index.html"><em>Registry</em></a> <a class="reference internal" href="../Operations/index.html"><em>Operations</em></a></li>
+</ul>
+<p>In particular, the reader needs to be aware that specific criteria for the Network Model are presented in the <a class="reference internal" href="../Data_Model_and_API_Attributes_and_Behaviors/index.html"><em>Data Model and API Attributes and Behaviors</em></a> part.</p>
+<div class="section" id="resource-distribution-network-model">
+<span id="h-v9pspv7cuh5h"></span><h2>2.1. Resource Distribution Network Model<a class="headerlink" href="#resource-distribution-network-model" title="Permalink to this headline">¶</a></h2>
+<p>The core of the Learning Registry is the network of loosely connected master-master synchronizing broker nodes distributing resources, metadata and paradata.
+Consumers and producers (edge node consumer and producer agents) connect to network nodes to inject information into the network or to extract information for external processing.</p>
+<p>The network model is defined in terms of nodes, their services, the assembly of nodes into resource distribution networks, and the structuring of networks into communities.
+This two-tiered model of networks and communities supports security requirements for partitioning of resource data between different communities.</p>
+</div>
+<div class="section" id="network-nodes-and-node-services">
+<span id="h-vpp8gzlkb4ag"></span><h2>2.2. Network Nodes and Node Services<a class="headerlink" href="#network-nodes-and-node-services" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>node</strong> is a server process with network connectivity to either other nodes or to edge services.
+Nodes process <strong>resource</strong> <strong>data</strong> (e.g., network messages about resources, metadata, paradata, etc.).</p>
+<p>A node SHALL be described using the <a class="reference internal" href="#h-18vbt1hxuutv"><em>network</em></a> <a class="reference internal" href="#h-18vbt1hxuutv"><em>node</em></a> <a class="reference internal" href="#h-18vbt1hxuutv"><em>data</em></a> <a class="reference internal" href="#h-18vbt1hxuutv"><em>model</em></a>.
+Only the owner of a node description MAY change the description.
+Certain attributes of the node description are immutable.
+<em>NB</em>: These are security constraints.</p>
+<p>A node MAY provide five (5) different classes of services (<a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RGRnuaQ9YFsWLExPnrQRGEgZT5fx000nGGo-PKeFLrY/edit?hl=en_US#heading=h.d08onhltt4u1">Services</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RGRnuaQ9YFsWLExPnrQRGEgZT5fx000nGGo-PKeFLrY/edit?hl=en_US#heading=h.d08onhltt4u1">and</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RGRnuaQ9YFsWLExPnrQRGEgZT5fx000nGGo-PKeFLrY/edit?hl=en_US#heading=h.d08onhltt4u1">APIs</a> and <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1zD0PUvQB0g-JpdbcioDL7WZByGtP79jbf0OoyQLISDM/edit?hl=en_US#heading=h.cbvxf-xys34q">Resource</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1zD0PUvQB0g-JpdbcioDL7WZByGtP79jbf0OoyQLISDM/edit?hl=en_US#heading=h.cbvxf-xys34q">Data</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1zD0PUvQB0g-JpdbcioDL7WZByGtP79jbf0OoyQLISDM/edit?hl=en_US#heading=h.cbvxf-xys34q">Data</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1zD0PUvQB0g-JpdbcioDL7WZByGtP79jbf0OoyQLISDM/edit?hl=en_US#heading=h.cbvxf-xys34q">Models</a> are described in their respective parts of the specification:</p>
+<ul class="simple">
+<li><strong>Publish</strong> <strong>Services</strong>: <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1kgTyRk1kIM3QvfU2JB1C9ARMuL7fCqsba7mOLQ3IKlw/edit?hl=en_US#heading=h.xf8fiul5s5dl">Resource</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1kgTyRk1kIM3QvfU2JB1C9ARMuL7fCqsba7mOLQ3IKlw/edit?hl=en_US#heading=h.xf8fiul5s5dl">Data</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1kgTyRk1kIM3QvfU2JB1C9ARMuL7fCqsba7mOLQ3IKlw/edit?hl=en_US#heading=h.xf8fiul5s5dl">Publish</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1kgTyRk1kIM3QvfU2JB1C9ARMuL7fCqsba7mOLQ3IKlw/edit?hl=en_US#heading=h.xf8fiul5s5dl">Services</a>  are used by external agents to push (publish) resource data from the external agent into the distribution network.
+The data model for publication data is specified below.
+A node that provides publish services MAY support different publishing APIs, but all SHALL use the publication data model.</li>
+<li><strong>Access</strong> <strong>Services</strong>: <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.kbv3x699el4w">Resource</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.kbv3x699el4w">Data</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.kbv3x699el4w">Access</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1RRR7ZUjZRYgIyoIXPLsAZKluahqY7_Q7Gb00PHGHw8A/edit?hl=en_US#heading=h.kbv3x699el4w">Services</a> are used by external agents to discover, access and obtain (pull) resource data from the distribution network.
+A node that provides access services MAY support different access APIs.</li>
+<li><strong>Distribution</strong> <strong>Services</strong>: The <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1HW_JJBiWxNHoA5L1TuZrjWeK-DaFF0FTeMZBNIL5MqI/edit?hl=en_US#heading=h.vb0xt6mhzmg2">Resource</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1HW_JJBiWxNHoA5L1TuZrjWeK-DaFF0FTeMZBNIL5MqI/edit?hl=en_US#heading=h.vb0xt6mhzmg2">Data</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1HW_JJBiWxNHoA5L1TuZrjWeK-DaFF0FTeMZBNIL5MqI/edit?hl=en_US#heading=h.vb0xt6mhzmg2">Distribution</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1HW_JJBiWxNHoA5L1TuZrjWeK-DaFF0FTeMZBNIL5MqI/edit?hl=en_US#heading=h.vb0xt6mhzmg2">Service</a> is used to transfer, replicate and synchronize resource data from node X to node Y. X is the source node for distribution, Y is the destination node.
+To support security requirements, distribution is directed from X to Y; independent paired services [X→Y + Y→X] are used for bi-directional synchronization.</li>
+<li><strong>Broker</strong> <strong>Services</strong>: <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1-dasdKJ_gDW-YEi4S7-g8ODGOp5To9xfXR-qbZVwt-Q/edit?hl=en_US#heading=h.i6ioshmsfczo">Broker</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1-dasdKJ_gDW-YEi4S7-g8ODGOp5To9xfXR-qbZVwt-Q/edit?hl=en_US#heading=h.i6ioshmsfczo">Services</a> operate at a node to augment, transform or process resource data held at that node to produce new or updated resource data for access or distribution.
+A node that provides broker services MAY support different broker processes.</li>
+<li><strong>Administrative</strong> <strong>Services</strong>: <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.kuf0re8u58qs">Administrative</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1lATgircOBUOmsoFwia8su2o--TZ88AG4GOmn5NQ6jAc/edit?hl=en_US#heading=h.kuf0re8u58qs">Services</a> are used to query a node to obtain its status or to trigger node administrative actions.</li>
+</ul>
+<p><em>NB</em>: There are no requirements to provision any service at a node.
+Provisioning requirements MAY be established by the policies of a particular network or community.
+This specification permits non operational or non accessible networks.</p>
+</div>
+<div class="section" id="network-topology">
+<span id="h-7a6j0fur21i3"></span><h2>2.3. Network Topology<a class="headerlink" href="#network-topology" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>resource</strong> <strong>distribution</strong> <strong>network</strong> is a group of one or more connected nodes, with each node providing node services.
+All nodes in a resource distribution network operate under the same policies.
+Multiple resource distribution networks MAY be established.</p>
+<p>A resource distribution network SHALL be described using the <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.v9pspv7cuh5h">Resource</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.v9pspv7cuh5h">Distribution</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.v9pspv7cuh5h">Network</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.v9pspv7cuh5h">Model</a>. Only the owner of a network description MAY change the description.
+Certain attributes of the resource distribution network description are immutable.
+<em>NB</em>: These are security constraints.</p>
+<p>Two types of network nodes and connectivity within a network are defined:</p>
+<ul class="simple">
+<li><strong>Common</strong> <strong>Node</strong>: A common node MAY provide any of the node service classes listed.
+If provided, the distribution services of a common node SHALL be limited to connecting to other nodes in the same network (the distribution service MAY connect to multiple destination nodes).
+A common node is denoted CN herein.</li>
+<li><strong>Gateway</strong> <strong>Node</strong>: A gateway node SHALL provide a distribution service.
+A gateway node MAY connect to one or more common nodes within the same network.
+A gateway node SHALL connect to and provide resource distribution to a gateway node in another network.
+A gateway node MAY provide administrative services.
+A gateway node SHALL NOT provide publish, access or broker services.
+A gateway node is denoted GN herein.
+<em>NB</em>: As defined, a gateway is a 1:1 interconnect between two networks.
+1:1 is used to simplify topology in support of security requirements; it is not a technical constraint.
+<em>NB</em>: Multiple gateway nodes between two networks are permitted.</li>
+</ul>
+<p>A node SHALL participate in, and be subject to the policies of, only one resource distribution network.</p>
+<p>A node SHALL not transition or be moved from one resource distribution network to another.
+A node MAY only be added to or removed from a distribution network.
+<em>NB</em>: This is a security constraint.</p>
+<p>A gateway node X that participates in some network N1 SHALL connect to a gateway node Y that participates in some other network N2. A gateway node SHALL NOT connect to any other nodes in network N2 or to any node in any other network.</p>
+<p><em>Open</em> <em>Question</em>: Relax the constraint that a gateway cannot connect to multiple networks while keeping the constraint that it connects to only 1 node in another network?</p>
+<p>A <strong>network</strong> <strong>community</strong> is a collection of interconnected resource distribution networks.
+A community MAY contain one or more resource distribution networks.
+A resource network SHALL be a member of only one community.
+Gateway nodes provide the connectivity between resources networks within a network community and MAY provide connectivity between networks in different communities.
+<em>NB</em>: A gateway node that provides an intra-community network gateway is undifferentiated from one that provides an inter-community network gateway.</p>
+<p>A network community SHALL be described using the <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.uthscj877bjr">Network</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.uthscj877bjr">Community</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.uthscj877bjr">Description</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.uthscj877bjr">Data</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1msnZC6RU9N72Omau0F4FNBO5YCU6hZrG1kKRs_z42Mc/edit?hl=en_US#heading=h.uthscj877bjr">Model</a>. Only the owner of a network community description MAY change the description.
+Certain attributes of the network community description are immutable.
+<em>NB</em>: These are security constraints.</p>
+<p>Two types of network communities are defined:</p>
+<ul class="simple">
+<li><strong>Social</strong> <strong>Community</strong>: A social community provides connectivity to other social communities.
+A network within a social community MAY connect to another network within the same social community or with a network that belongs to a different social community.</li>
+<li><strong>Closed</strong> <strong>Community</strong>: A closed community provides no connectivity outside of the community.
+A network within a closed community SHALL NOT connect with another network within a different community.</li>
+</ul>
+<p>For example, the Learning Registry is a social community; other social communities may connect to the Learning Registry community.
+For security and testing, the Learning Registry Testbed is a closed community, i.e., it consists of different networks (multiple networks to enable testing gateway protocols) but the testbed cannot be connected to the social production community.</p>
+<p>The Learning Registry community might consist of multiple networks and gateways.
+One network might be for uncurated OERs (open educational resources).
+A second network might be for curated OERs.
+And several others networks could be established for commercial resources (e.g., one per publisher).
+If the uncurated OER network has a gateway to the curated OER network, and there are gateways to each commercial networks, resource data can flow in only one direction, e.g., resource data for OERs into the commercial networks, but not the reverse.</p>
+<p>A network SHALL not transition or be moved from one network community to another.
+A network MAY only be added to or removed from a network community.
+<em>NB</em>: This is a security constraint.</p>
+<p>The resource network model provides nodes, collections of connected nodes within a network and the interconnection of networks in communities.
+The network model has this fixed hierarchy of components.
+Network communities connect to other communities using the same mechanism as networks that connect within a community.</p>
+<p>Other network topology restrictions MAY be established by the policies of a particular network or community.
+This specification is intentionally minimal and does not define or limit other topologies, including degenerate topologies.
+<em>NB</em>: The model lets one design a network topology that might violate the policy and security constraints of a participating organization.</p>
+<p>The diagram illustrates the network model.
+In the diagram there are three resource distribution networks (A, B, C) and two network communities (X and Y).
+Resource distribution network A connects to network B; both are part of the same community.
+Resource distribution network A also connects to network C and network C connects to network B. Resource distribution network C is in a different network community from A and B. If either network community X or Y was a closed community, the inter-network connection would not be permitted.</p>
+<p><img alt="picture_0" src="../../_images/picture_01.png" /></p>
+</div>
+<div class="section" id="network-data-models">
+<span id="h-2hcwpd1wq9oo"></span><h2>2.4. Network Data Models<a class="headerlink" href="#network-data-models" title="Permalink to this headline">¶</a></h2>
+<p>The description of a network is maintained in a set of documents that includes:</p>
+<ul class="simple">
+<li>Network Node documents:<ul>
+<li>The description of the node.</li>
+<li>The description of the connectivity of the node within the network (including gateways).</li>
+<li>The description of the services provided by the node.</li>
+<li>The description of the filters applied at a node.</li>
+</ul>
+</li>
+<li>Resource Distribution Network documents:<ul>
+<li>The description of the resource distribution network that the node is a part of.</li>
+<li>The description of the policies that govern the resource distribution network.</li>
+</ul>
+</li>
+<li>Network Community documents:<ul>
+<li>The description of the network community that the node is a part of.</li>
+</ul>
+</li>
+</ul>
+<p>All data models MAY be extended with additional elements.
+The name of any extension element SHALL begin with the characters &#8220;X_&#8221; designating an extension element.
+Any document that includes any element that is not in the defined data model or is not an extension element is non conforming and SHALL be rejected by any service.</p>
+<p>All data models have a named attribute that is a “type” element (doc_type).
+The data model description specifies the literal value for this element for all instances of each type of document.</p>
+<p>All data models have a named attribute that is a “version” element (doc_version).
+The data model description specifies the literal value for this element for all document instances.</p>
+<p>All data models have a named attribute that indicates if the document instance is in use (active).
+Network data model document instances are never deleted; they transition from active to not active.</p>
+<p>Additional constraints on attributes values are detailed in <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1p-6XFb_eBlVYiGb9fZYtcQ4Z363rjysgS2PiZLXzAyY/edit?hl=en_US#heading=h.3h25kjtjey9j">Data Model Attributes</a>.</p>
+</div>
+<div class="section" id="network-node-description-data-model">
+<span id="h-18vbt1hxuutv"></span><h2>2.5. Network Node Description Data Model<a class="headerlink" href="#network-node-description-data-model" title="Permalink to this headline">¶</a></h2>
+<p>The data model describing a node document.
+Once the data model has been instantiated for a node, the value of an immutable element SHALL NOT change.
+Other values MAY be changed only by the owner of the node document.</p>
+<div class="highlight-python"><pre>{
+
+  "doc_type": "node_description",
+                                                              // the literal "node_description"
+                                                              // required, immutable
+
+  "doc_version": "0.23.0",
+                                                              // the literal for the current version -- "0.23.0"
+                                                              // required, immutable
+
+  "doc_scope": "node",
+                                                              // the literal "node"
+                                                              // required, immutable
+
+  "active": boolean,
+                                                              // is the network node active
+                                                              // required, mutable from T to F only
+
+  "node_id": "string",
+                                                              // id of the node, required
+                                                              // unique within scope of the LR
+                                                              // immutable
+
+  "node_name": "string",
+                                                              // name of the node, optional
+
+  "node_description": "string",
+                                                              // description of the node, optional
+
+  "node_admin_identity": "string",
+                                                              // identity of node admin, optional
+
+  "network_id": "string",
+                                                              // id of the network that this node is a part of
+                                                              // recommended (required for gateway distribution)
+                                                              // immutable
+
+  "community_id": "string",
+                                                              // id of the community that this node is a part of
+                                                              // recommended (required for gateway distribution)
+                                                              // immutable
+
+  "gateway_node": boolean,
+                                                              // T if node is a gateway node
+                                                              // recommended, F if not present, immutable
+
+  "open_connect_source": boolean,
+                                                              // T if node is willing to be the source to
+                                                              // connect to any other node
+                                                              // F if node connectivity is restricted
+                                                              // recommended; F if not present
+
+  "open_connect_dest": boolean,
+                                                              // T if node is willing to be the destination
+                                                              // to connect to any other node
+                                                              // F if node connectivity is restricted
+                                                              // recommended; F if not present
+
+  // node-specific policies, optional
+  "node_policy":
+  {
+
+    "sync_frequency": integer,
+                                                              // target time between synchronizations in minutes
+                                                              // optional
+    "deleted_data_policy": "string",
+                                                              // fixed vocabulary ["no", "persistent", "transient"]
+                                                              // see `Resource &lt;https://docs.google.com/a/learningregistry.org/document/d/1NxS_QSxuTemFOi0uduUDvX69m8_AwHPUM2HmnI-tyuc/edit?hl=en_US#heading=h.a9luwl-3jrses&gt;`_ `Data &lt;https://docs.google.com/a/learningregistry.org/document/d/1NxS_QSxuTemFOi0uduUDvX69m8_AwHPUM2HmnI-tyuc/edit?hl=en_US#heading=h.a9luwl-3jrses&gt;`_ `Persistence &lt;https://docs.google.com/a/learningregistry.org/document/d/1NxS_QSxuTemFOi0uduUDvX69m8_AwHPUM2HmnI-tyuc/edit?hl=en_US#heading=h.a9luwl-3jrses&gt;`_
+
+    "TTL": integer,
+                                                              // minimum time to live for resource data in the node
+                                                              // in days, optional
+                                                              // overrides network policy TTL is larger than network TTL
+
+    "accepted_version": ["string"],
+                                                              // list of resource data description document versions
+                                                              // that the node can process, optional
+
+    "accepted_TOS": ["string"],
+                                                              // list of ToS that the node will accept, optional
+    "accepts_anon": boolean,
+                                                              // T if node is willing to take anonymous submissions
+                                                              // F if all submissions must be identified
+                                                              // optional, T if not present
+
+    "accepts_unsigned": boolean,
+                                                              // T if node is willing to take unsigned submissions
+                                                              // F if all data must be signed
+                                                              // optional, T if not present
+
+    "validates_signature": boolean,
+                                                              // T if node will validate signatures
+                                                              // F if node does not validate signatures
+                                                              // optional, F if not present
+
+    "check_trust": boolean,
+                                                              // T if node will evaluate trust of submitter
+                                                              // F if node does not check trust
+                                                              // optional, F if not present
+
+    "max_doc_size": integer
+                                                              // maximum size of a document that a node will store
+                                                              // in bytes
+                                                              // optional, if not present behavior is not defined
+  },
+
+  "node_key": "string",
+  // node public key, optional
+  "X_xxx": ? ? ? ? ? // placeholder for extensibility, optional
+}</pre>
+</div>
+<p><em>NB</em>: The node admin identity SHOULD be a URL, e.g., an email address.
+A deployment MAY specify that the identity be used to look up the node’s public key in a key server.</p>
+<p><em>NB</em>: Synchronization/replication frequency is maintained on a per node basis.
+This allows each node to sync on a different frequency (versus a network wide sync frequency), but does not allow each connection to a node to sync on a different frequency, which might complicate scheduling.</p>
+<p><em>NB</em>: The deleted data policy is used to support OAI-PMH harvest.
+It is part of the node description and not the service description since it controls overall node behavior and data persistence.</p>
+<p><em>NB</em>: The node MAY advertise its public key in the data model instance versus requiring key server lookup.</p>
+<p><em>NB</em>: The node MAY advertise its TTL.
+The value SHALL be ignored if it is smaller than the network policy TTL.</p>
+<p><em>NB</em>: The node MAY advertise the ToS that it will accept.</p>
+<p><em>NB</em>: If the node does not specify the versions of resource data description document that it accepts, it MUST accept all versions (current and future).</p>
+<p><em>NB</em>: A node MAY advertise that it does not accept anonymous submissions, e.g., resource data description documents where the submitter_type is anonymous.
+By default, anonymous submissions are supported.</p>
+<p><em>NB</em>: A node MAY advertise that it does not accept unsigned submissions.
+By default, submissions need not be signed.</p>
+<p><em>NB</em>: A node MAY advertise that it validates signatures.
+By default, all signatures are not validated.</p>
+<p><em>NB</em>: A node MAY advertise that it determines trust of submitter.
+By default, all trust is not checked.</p>
+<p><em>NB</em>: Signing, trust, etc., are all OPTIONAL.
+Default policy values imply that the node has a weak security and trust model.
+A node MUST explicitly state the policies it enforces.</p>
+<p><em>Open</em> <em>Question</em>: Should there be a short cut notation for ranges of accepted document versions?</p>
+<p><em>Open</em> <em>Question</em>: Have a list of accepted document versions, or just make this a filter?</p>
+</div>
+<div class="section" id="network-node-service-description-data-model">
+<span id="h-z0spjmvlcbb9"></span><h2>2.6. Network Node Service Description Data Model<a class="headerlink" href="#network-node-service-description-data-model" title="Permalink to this headline">¶</a></h2>
+<p>The data model describing a service description document; one document per service available at a node.
+Once the data model has been instantiated for a service, the value of an immutable element SHALL NOT change.
+Other values MAY be changed only by the owner of the node document.</p>
+<p><em>NB</em>: Ownership and control of the node description document and of the node service description document are vested in the same identity.</p>
+<div class="highlight-python"><pre>{
+
+    "doc_type": "service_description",
+                                                  // the literal "node_description"
+                                                  // required, immutable
+
+    "doc_version": "0.20.0",
+                                                  // the literal for the current version -- "0.20.0"
+                                                  // required, immutable
+
+    "doc_scope": "node",
+                                                  // the literal "node"
+                                                  // required, immutable
+
+    "active": boolean,
+                                                  // is the service active
+                                                  // required, mutable from T to F only
+
+    "service_id": "string",
+                                                  // id of the service, required
+                                                  // unique within scope of the LR
+                                                  // immutable
+
+    "service_type": "string",
+                                                  // fixed vocabulary ["publish", "access",
+                                                  // "distribute", "broker", "administrative"]
+                                                  // required, immutable
+
+    "service_name": "string",
+                                                  // name of the service, optional
+
+    "service_description": "string",
+                                                  // description of the service, optional
+
+    "service_version": "string",
+                                                  // version number of the service description, required
+                                                  // version is local to the Learning Registry
+                                                  // not the version of some underlying spec for the service
+
+    "service_endpoint": "string",
+                                                  // URL of service, required
+
+    // service authentication and authorization descriptions
+    "service_auth":
+    {
+
+        "service_authz": ["string"],
+                                                    // fixed vocabulary
+                                                    // ["none", "basicauth", "oauth", "ssh", ...]
+                                                    // required, mutable from "none" to any stronger auth
+
+        "service_key": boolean,
+                                                    // is a service key required to use the service
+                                                    // optional, immutable, default F
+
+        "service_https": boolean
+                                                    // does service require https
+                                                    // optional, immutable, default F
+    },
+
+    // service-specific key-value pairs, optional
+    "service_data": {
+        &lt; key - value pairs &gt;
+    },
+
+
+    "X_xxx": ? ? ? ? ?
+                                                  // placeholder for extensibility, optional
+}</pre>
+</div>
+<p><em>NB</em>: A service description document is required for each service.
+Services SHALL fail if they do not find a valid, active, service description document.</p>
+<p><em>NB</em>: Whenever a service is modified (e.g., added capabilities, support for different data formats, API changes, …), a new service description document with an updated version number SHOULD be published.
+The service version and service description document version SHOULD be synchronized.</p>
+<p><em>NB</em>: The service description document enables both automatic discovery of services and management of service configuration data that is needed by clients.</p>
+<p><em>NB</em>: When the service is deployed at a node, appropriate values for the placeholders (e.g., service_id, service_endpoint, service_auth) SHALL be provided.
+Appropriate values for the service_data elements SHALL be provided if required for the service.
+If no service data is required, the service_data element SHOULD be omitted.
+The descriptive values (service_name, service_description) MAY be changed from what is specified herein.</p>
+</div>
+<div class="section" id="network-node-connectivity-description-data-model">
+<span id="h-1cq79ogiyvxn"></span><h2>2.7. Network Node Connectivity Description Data Model<a class="headerlink" href="#network-node-connectivity-description-data-model" title="Permalink to this headline">¶</a></h2>
+<p>The data model describing a node connectivity document; one document per connection at a node.
+Once the data model has been instantiated for a connection, the value of an immutable element SHALL NOT change.
+Other values MAY be changed only by the owner of the node document.</p>
+<p><em>NB</em>: Ownership and control of the node description document and of the node connectivity description document are vested in the same identity.</p>
+<div class="highlight-python"><pre>{
+
+    "doc_type": "connection_description",
+                                                // the literal "connection_description"
+                                                // required, immutable
+
+    "doc_version": "0.10.0",
+                                                // the literal for the current version -- "0.10.0"
+                                                // required, immutable
+
+    "doc_scope": "node",
+                                                // the literal "node"
+                                                // required, immutable
+
+    "active": boolean,
+                                                // is the connection active
+                                                // required, mutable from T to F only
+
+    "connection_id": "string",
+                                                // id of the connection, required
+                                                // unique within scope of the LR
+                                                // immutable
+
+    "source_node_url": "string",
+                                                // URL of the source of the connection
+                                                // required, immutable
+
+    "destination_node_url": "string",
+                                                // URL of the destination of the connection
+                                                // required, immutable
+
+    "gateway_connection": boolean,
+                                                // T if this is a connection to a gateway node
+                                                // F for a common node
+                                                // recommended; F if not present (common node)
+                                                // immutable
+
+    "X_xxx": ? ? ? ? ?
+                                                // placeholder for extensibility, optional
+}</pre>
+</div>
+<p><em>NB</em>: By policy, there SHALL be only one document with an active value of T and gateway_connection value of T per node.</p>
+<p><em>NB</em>: The source URL is not strictly needed.
+It is present to enable <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1NxS_QSxuTemFOi0uduUDvX69m8_AwHPUM2HmnI-tyuc/edit?hl=en_US#heading=h.tcjl0w4wifiy">building</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1NxS_QSxuTemFOi0uduUDvX69m8_AwHPUM2HmnI-tyuc/edit?hl=en_US#heading=h.tcjl0w4wifiy">a</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1NxS_QSxuTemFOi0uduUDvX69m8_AwHPUM2HmnI-tyuc/edit?hl=en_US#heading=h.tcjl0w4wifiy">network</a> <a class="reference external" href="https://docs.google.com/a/learningregistry.org/document/d/1NxS_QSxuTemFOi0uduUDvX69m8_AwHPUM2HmnI-tyuc/edit?hl=en_US#heading=h.tcjl0w4wifiy">map</a>.</p>
+<p><em>Working</em> <em>Assumption</em>: It is assumed that a vocabulary to describe additional types of connections is not needed.</p>
+</div>
+<div class="section" id="network-node-filter-description-data-model">
+<h2>2.8. Network Node Filter Description Data Model<a class="headerlink" href="#network-node-filter-description-data-model" title="Permalink to this headline">¶</a></h2>
+<p>The data model describing a node filter; one document per node.
+Filters are used to restrict the resource data that is held at a node.
+Once the data model has been instantiated for a filter, the value of an immutable element SHALL NOT change.
+Other values MAY be changed only by the owner of the node document.</p>
+<p><em>NB</em>: Ownership and control of the node description document and of the node filter description document are vested in the same identity.</p>
+<div class="highlight-python"><pre>{
+
+    "doc_type": "filter_description",
+                                        // the literal "filter_description"
+                                        // required, immutable
+
+    "doc_version": "0.10.0",
+                                        // the literal for the current version -- "0.10.0"
+                                        // required, immutable
+
+
+    "doc_scope": "node",
+                                        // the literal "node"
+                                        // required, immutable
+
+    "active": boolean,
+                                        // is the filter active
+                                        // required, mutable from T to F only
+
+    "filter_name": "string",
+                                        // name of the filter, optional
+
+    "custom_filter": boolean,
+                                        // is this a custom filter (implemented in code, not rules)
+                                        // required, if T, filter rules are ignored
+
+    "include_exclude": boolean,
+                                        // T if the filters describe what documents to accept
+                                        // all others are rejected
+                                        // F if the filters describe what documents to reject
+                                        // all others are accepted
+                                        // optional, T if not present
+
+    "filter": // array of filter rules
+    [
+
+        {
+          "filter_key": "string",
+                                        // REGEX that matches names in the
+                                        // resource data description
+                                        // required
+
+          "filter_value": "string"
+                                        // REGEX that matches values in the
+                                        // resource data description
+                                        // optional, if not present, any value matches
+        }
+
+    ],
+
+    "X_xxx": ? ? ? ? ?                  // placeholder for extensibility, optional
+}</pre>
+</div>
+<p><em>NB</em>: Filters are optional.</p>
+<p><em>NB</em>: The same set of filters is applied in both the publication and distribution processes.</p>
+</div>
+<div class="section" id="resource-distribution-network-description-data-model">
+<span id="h-425s9yjzhp5f"></span><h2>2.9. Resource Distribution Network Description Data Model<a class="headerlink" href="#resource-distribution-network-description-data-model" title="Permalink to this headline">¶</a></h2>
+<p>The data model describing a resource distribution network document.
+Once the data model has been instantiated for a network, the value of an immutable element SHALL NOT change.
+Other values MAY be changed only by the owner of the network description document.</p>
+<div class="highlight-python"><pre>{
+
+  "doc_type": "network_description",
+                                            // the literal "network_description"
+                                            // required, immutable
+
+  "doc_version": "0.20.0",
+                                            // the literal for the current version -- "0.20.0"
+                                            // required, immutable
+
+  "doc_scope": "network",
+                                            // the literal "network"
+                                            // required, immutable
+
+  "active": boolean,
+                                            // is the resource distribution network active
+                                            // required, mutable from T to F only
+
+  "network_id": "string",
+                                            // id of the network, required
+                                            // unique within scope of the LR
+                                            // immutable
+
+  "network_name": "string",
+                                            // name of the network, optional
+
+  "network_description": "string",
+                                            // description of the network, optional
+
+  "network_admin_identity": "string",
+                                            // identity of network admin, optional
+
+  "community_id": "string",
+                                            // id of the community that this node is a part of
+                                            // recommended
+                                            // immutable
+
+  "network_key": "string",
+                                            // network public key, optional
+
+  "X_xxx": ? ? ? ? ?
+                                            // placeholder for extensibility, optional
+}</pre>
+</div>
+<p><em>NB</em>: The network admin identity SHOULD be a URL, e.g., an email address.
+A deployment MAY specify that the identity be used to look up the network’s public key in a key server.</p>
+<p><em>NB</em>: The network MAY advertise its public key in the data model instance versus requiring key server lookup.</p>
+</div>
+<div class="section" id="resource-distribution-network-policy-data-model">
+<span id="h-5txlehgykaso"></span><h2>2.10. Resource Distribution Network Policy Data Model<a class="headerlink" href="#resource-distribution-network-policy-data-model" title="Permalink to this headline">¶</a></h2>
+<p>The data model describing the policies of a resource distribution network document.
+Once the data model has been instantiated for a network, the value of an immutable element SHALL NOT change.
+Other values MAY be changed only by the owner of the network <em>description</em> document.</p>
+<p><em>NB</em>: Ownership and control of the network description document and of the policy description document are vested in the same identity.</p>
+<div class="highlight-python"><pre>{
+
+    "doc_type": "policy_description",
+                                          // the literal "policy_description"
+                                          // required, immutable
+
+    "doc_version": "0.10.0",
+                                          // the literal for the current version -- "0.10.0"
+                                          // required, immutable
+
+    "doc_scope": "network",
+                                          // the literal "network"
+                                          // required, immutable
+
+    "active": boolean,
+                                          // are the policies active
+                                          // required, mutable from T to F only
+
+    "network_id": "string",
+                                          // id of the network, required
+                                          // unique within scope of the LR
+                                          // immutable
+
+    "policy_id": "string",
+                                          // id of the policy description, required
+                                          // unique within scope of the LR
+                                          // immutable
+
+    "policy_version": "string",
+                                          // version identifier for the policy
+
+    "TTL": integer,
+                                          // minimum time to live for resource data in the network
+                                          // in days, required
+
+    "policy_element_x": ? ? ? ? ? ,
+                                          // placeholder for more policy elements
+
+    "X_xxx" : ? ? ? ? ?
+                                          // placeholder for extensibility, optional
+}</pre>
+</div>
+<p><em>NB</em>: The list of policy elements is currently incomplete.</p>
+</div>
+<div class="section" id="network-community-description-data-model">
+<span id="h-uthscj877bjr"></span><h2>2.11. Network Community Description Data Model<a class="headerlink" href="#network-community-description-data-model" title="Permalink to this headline">¶</a></h2>
+<p>The data model describing a network community document.
+Once the data model has been instantiated for a community description, the value of an immutable element SHALL NOT change.
+Other values MAY be changed only by the owner of the network community description.</p>
+<div class="highlight-python"><pre>{
+
+    "doc_type": "community_description",
+                                        // the literal "community_description"
+                                        // required, immutable
+
+    "doc_version": "0.20.0",
+                                        // the literal for the current version -- "0.20.0"
+                                        // required, immutable
+
+    "doc_scope": "community",
+                                        // the literal "community"
+                                        // required, immutable
+
+    "active": boolean,
+                                        // is the network community active
+                                        // required, mutable from T to F only
+
+    "community_id": "string",
+                                        // id of the community, required
+                                        // unique within scope of the LR
+                                        // immutable
+
+    "community_name": "string",
+                                        // name of the community, optional
+
+    "community_description”: "string",
+                                        // description of the community, optional
+
+
+    "community_admin_identity" :"string",
+                                        // identity of community admin, optional
+
+    "social_community": boolean,
+                                        // T if the community is a social community
+                                        // F if the community is a closed community
+                                        // recommended; F if not present (closed community)
+                                        // immutable
+
+    "community_key": "string",
+                                        // node public key, optional
+
+    "X_xxx ": ?????
+                                        // placeholder for extensibility, optional
+
+}</pre>
+</div>
+<p><em>NB</em>: The community admin identity SHOULD be a URL, e.g., an email address.
+A deployment MAY specify that the identity be used to look up the community’s public key in a key server.</p>
+<p><em>NB</em>: Policies are described at the node or network level, not the community level.</p>
+</div>
+<div class="section" id="network-description">
+<span id="h-ugg6hzrtv6ho"></span><h2>2.12. Network Description<a class="headerlink" href="#network-description" title="Permalink to this headline">¶</a></h2>
+<p>A valid, consistent network SHALL be described through a set of documents stored at each node in the network.</p>
+<ul class="simple">
+<li>Each node SHALL store one instance of the <a class="reference internal" href="#h-18vbt1hxuutv"><em>network node description document</em></a>.
+A document SHALL be unique per node.</li>
+<li>Each node SHALL store one instance of the <a class="reference internal" href="#h-z0spjmvlcbb9"><em>network node services document</em></a> for each service that it provides.
+A document SHALL be unique per node.</li>
+<li>Each node SHALL store one instance of the <a class="reference internal" href="#h-1cq79ogiyvxn"><em>network node connectivity document</em></a> for each connection to the node.
+A document SHALL be unique per node.</li>
+<li>Each node MAY store one instance of the <a class="reference internal" href="#h-1cq79ogiyvxn"><em>network node filter document</em></a>.
+A document SHALL be unique per node.</li>
+<li>Each node SHALL store one instance of the <a class="reference internal" href="#h-425s9yjzhp5f"><em>resource distribution network description document</em></a>.
+This document SHALL describe the network that the node is a part of.
+The contents of this document SHALL be identical for all nodes in the network.</li>
+<li>Each node SHALL store one instance of the <a class="reference internal" href="#h-5txlehgykaso"><em>resource distribution network policy document</em></a>.
+This document SHALL describe the policies of the network that the node is a part of.
+The contents of this document SHALL be identical for all nodes in the network.</li>
+<li>The node SHALL store one instance of the <a class="reference internal" href="#h-uthscj877bjr"><em>network community description document</em></a>.
+This document SHALL describe the community that the network is a part of.
+The contents of this document SHALL be identical for all nodes in the community.</li>
+</ul>
+<p>Additional types of node and network description documents MAY be defined, but SHALL be defined as either (1) unique per node, (2) identical for nodes in a network or (3) identical for all nodes in a community.
+Other organizational classifications SHALL NOT be used.</p>
+<p>The illustration shows the mapping of documents to nodes and the distribution and synchronization of documents within resource distribution networks and network communities.
+<em>NB</em>: Filters are not shown.</p>
+<p><img alt="picture_1" src="../../_images/picture_1.png" /></p>
+</div>
+<div class="section" id="change-log">
+<span id="h-e1519o-y653zc"></span><h2>2.13. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
+<p><em>NB</em>: The change log only lists major updates to the specification.</p>
+<p><em>NB</em>: Updates and edits may not results in a version update.</p>
+<p><em>NB</em>: See the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a> for prior change history not listed below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="3%" />
+<col width="4%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Change</strong></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>20110921</td>
+<td>DR</td>
+<td>This document extracted from the monolithic V 0.24.0 document.`Archived copy &lt;<a class="reference external" href="https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US">https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US</a>&gt;`_ (V 0.24.0)</td>
+</tr>
+<tr class="row-odd"><td>0.49.0</td>
+<td>20110927</td>
+<td>DR</td>
+<td>Editorial updates to create stand alone version.`Archived copy &lt;<a class="reference external" href="https://docs.google.com/document/d/1q5ysL1pjMVB7aBBus1qsKoKSsEgiDJSrKpClsfHe3X8/edit?hl=en_US">https://docs.google.com/document/d/1q5ysL1pjMVB7aBBus1qsKoKSsEgiDJSrKpClsfHe3X8/edit?hl=en_US</a>&gt;`_ (V NM:0.49.0)</td>
+</tr>
+<tr class="row-even"><td>0.50.0</td>
+<td>TBD</td>
+<td>DR</td>
+<td>Renumber all document models and service documents. Added node policy to control storage of attachments (default is stored). Add page size as service doc setting with flow control.Archived copy location TBD. (V NM:0.50.0)</td>
+</tr>
+<tr class="row-odd"><td>Future</td>
+<td>TBD</td>
+<td>&nbsp;</td>
+<td>Deprecate node_timestampArchived copy location TBD. (V NM:x.xx.x)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="working-notes-and-placeholder-text">
+<span id="h-tph0s9vmrwxu"></span><h2>2.14. Working Notes and Placeholder Text<a class="headerlink" href="#working-notes-and-placeholder-text" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../Resource_Data_Data_Model/index.html" title="3. Resource Data Data Model: Learning Registry Technical Specification V RM:0.50.1"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../General_Matter/index.html" title="1. General Matter: Learning Registry Technical Specification - V GM:0.50.0"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" >Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Learning Registry Contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1. General Matter: Learning Registry Technical Specification - V GM:0.50.0 &mdash; Learning Registry 0.50.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.50.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Learning Registry 0.50.1 documentation" href="../../index.html" />
+    <link rel="up" title="Learning Registry Technical Specification V 0.49.0" href="../Technical_Spec/index.html" />
+    <link rel="next" title="2. Resource Distribution Network Model: Learning Registry Technical Specification V NM:0.5x.0" href="../Resource_Distribution_Network_Model/index.html" />
+    <link rel="prev" title="Learning Registry Technical Specification V 0.49.0" href="../Technical_Spec/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../Resource_Distribution_Network_Model/index.html" title="2. Resource Distribution Network Model: Learning Registry Technical Specification V NM:0.5x.0"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../Technical_Spec/index.html" title="Learning Registry Technical Specification V 0.49.0"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" accesskey="U">Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. General Matter: Learning Registry Technical Specification - V GM:0.50.0</a><ul>
+<li><a class="reference internal" href="#learning-registry-overview">1.1. Learning Registry Overview</a></li>
+<li><a class="reference internal" href="#specification-license">1.2. Specification License</a></li>
+<li><a class="reference internal" href="#notation">1.3. Notation</a></li>
+<li><a class="reference internal" href="#conformance">1.4. Conformance</a></li>
+<li><a class="reference internal" href="#specification-versioning">1.5. Specification Versioning</a></li>
+<li><a class="reference internal" href="#technical-specification-overview">1.6. Technical Specification Overview</a></li>
+<li><a class="reference internal" href="#design-principles">1.7. Design Principles</a></li>
+<li><a class="reference internal" href="#glossary">1.8. Glossary</a></li>
+<li><a class="reference internal" href="#references">1.9. References</a></li>
+<li><a class="reference internal" href="#change-log">1.10. Change Log</a></li>
+<li><a class="reference internal" href="#working-notes-and-placeholder-text">1.11. Working Notes and Placeholder Text</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../Technical_Spec/index.html"
+                        title="previous chapter">Learning Registry Technical Specification V 0.49.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../Resource_Distribution_Network_Model/index.html"
+                        title="next chapter">2. Resource Distribution Network Model: Learning Registry Technical Specification V NM:0.5x.0</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/spec/General_Matter/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="general-matter-learning-registry-technical-specification-v-gm-0-50-0">
+<span id="h-u6sbhsuktqyj"></span><h1>1. General Matter: Learning Registry Technical Specification - V GM:0.50.0<a class="headerlink" href="#general-matter-learning-registry-technical-specification-v-gm-0-50-0" title="Permalink to this headline">¶</a></h1>
+<p>Draft in Progress.
+See the <a class="reference internal" href="#change-log">Change Log</a> for links to prior stable versions.</p>
+<p><span class="changes">Shading indicates major changes and additions from the prior version (0.24.0). Also indicated with ▲.</span></p>
+<p><span class="deletions">Significant deletions are shaded.</span></p>
+<p><span class="deprecation">Features to be deprecated in a future version are shaded and indicated with ▼.</span></p>
+<p>This document is part of one or more versions of the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning Registry Technical Specification</em></a>. It may contain links to other parts of the Specification.
+These links may link to the most recent version of a part, not to the version of the part that corresponds to this version of this part.
+Go to the appropriate version of the Specification that links to this version of this part, and follow the links there to the referenced part to find the version of the part that corresponds to this version of this part.</p>
+<p>This document is part of the  <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a>. This part provides general information, including: an introduction to the Learning Registry, Licenses, Notation, Glossary, References, etc.
+Readers of the other parts of the Learning Registry Technical Specification should be aware of the contents of this part.</p>
+<div class="section" id="learning-registry-overview">
+<span id="h-t8dv95qkagu4"></span><h2>1.1. Learning Registry Overview<a class="headerlink" href="#learning-registry-overview" title="Permalink to this headline">¶</a></h2>
+<p>The Learning Registry [<a class="reference external" href="http://www.google.com/url?q=http%3A%2F%2Flearningregistry.org%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNH0Q7yFYPqAD-Zg9qiJ8rq8DVYYKg">http</a>://<a class="reference external" href="http://www.google.com/url?q=http%3A%2F%2Flearningregistry.org%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNH0Q7yFYPqAD-Zg9qiJ8rq8DVYYKg">learningregistry</a>.`org &lt;<a class="reference external" href="http://www.google.com/url?q=http%3A%2F%2Flearningregistry.org%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNH0Q7yFYPqAD-Zg9qiJ8rq8DVYYKg">http://www.google.com/url?q=http%3A%2F%2Flearningregistry.org%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNH0Q7yFYPqAD-Zg9qiJ8rq8DVYYKg</a>&gt;`_/] aims to make “learning resources easier to <strong>find</strong>, easier to <strong>access</strong> and easier to <strong>integrate</strong> into learning environments <em>wherever</em> they are stored &#8211; around the country and the world.” It defines a learning resource distribution network model and a set of open APIs and open interoperability standards to provide three fundamental, enabling capabilities:</p>
+<ol class="arabic simple">
+<li>a lightweight mechanism to publish (push) learning resources (or metadata or paradata describing the resources) into a learning resource distribution network, independent of format or data type (e.g., resource, metadata or paradata);</li>
+<li>the ability for anyone to consume the published data and then, in turn, to publish additional feedback about the resources’ use into the network (e.g., additional paradata), amplifying the overall knowledge about the resources;</li>
+<li>a high-latency, loosely connected network of master-master synchronizing brokers distributing resources, metadata and paradata.</li>
+</ol>
+<p>There is no central control, central registries or central repositories in the core resource distribution network.
+Published data can eventually flow to all nodes in the network.
+The network aims to be self assembling.
+Edge services can connect to any distribution node to find out what resources (and resource sources) are in the network, what’s changed, what’s being used, etc.
+Organizations may build consumer-facing, value-added services at the edge nodes to enable using, finding, sharing, and amplifying the resources, metadata and paradata for user communities.
+The Learning Registry provides <em>social</em> <em>networking</em> <em>for</em> <em>metadata</em> (trusted social collaboration around learning resources), enabling a <em>learning</em> <em>layer</em> on the social web.</p>
+</div>
+<div class="section" id="specification-license">
+<span id="h-bflimlt80rpq"></span><h2>1.2. Specification License<a class="headerlink" href="#specification-license" title="Permalink to this headline">¶</a></h2>
+<p><span class="deletions">This specification is being developed under the Open Web Foundation Contributor License Agreement - Contributor Copyright Grant (CLA 0.9).
+The intent is that the final specification will be released under the Open Web Foundation Agreement (OWFa 0.9).
+Later versions may apply.</span></p>
+<p>▲:changes:<cite>The Learning Registry Technical Specification is being developed under the Open Web Foundation Contributor License Agreement 1.0 - Patent and Copyright (CLA 1.0)..
+The intent is that the final specification will be released under the Open Web Foundation Final Specification Agreement (OWFa 1.0).
+Later versions may apply.</cite></p>
+<blockquote>
+<div>Your use of this Specification may be subject to other third party rights.
+THIS SPECIFICATION IS PROVIDED “AS IS.” The contributors expressly disclaim any warranties (express, implied, or otherwise), including implied warranties of merchantability, non-infringement, fitness for a particular purpose, or title, related to the Specification.
+The entire risk as to implementing or otherwise using the Specification is assumed by the Specification implementer and user.
+IN NO EVENT WILL ANY PARTY BE LIABLE TO ANY OTHER PARTY FOR LOST PROFITS OR ANY FORM OF INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES OF ANY CHARACTER FROM ANY CAUSES OF ACTION OF ANY KIND WITH RESPECT TO THIS SPECIFICATION OR ITS GOVERNING AGREEMENT, WHETHER BASED ON BREACH OF CONTRACT, TORT (INCLUDING NEGLIGENCE), OR OTHERWISE, AND WHETHER OR NOT THE OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</div></blockquote>
+</div>
+<div class="section" id="notation">
+<span id="h-cu2ipktikrsa"></span><h2>1.3. Notation<a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h2>
+<p>The key words &#8220;MUST&#8221;, &#8220;MUST NOT&#8221;, &#8220;REQUIRED&#8221;, &#8220;SHALL&#8221;, &#8220;SHALL NOT&#8221;, &#8220;SHOULD&#8221;, &#8220;SHOULD NOT&#8221;, &#8220;RECOMMENDED&#8221;, &#8220;MAY&#8221;, and &#8220;OPTIONAL&#8221; in the Learning Registry Technical Specification are to be interpreted as described in <cite>RFC &lt;http://www.google.com/url?q=http%3A%2F%2Ftools.ietf.org%2Fhtml%2Frfc2119&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNEifotriMBsHSbNZlbtV_IVSzvraQ&gt;`_</cite> 2119 &lt;<a class="reference external" href="http://www.google.com/url?q=http%3A%2F%2Ftools.ietf.org%2Fhtml%2Frfc2119&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNEifotriMBsHSbNZlbtV_IVSzvraQ">http://www.google.com/url?q=http%3A%2F%2Ftools.ietf.org%2Fhtml%2Frfc2119&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNEifotriMBsHSbNZlbtV_IVSzvraQ</a>&gt;`_.</p>
+<p>The vocabulary of terms used in describing the Learning Registry and in the Learning Registry Technical Specification are listed in the <a class="reference internal" href="#h-8n9oub9badbo"><em>Glossary</em></a>.
+Specific terms are set in <strong>bold</strong> when introduced in context.</p>
+<p>Data models are described in a JSON-like notation.
+It follows JSON syntax, but instead of providing the value for a name, the data model defines the JavaScript data type of the named element.
+A description of the element, further restrictions on the value space (e.g., if a string is a URL) and if the element is optional or required is described in a comment.
+This model is used for convenience in early prototyping.
+A future version of the specification may describe the data models and their implementation binding independently.</p>
+</div>
+<div class="section" id="conformance">
+<span id="h-whmj37vjr0jk"></span><h2>1.4. Conformance<a class="headerlink" href="#conformance" title="Permalink to this headline">¶</a></h2>
+<p>There is no overall conformance statement for the Learning Registry Technical Specification.
+The Learning Registry Test Suite (link TBD) MAY be used to test an implementation.
+However, passing the Test Suite does not imply conformance to this specification.
+There is no defined “reference implementation” (by definition when there is a conflict between this specification and the reference implementation, the reference implementation is considered to be authoritative &#8211; thus the lack of a reference implementation implies that the Learning Registry Technical Specification is authoratitive).</p>
+<p>All pseudo code is informative; it is not a normative implementation design.
+Behaviors defined in pseudo code are normative requirements on an implementation.
+Behaviors are usually defined in normative text.</p>
+<p>An organization MAY place tighter requirements on an implementation than those stated, e.g., it MAY constrain a MAY, SHOULD or OPTIONAL clause to MUST, SHALL or REQUIRED.
+It MAY NOT relax any constraint.</p>
+</div>
+<div class="section" id="specification-versioning">
+<span id="h-lisx85v54wl"></span><h2>1.5. Specification Versioning<a class="headerlink" href="#specification-versioning" title="Permalink to this headline">¶</a></h2>
+<p>▲:changes:<cite>The following section is new in this version of the part.
+The remainder is not highlighted.</cite></p>
+<p>Different components of the Learning Registry Technical Specification and any implementation are versioned.
+Version numbers of different components may be updated independently and version numbers of one component are not correlated with version numbers of other components.</p>
+<ul class="simple">
+<li>Learning Registry Technical Specification Part Version Numbers<ul>
+<li>Each part of the Learning Registry Technical Specification has its own version number.</li>
+<li>The version number of any part may change independently of any other part.</li>
+</ul>
+</li>
+<li>Learning Registry Technical Specification Part Version Numbers<ul>
+<li>The whole of the Learning Registry Technical Specification has its own version number.</li>
+<li>The version number of the whole may change independently of a change to any part of the specification.</li>
+<li>A change in the version of a part SHALL result in a change to the version number of the whole.</li>
+<li>The reader SHALL NOT interpret any similarity between the version number of the whole and a version number of the part to imply that the version of a specific part is included in a specific version of the whole.</li>
+</ul>
+</li>
+<li>Data Model Schema Version Numbers<ul>
+<li>Each data model schema has its own version number</li>
+<li>Different version numbers for a data model schema imply a difference in the data model.</li>
+<li>The version number of the part of the specification where the data model is defined may change independently from the version number of the data model (the part may change without otherwise changing the data model schema).</li>
+<li>A change in the data model version SHALL result in a change in the version number of the part of the specification where the data model is defined.</li>
+<li>The reader SHALL NOT interpret any similarity between the version number of a data model and the version number of any component of the Learning Registry Technical Specification (whole, part, service) to imply a correlation between the data model and the other component.</li>
+</ul>
+</li>
+<li>Service/API Version Numbers<ul>
+<li>Each service or API definition has its own version numbers</li>
+<li>Different version numbers for a service or API definition imply a difference in the service (behavior, interfaces).</li>
+<li>The version number of the part of the specification where the service or API is defined may change independently from the version number of the service or API (the part may change without otherwise changing the service or API).</li>
+<li>A change in the service or API version SHALL result in a change in the version number of the part of the specification where the service or API is defined.</li>
+<li>The reader SHALL NOT interpret any similarity between the version number of a service or API definition and the version number of any component of the Learning Registry Technical Specification (whole, part, service) to imply a correlation between the service or API and the other component.</li>
+</ul>
+</li>
+<li>Service Implementation Version Number<ul>
+<li>Each service implementation has its own version number.</li>
+<li>The reader SHALL NOT interpret any similarity between the version number of a service implementation and the version number of the service or API definition in the Learning Registry Technical Specification to imply that the service implements the specific version of the definition.</li>
+<li>A service implementation SHALL include a mechanism to correlate the implementation version with a specific version number of the definition of the service or API.</li>
+</ul>
+</li>
+<li>Learning Registry Deployment Version Number<ul>
+<li>A deployment of the Learning Registry MAY have its own version number.</li>
+<li>A deployment of the Learning Registry includes any number of services, each of which has their own implementation version number.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="technical-specification-overview">
+<span id="h-o12ejzxfggen"></span><h2>1.6. Technical Specification Overview<a class="headerlink" href="#technical-specification-overview" title="Permalink to this headline">¶</a></h2>
+<p>The Learning Registry Technical Specification is split into several parts:</p>
+<ul class="simple">
+<li><strong>Network</strong>: The description of the resource distribution network and its parts.
+A fixed multi-level structure of network parts is used to support distributing content and to provide policy-based security and operations.</li>
+<li><strong>Data</strong> <strong>Models</strong>: The data models that are used to describe the network and learning resources data.
+Data models are document oriented.</li>
+<li><strong>Services</strong> <strong>and</strong> <strong>APIs</strong>: The APIs used to publish and consume data and those used to operate the network.
+The APIs are designed to abstract the logical behaviors of the Learning Registry from any particular implementation tools.</li>
+<li>▲:changes:<cite>**General** **Requirements**: Common behaviors and attributes that apply to all data models and behaviors.</cite></li>
+<li>▲:changes:<cite>**Identity** **and** **Trust****:** Models of trust, authentication, authorization, identity and security.
+These models are applied to all data models and operations.</cite></li>
+<li><strong>Operations</strong>: Operational procedures that apply to any implementation.</li>
+</ul>
+</div>
+<div class="section" id="design-principles">
+<span id="h-9vpjmlmi28mv"></span><h2>1.7. Design Principles<a class="headerlink" href="#design-principles" title="Permalink to this headline">¶</a></h2>
+<p>The learning registry design and technical specification is based on several key principles:</p>
+<ul class="simple">
+<li><strong>Decentralized</strong>: There are no centralized registries or repositories or central data stores.
+Thus all core data is replicated across the network.</li>
+<li><strong>Redundant</strong>: There is no single point of failure in the design (an implementation may have single points of failure).</li>
+<li><strong>Abstracted</strong>: Abstraction is critical to layering capabilities, e.g., network content replication is content type agnostic.</li>
+<li><strong>Minimal</strong>: Specify only what is required.
+Features that are community specific or can be layered on top of the core design are excluded from the specification although essential elements needed to support such modeling are included.</li>
+<li><strong>Generic</strong>: Prefer approaches, models, standards, etc., that have wide uptake beyond just the learning technology and digital repository space.</li>
+<li><strong>Secure</strong>: Security is by design, e.g., default values lock down an implementation and must be explicitly overridden even to do common operations.</li>
+<li><strong>Trusted</strong>: Data and operations need to be authentic and trusted</li>
+<li><strong>Document</strong> <strong>Oriented</strong>: The design is targeted at a document-oriented system for implementation using document-oriented databases.</li>
+<li><strong>RESTful</strong>: APIs are RESTful, and use <a class="reference external" href="http://www.google.com/url?q=http%3A%2F%2Fwww.w3.org%2FTR%2Fcooluris%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNFF57WOpfu4EyZdRMGJKnodAVjexg">CoolURIs</a> to return different data representations.</li>
+<li><strong>Scalable</strong>: The design needs to seamlessly scale and perform at scale.</li>
+<li><strong>Extensible</strong> <strong>and</strong> <strong>Enabling</strong>: The design is meant to enable new capabilities.
+Unless explicitly restricted (usually to satisfy security requirements) anything in the design is extensible.</li>
+<li><strong>Web**</strong> 2.0 <strong>**Friendly</strong>: The design is based on current, widely implemented Web 2.0 technologies.</li>
+</ul>
+</div>
+<div class="section" id="glossary">
+<span id="h-8n9oub9badbo"></span><h2>1.8. Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<p>The following terms are used in this document as defined.</p>
+<p>Additional terms may be provided in a future draft or version of the specification.</p>
+<dl class="glossary docutils">
+<dt id="term-access-v">access (v)</dt>
+<dd>to obtain resource data from a network node by an agent that is external to a resource distribution network.</dd>
+<dt id="term-broker-n">broker (n)</dt>
+<dd>a server process that provides transformative or data amplification processing of resource data.</dd>
+<dt id="term-community-n">community (n)</dt>
+<dd>see <em>network</em> <em>community</em>.</dd>
+<dt id="term-common-node-n">common node (n)</dt>
+<dd>a network node in a resource distribution network that may provide any service to process resource data and that may connect to any other node in the same resource distribution network for the distribution of resource data within the resource distribution network.</dd>
+<dt id="term-distribute-v">distribute (v)</dt>
+<dd>to copy or synchronize resource data from one network node to another.</dd>
+<dt id="term-gateway-node-n">gateway node (n)</dt>
+<dd>a network node in a resource distribution network that provides an interconnection to a network node in a different resource distribution network (either in the same network community or in a different network community) for the distribution of resource data across the network boundary.</dd>
+<dt id="term-harvest-v">harvest (v)</dt>
+<dd>to access a network node and obtain sets of resource data; the accessing agent is the harvestor; the network node is the harvestee.
+Harvest is typically based on timestamps used to identify new resource data held at the harvestee.</dd>
+<dt id="term-identifier-n">identifier (n)</dt>
+<dd>the name (i.e., a label [e.g., a string] in an authoritative context) associated with a thing (anything that can be given an identifier).</dd>
+<dt id="term-learning-resource-n">learning resource (n)</dt>
+<dd>any (digital) resource that is designed for, or has been used, in an educational context.</dd>
+<dt id="term-metadata-n">metadata (n)</dt>
+<dd>formally authored and curated information describing a learning resource.
+Also denoted <em>first</em> <em>party</em> metadata.</dd>
+<dt id="term-network-n">network (n)</dt>
+<dd>see <em>resource</em> <em>distribution</em> <em>network*</em>.
+* A network need not correspond to a physical or logical network of computing devices.</dd>
+<dt id="term-network-community-n">network community (n)</dt>
+<dd>a group of interconnected resource distribution networks.</dd>
+<dt id="term-network-node-n">network node (n)</dt>
+<dd>a service end point in a resource distribution network that may provide services to process resource data and that may connect to any other nodes to distribute resource data.
+A network node need not correspond to a physical or logical computing device.</dd>
+<dt id="term-node-n">node (n)</dt>
+<dd>see <em>network</em> <em>node</em>.</dd>
+<dt id="term-paradata-n">paradata (n)</dt>
+<dd>information describing the contextual use of a learning resource.
+It includes informally authored information and data obtained directly through monitoring the use of a learning resource, its metadata or its paradata.
+Also denoted <em>second</em> <em>party</em> metadata.</dd>
+<dt id="term-publish-v">publish (v)</dt>
+<dd>to submit resource data to a network node from a source external to the node’s resource distribution network.</dd>
+<dt id="term-pull-v">pull (v)</dt>
+<dd>to distribute resource data from A to B, initiated by B.</dd>
+<dt id="term-push-v">push (v)</dt>
+<dd>to distribute resource data from A to B, initiated by A.</dd>
+<dt id="term-resource-n">resource (n)</dt>
+<dd>see <em>learning</em> <em>resource</em>.</dd>
+<dt id="term-resource-data-n">resource data (n)</dt>
+<dd>any data that describes a learning resource, including, but not limited to metadata and paradata.</dd>
+<dt id="term-resource-distribution-network-n">resource distribution network (n)</dt>
+<dd>a group of interconnected network nodes that operate under an agreed set of policies.</dd>
+<dt id="term-service-n">service (n)</dt>
+<dd>a process applied to resource data or system descriptive and operational data operating on a network node.</dd>
+</dl>
+</div>
+<div class="section" id="references">
+<span id="h-76rvgj-gh9lot"></span><h2>1.9. References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>References below contain both normative and informative references.
+Unless otherwise noted, this specification references specific versions of other normative standards.
+More recent versions SHALL NOT be used.</p>
+<p>Additional references may be provided in a future draft or version of the specification.</p>
+<ul class="simple">
+<li>CoolURIs 2008: <em>Cool URIs for the Semantic Web</em>, <a class="reference external" href="http://www.w3.org/TR/cooluris/">http://www.w3.org/TR/cooluris/</a></li>
+<li>DC 1.1: <em>Dublin Core Metadata Element Set</em>, Version 1.1, <a class="reference external" href="http://dublincore.org/documents/dces/">http://dublincore.org/documents/dces/</a></li>
+<li>Benecode, <em>Bittorent Protocol Specification 1.0</em>, <a class="reference external" href="http://wiki.theory.org/BitTorrentSpecification#bencoding">http://wiki.theory.org/BitTorrentSpecification#bencoding</a></li>
+<li>ECMAScript: ECMAScript Language Specification, 5th Edition, December 2009, ECMA Standard 262, <a class="reference external" href="http://www.ecma-international.org/publications/standards/Ecma-262.htm">http://www.ecma-international.org/publications/standards/Ecma-262.htm</a></li>
+<li>FRBR: <em>Functional Requirements for Bibliographic Records</em>,  International Federation of Library Associations and Institutions, 1998, ISBN: 359811382X, <a class="reference external" href="http://www.ifla.org/VII/s13/frbr/frbr.pdf">http://www.ifla.org/VII/s13/frbr/frbr.pdf</a></li>
+<li>GPG: <em>GNU PrivacyHandbook</em>, <a class="reference external" href="http://www.gnupg.org/gph/en/manual.html">http://www.gnupg.org/gph/en/manual.html</a></li>
+<li>HKP: <em>TheOpenPGPHTTPKeyserverProtocol (HKP)</em> draft-shaw-openpgp-hkp-00.txt <a class="reference external" href="http://tools.ietf.org/html/draft-shaw-openpgp-hkp-00">http://tools.ietf.org/html/draft-shaw-openpgp-hkp-00</a></li>
+<li>ISO 8601: <em>Data elements and interchange formats</em>  &#8211;  <em>Information interchange</em>  &#8211; <em>Representation of dates and times</em>,  ISO 8601:2004, <a class="reference external" href="http://www.iso.org/iso/catalogue_detail?csnumber=40874">http://www.iso.org/iso/catalogue_detail?csnumber=40874</a></li>
+<li>IEEE LOM: <em>IEEE</em> <em>Standard</em> <em>for</em> <em>Learning</em> <em>Object</em> <em>Metadata</em>, IEEE Std 1484.12.1™-2002, IEEE Computer Society, September 2002.</li>
+<li>OAI-PMH: <em>The</em> <em>Open</em> <em>Archives</em> <em>Initiative</em> <em>Protocol</em> <em>for</em> <em>Metadata</em> <em>Harvesting</em>, V2.0, <a class="reference external" href="http://www.openarchives.org/OAI/openarchivesprotocol.html">http://www.openarchives.org/OAI/openarchivesprotocol.html</a></li>
+<li>OAUTH: <em>OAUTH</em>, <a class="reference external" href="http://oauth.net/">http://oauth.net/</a></li>
+<li>RFC 3880: <em>OpenPGP</em> <em>Messange</em> <em>Format</em>, <a class="reference external" href="http://tools.ietf.org/rfc/rfc4880.txt">http://tools.ietf.org/rfc/rfc4880.txt</a></li>
+<li>RFC 4122: <em>A Universally Unique Identifier (UUID) URN Namespace</em>, RFC 4122, <a class="reference external" href="http://www.ietf.org/rfc/rfc4122.txt">http://www.ietf.org/rfc/rfc4122.txt</a></li>
+<li>RFC 4627: <em>The application/json Media Type for JavaScript Object Notation (JSON),</em> <a class="reference external" href="http://tools.ietf.org/html/rfc4627">http://tools.ietf.org/html/rfc4627</a></li>
+<li>SHS, <em>Secure</em> <em>Hash</em> <em>Standard</em>, FIPS PUBS 180-3, <a class="reference external" href="http://csrc.nist.gov/publications/fips/fips180-3/fips180-3_final.pdf">http://csrc.nist.gov/publications/fips/fips180-3/fips180-3_final.pdf</a></li>
+<li>SRU: <em>Search/Retrieval via URL Specifications</em>, SRU Version 1.2 Specifications, The Library of Congress, August 2007, <a class="reference external" href="http://www.loc.gov/standards/sru/specs/">http://www.loc.gov/standards/sru/specs/</a></li>
+<li>SWORD: <em>SWORD AtomPub Provife V 1.3</em>, <a class="reference external" href="http://www.swordapp.org/docs/sword-profile-1.3.html">http://www.swordapp.org/docs/sword-profile-1.3.html</a></li>
+<li>Unicode: <em>The Unicode Consortium</em>. The Unicode Standard, Version 6.0.0*, <a class="reference external" href="http://www.unicode.org/versions/Unicode6.0.0/">http://www.unicode.org/versions/Unicode6.0.0/</a></li>
+<li>UTF-8: TBC (where in Unicode 6.0.0 doc?)</li>
+</ul>
+</div>
+<div class="section" id="change-log">
+<span id="h-vqkk28dmgzlf"></span><h2>1.10. Change Log<a class="headerlink" href="#change-log" title="Permalink to this headline">¶</a></h2>
+<p><em>NB</em>: The change log only lists major updates to the specification.</p>
+<p><em>NB</em>: Updates and edits may not results in a version update.</p>
+<p><em>NB</em>: See the <a class="reference internal" href="../Technical_Spec/index.html"><em>Learning</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Registry</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Technical</em></a> <a class="reference internal" href="../Technical_Spec/index.html"><em>Specification</em></a> for prior change history not listed below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="3%" />
+<col width="4%" />
+<col width="89%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Version</strong></td>
+<td><strong>Date</strong></td>
+<td><strong>Author</strong></td>
+<td><strong>Change</strong></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>20110921</td>
+<td>DR</td>
+<td>This document extracted from the monolithic V 0.24.0 document.`Archived &lt;<a class="reference external" href="https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US">https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US</a>&gt;`_ <a class="reference external" href="https://docs.google.com/document/d/1Yi9QEBztGRzLrFNmFiphfIa5EF9pbV5B6i9Tk4XQEXs/edit?hl=en_US">copy</a> (V 0.24.0)</td>
+</tr>
+<tr class="row-odd"><td>0.50.0</td>
+<td>20110926</td>
+<td>DR</td>
+<td>Editorial updates to create stand alone version. Changed license from OWA CLA 0.9 to OWA CLA 1.0. Added section on versioning. Archived copy location TBD. (V GM:0.50.0)</td>
+</tr>
+<tr class="row-even"><td>Future</td>
+<td>TBD</td>
+<td>&nbsp;</td>
+<td>XXXArchived copy location TBD. (V GM:x.xx.x)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="working-notes-and-placeholder-text">
+<span id="h-tph0s9vmrwxu"></span><h2>1.11. Working Notes and Placeholder Text<a class="headerlink" href="#working-notes-and-placeholder-text" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../http-routingtable.html" title="HTTP Routing Table"
+             >routing table</a> |</li>
+        <li class="right" >
+          <a href="../Resource_Distribution_Network_Model/index.html" title="2. Resource Distribution Network Model: Learning Registry Technical Specification V NM:0.5x.0"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../Technical_Spec/index.html" title="Learning Registry Technical Specification V 0.49.0"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Learning Registry 0.50.1 documentation</a> &raquo;</li>
+          <li><a href="../Technical_Spec/index.html" >Learning Registry Technical Specification V 0.49.0</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Learning Registry Contributors.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
