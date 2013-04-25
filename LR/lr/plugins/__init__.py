@@ -4,9 +4,10 @@ from pylons import config
 from yapsy.PluginManager import PluginManager
 from yapsy import log, NormalizePluginNameForModuleName, IPlugin
 from lr.plugins.tombstones import ITombstonePolicy, DoNotPublishError
+from lr.plugins.filters import ICustomFilterPolicy
 import lr.loaded_plugins
 
-__ALL__ = ["init_plugins", "LRPluginManager", "ITombstonePolicy", "DoNotPublishError"]
+__ALL__ = ["init_plugins", "LRPluginManager", "ICustomFilterPolicy", "ITombstonePolicy", "DoNotPublishError"]
 
 
 
@@ -105,7 +106,8 @@ class __PluginManager(object):
         self.manager.setPluginPlaces(plugin_locations)
 
         self.manager.setCategoriesFilter({
-                ITombstonePolicy.ID: ITombstonePolicy
+                ITombstonePolicy.ID: ITombstonePolicy,
+                ICustomFilterPolicy.ID: ICustomFilterPolicy
             })
 
         self.manager.collectPlugins()

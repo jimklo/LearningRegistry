@@ -4,9 +4,10 @@ from lr.util import decorators
 from lr.util.testdata import getTestDataForReplacement, getTestDataForMultipleResourceLocator
 from lr.lib.schema_helper import TombstoneValidator, ResourceDataModelValidator
 from lr.lib.signing import reloadGPGConfig
+from lr.plugins import LRPluginManager, ICustomFilterPolicy
 from time import sleep
 from pylons import config
-import copy, couchdb, gnupg, json, re, uuid, socket
+import copy, couchdb, gnupg, json, re, uuid, socket, unittest
 from LRSignature.sign.Sign  import Sign_0_21
 from couchdb import Server
 from functools import wraps
@@ -885,6 +886,232 @@ class TestReplacementDocsController(TestController):
                         
                         ## since the replacement is invalid (uses different signing key, no tombstone should have been)
                         ResourceDataModelValidator.validate_model(repl_doc)
+
+def has_filter_plugin(filter_name=None):
+    if filter_name is not None:
+        for plugin in LRPluginManager.getPlugins(ICustomFilterPolicy.ID):
+            if plugin.name() == filter_name:
+                return True
+    return False
+
+FILTER_NAME = "lrmi-1.1"
+
+@unittest.skipUnless(has_filter_plugin(FILTER_NAME), "%s filter plugin not installed." % FILTER_NAME)
+class TestFilteredPublishController(TestController):
+
+    _PUBLISH_UNSUCCESSFUL_MSG = "Publish was not successful"
+
+    def __init__(self, *args, **kwargs):
+        TestController.__init__(self,*args,**kwargs)
+        self.controllerName = "publish"
+        
+        self.oauth_info = {
+                "name": "tester@example.com",
+                "full_name": "Joe Tester"
+        }
+
+        self.oauth_user = {
+           "_id": "org.couchdb.user:{0}".format(self.oauth_info["name"]),
+           "type": "user",
+           "name": self.oauth_info["name"],
+           "roles": [
+               "browserid"
+           ],
+           "browserid": True,
+           "oauth": {
+               "consumer_keys": {
+                   self.oauth_info["name"] : "ABC_consumer_key_123"
+               },
+               "tokens": {
+                   "node_sign_token": "QWERTY_token_ASDFGH",
+               }
+           },
+           "lrsignature": {
+               "full_name": self.oauth_info["full_name"]
+           }
+        }
+
+        self.bauth_user = {
+                "name": "mrbasicauth",
+                "password": "ABC_123"
+        }          
+
+    @decorators.ModifiedServiceDoc(config["app_conf"]['lr.publish.docid'], decorators.update_authz())
+    def test_publish_bad_lrmi(self):
+        known_doc_id = 'urn:{domain}:nosetest:{uuid}'.format(domain=socket.gethostname(), uuid=uuid.uuid1())
+        document = {
+          "doc_type": "resource_data",
+          "resource_locator": "http://www.khanacademy.org/video/writing-and-using-inequalities-2",
+          "resource_data": {
+            "items": [{
+              "type": ["http://schema.org/CreativeWork"],
+              "id": "urn:www.khanacademy.org:node_slug:v/writing-and-using-inequalities-2",
+              "properties": {
+                "name": ["Writing and using inequalities 2"],
+                "author": [{
+                  "type": ["http://schema.org/Person"],
+                  "properties": {
+                    "name": ["Sal Khan"]
+                  }
+                }, {
+                  "type": ["http://schema.org/Person"],
+                  "properties": {
+                    "name": ["Monterey Institute for Technology and Education"]
+                  }
+                }],
+                "url": ["http://www.khanacademy.org/video/writing-and-using-inequalities-2"],
+                "interactionCount": ["28103 UserPlays"],
+                "datePublished": ["2011-02-20T16:28:11Z"],
+                "educationalAlignment": [{
+                  "type": ["http://schema.org/AlignmentObject"],
+                  "id": "urn:corestandards.org:guid:666AA11DF39241C68112FFBE28D811C4",
+                  "properties": {
+                    "alignmentType": ["teaches"],
+                    "educationalFramework": ["Common Core State Standards"],
+                    "targetName": ["CCSS.Math.Content.6.EE.B.6"],
+                    "targetDescription": ["Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set."],
+                    "targetUrl": ["http://corestandards.org/Math/Content/6/EE/B/6"]
+                  }
+                }],
+                "learningResourceType": ["video"],
+                "video": [{
+                  "id": "urn:www.youtube.com:videoid:cCMpin3Te4s",
+                  "type": ["http://schema.org/VideoObject"],
+                  "playerType": ["youtube"],  ## This is incorrect
+                  "properties": {
+                    "url": ["http://www.youtube.com/watch?v=cCMpin3Te4s&feature=youtube_gdata_player"],
+                    "contentUrl": ["http://s3.amazonaws.com/KA-youtube-converted/cCMpin3Te4s.mp4/cCMpin3Te4s.mp4"],
+                    "thumbnailUrl": ["http://s3.amazonaws.com/KA-youtube-converted/cCMpin3Te4s.mp4/cCMpin3Te4s.png"],
+                    "encodingFormat": ["mpeg4"]
+                  }
+                }],
+                "keywords": ["U05_L1_T3_we2, Writing, and, using, inequalities, CC_6_EE_6, CC_6_EE_8, CC_7_EE_4, CC_7_EE_4_b, CC_39336_A-CED_1, CC_39336_A-CED_3, CC_39336_A-REI_3"],
+                "thumbnailUrl": ["http://s3.amazonaws.com/KA-youtube-converted/cCMpin3Te4s.mp4/cCMpin3Te4s.png"],
+                "description": ["Writing and using inequalities 2"]
+              }
+            }]
+          },
+          "TOS": {
+            "submission_TOS": "http://www.learningregistry.org/information-assurances/open-information-assurances-1-0"
+          },
+          "resource_data_type": "metadata",
+          "payload_schema_locator": "http://www.w3.org/TR/2012/WD-microdata-20121025/#converting-html-to-other-formats",
+          "payload_placement": "inline",
+          "payload_schema": ["schema.org", "LRMI", "application/microdata+json"],
+          "doc_version": "0.23.0",
+          "active": True,
+          "identity": {
+            "submitter": "Jim Klo @ SRI",
+            "submitter_type": "agent",
+            "curator": "Khan Academy"
+          }
+        }
+        document["doc_ID"] = known_doc_id
+        s = Server(config["app_conf"]['couchdb.url.dbadmin'])
+        db = s[config["app_conf"]['couchdb.db.resourcedata']]
+
+        data = {
+            "filter": FILTER_NAME,
+            "documents": [document]
+        }
+
+        result = json.loads(self.app.post('/publish', params=json.dumps(data), headers=headers).body)
+        assert(result['OK']), self._PUBLISH_UNSUCCESSFUL_MSG
+        assert(len(result['document_results']) == 1), "Expected 1 result and got {0}".format(len(result['document_results']))
+        for index, docResults in enumerate(result['document_results']):
+            assert(docResults['OK'] == False), "Document should not be published."
+            assert(len(docResults['error']) > 0 ), "There should be an error message."
+            # assert('doc_ID' in docResults), "Publish should return doc_ID for doc version {0}".format(data['documents'][index]['doc_version'])  
+            # assert(docResults['doc_ID'] == known_doc_id), "Expected doc_id: {0}, got {1}".format(known_doc_id, docResults['doc_ID'])          
+            # published_document = db[docResults['doc_ID']]
+    
+    @decorators.ModifiedServiceDoc(config["app_conf"]['lr.publish.docid'], decorators.update_authz())
+    def test_publish_good_lrmi(self):
+        known_doc_id = 'urn:{domain}:nosetest:{uuid}'.format(domain=socket.gethostname(), uuid=uuid.uuid1())
+        document = {
+          "doc_type": "resource_data",
+          "resource_locator": "http://www.khanacademy.org/video/writing-and-using-inequalities-2",
+          "resource_data": {
+            "items": [{
+              "type": ["http://schema.org/CreativeWork"],
+              "id": "urn:www.khanacademy.org:node_slug:v/writing-and-using-inequalities-2",
+              "properties": {
+                "name": ["Writing and using inequalities 2"],
+                "author": [{
+                  "type": ["http://schema.org/Person"],
+                  "properties": {
+                    "name": ["Sal Khan"]
+                  }
+                }, {
+                  "type": ["http://schema.org/Person"],
+                  "properties": {
+                    "name": ["Monterey Institute for Technology and Education"]
+                  }
+                }],
+                "url": ["http://www.khanacademy.org/video/writing-and-using-inequalities-2"],
+                "interactionCount": ["28103 UserPlays"],
+                "datePublished": ["2011-02-20T16:28:11Z"],
+                "educationalAlignment": [{
+                  "type": ["http://schema.org/AlignmentObject"],
+                  "id": "urn:corestandards.org:guid:666AA11DF39241C68112FFBE28D811C4",
+                  "properties": {
+                    "alignmentType": ["teaches"],
+                    "educationalFramework": ["Common Core State Standards"],
+                    "targetName": ["CCSS.Math.Content.6.EE.B.6"],
+                    "targetDescription": ["Use variables to represent numbers and write expressions when solving a real-world or mathematical problem; understand that a variable can represent an unknown number, or, depending on the purpose at hand, any number in a specified set."],
+                    "targetUrl": ["http://corestandards.org/Math/Content/6/EE/B/6"]
+                  }
+                }],
+                "learningResourceType": ["video"],
+                "video": [{
+                  "id": "urn:www.youtube.com:videoid:cCMpin3Te4s",
+                  "type": ["http://schema.org/VideoObject"],
+                  "properties": {
+                    "url": ["http://www.youtube.com/watch?v=cCMpin3Te4s&feature=youtube_gdata_player"],
+                    "playerType": ["youtube"], 
+                    "contentUrl": ["http://s3.amazonaws.com/KA-youtube-converted/cCMpin3Te4s.mp4/cCMpin3Te4s.mp4"],
+                    "thumbnailUrl": ["http://s3.amazonaws.com/KA-youtube-converted/cCMpin3Te4s.mp4/cCMpin3Te4s.png"],
+                    "encodingFormat": ["mpeg4"]
+                  }
+                }],
+                "keywords": ["U05_L1_T3_we2, Writing, and, using, inequalities, CC_6_EE_6, CC_6_EE_8, CC_7_EE_4, CC_7_EE_4_b, CC_39336_A-CED_1, CC_39336_A-CED_3, CC_39336_A-REI_3"],
+                "thumbnailUrl": ["http://s3.amazonaws.com/KA-youtube-converted/cCMpin3Te4s.mp4/cCMpin3Te4s.png"],
+                "description": ["Writing and using inequalities 2"]
+              }
+            }]
+          },
+          "TOS": {
+            "submission_TOS": "http://www.learningregistry.org/information-assurances/open-information-assurances-1-0"
+          },
+          "resource_data_type": "metadata",
+          "payload_schema_locator": "http://www.w3.org/TR/2012/WD-microdata-20121025/#converting-html-to-other-formats",
+          "payload_placement": "inline",
+          "payload_schema": ["schema.org", "LRMI", "application/microdata+json"],
+          "doc_version": "0.23.0",
+          "active": True,
+          "identity": {
+            "submitter": "Jim Klo @ SRI",
+            "submitter_type": "agent",
+            "curator": "Khan Academy"
+          }
+        }
+        document["doc_ID"] = known_doc_id
+        s = Server(config["app_conf"]['couchdb.url.dbadmin'])
+        db = s[config["app_conf"]['couchdb.db.resourcedata']]
+
+        data = {
+            "filter": FILTER_NAME,
+            "documents": [document]
+        }
+
+        import pdb; pdb.set_trace()
+
+        result = json.loads(self.app.post('/publish', params=json.dumps(data), headers=headers).body)
+        assert(result['OK']), self._PUBLISH_UNSUCCESSFUL_MSG
+        assert(len(result['document_results']) == 1), "Expected 1 result and got {0}".format(len(result['document_results']))
+        for index, docResults in enumerate(result['document_results']):
+            assert(docResults['OK'] == True), "Document should be published.\nError:\n{0}".format(docResults['error'])
+            assert(docResults['doc_ID'] == known_doc_id), "Expected doc_id: {0}, got {1}".format(known_doc_id, docResults['doc_ID'])    
 
 
 

@@ -1,0 +1,9 @@
+[Core]
+Name = Schema.org Filter Plugin
+Module = schema_org_filter
+   
+[Documentation]
+Description = Filter plugin that validates content against Schema.org content
+Author = Jim Klo
+Version = 0.1.0
+Website = http://www.learningregistry.org

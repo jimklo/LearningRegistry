@@ -25,6 +25,7 @@ from  lr.model import ResourceDataModel, LRNode
 from  lr.lib import ModelParser, SpecValidationException, helpers as  h, signing, oauth, bauth
 from lr.lib.replacement_helper import ResourceDataReplacement
 from lr.lib.schema_helper import ResourceDataModelValidator
+from lr.plugins import LRPluginManager, ICustomFilterPolicy
 
 
 log = logging.getLogger(__name__)
@@ -49,8 +50,6 @@ def _service_doc(recache=False):
             __service_doc = h.getServiceDocument(config["lr.publish.docid"])
         return __service_doc
     return get_service_doc
-
-
 
 class PublishController(BaseController):
     """REST Controller styled on the Atom Publishing Protocol"""
@@ -87,7 +86,8 @@ class PublishController(BaseController):
                 log.debug(error_message)
                 results[self.__ERROR] = error_message
             else:
-                results[self.__DOCUMENT_RESULTS ] = map(lambda doc: signing.sign_doc(doc, cb=self._publish, session_key="oauth-sign"), data[self.__DOCUMENTS])
+                requestedFilter = data.get('filter', None)
+                results[self.__DOCUMENT_RESULTS ] = map(lambda doc: signing.sign_doc(doc, cb=self._publish_wrapper(requestedFilter), session_key="oauth-sign"), data[self.__DOCUMENTS])
         except Exception as ex:
             log.exception(ex)
             results[self.__ERROR] = str(ex)
@@ -95,16 +95,32 @@ class PublishController(BaseController):
         if results.has_key(self.__ERROR):
            results[self.__OK] = False
         return json.dumps(results)
+
+
+    def _publish_wrapper(self, requestedFilter=None):
+            def publish(rd3):
+                return self._publish(rd3, requestedFilter)
+            return publish
         
         
-    def _isResourceDataFilteredOut(self, resourceData):
+    def _isResourceDataFilteredOut(self, resourceData, requestedFilter=None):
         
+        for plugin in LRPluginManager.getPlugins(ICustomFilterPolicy.ID):
+
+            if not plugin.optional() or (plugin.optional() and plugin.name() == requestedFilter):
+                status, msg = plugin.filter(resourceData)
+                if status:
+                    return [status, msg]
+
+
         if (LRNode.filterDescription is None or
             LRNode.filterDescription.filter is None or 
             LRNode.filterDescription.custom_filter == True):
             #Do custom the filter I supposed ... for now just resturn false.
+
             return [False, None]
         
+
         matchResult = False
         envelopFilter = ""
         for f in LRNode.filterDescription.filter:
@@ -145,8 +161,10 @@ class PublishController(BaseController):
                return True, "\nExcluded by filter: \n"+envelopFilter
              
         return [False, None]
-        
-    def _publish(self, resourceData):
+     
+    
+
+    def _publish(self, resourceData, requestedFilter=None):
         if isinstance(resourceData,unicode):
             resourceData = json.loads(resourceData)
             
@@ -157,7 +175,7 @@ class PublishController(BaseController):
             resourceData = ResourceDataModelValidator.set_timestamps(resourceData)
 
             #Check if the envelop get filtered out
-            isFilteredOut, reason = self._isResourceDataFilteredOut(resourceData)
+            isFilteredOut, reason = self._isResourceDataFilteredOut(resourceData, requestedFilter)
             if isFilteredOut:
                 result[self.__ERROR] = reason
             else:
