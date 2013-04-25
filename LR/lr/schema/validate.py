@@ -16,20 +16,45 @@
 # limitations under the License.
 
 from datetime import datetime
-from jsonschema import validate, Draft3Validator, ValidationError, validates, RefResolver, _list, _types_msg
+from jsonschema import validate, Draft3Validator, ValidationError, validates, RefResolver, _list, _types_msg, FormatChecker
 from urllib import urlopen
 from lr.lib.uri_validate import URI
-import re, iso8601, urlparse
+import contextlib, json, re, iso8601, urlparse
 
 class UnsupportedFormatError(Exception):
     """
     Valid Draft3 format however unsupported by this validator.
     """
 
-class UnknownFormatError(ValidationError):
-    """
-    Unknown format error.
-    """
+def file_resolver(full_uri):
+    '''Used for handling file schemes like: "file:lr/schema/abstract_resource_data.json"'''
+    uri, fragment = urlparse.urldefrag(full_uri)
+    path = urlparse.urlsplit(uri).path
+    try:
+        loaded = open(path)
+    except:
+        loaded = open(re.sub("^/+", "", path))
+
+    return json.load(loaded)
+
+
+class LRRefResolver(RefResolver):
+
+    @contextlib.contextmanager
+    def in_scope(self, scope):
+
+        old_scope = self.resolution_scope
+        pieces = urlparse.urlsplit(scope)
+        if pieces.scheme == "file":
+            self.resolution_scope = ""
+        else:
+            self.resolution_scope = urlparse.urljoin(old_scope, scope)
+        try:
+            yield
+        finally:
+            self.resolution_scope = old_scope
+
+
 
 @validates("draft3")
 class LRDraft3Validator(Draft3Validator):
@@ -44,168 +69,99 @@ class LRDraft3Validator(Draft3Validator):
     # URI regex from https://gist.github.com/138549/download
     URI_REGEX = re.compile("^%s$"%URI, re.X)
 
-    def __init__(self, schema, types=(), resolver=None):
+    def __init__(self, schema, types=(), resolver=None, format_checker=None):
+
+        if format_checker is None:
+            format_checker = FormatChecker()
+
         if resolver is None:
-            resolver = LRRefResolver.from_schema(schema)
+            resolver = LRRefResolver.from_schema(schema, handlers={"file":file_resolver})
 
-        super(LRDraft3Validator, self).__init__(schema, types, resolver)
-
-    def is_valid(self, instance, _schema=None, errors=None):
-        errorsIter = self.iter_errors(instance, _schema)
-        error = next(errorsIter, None)
-
-        if not (errors is None):
-            errors.append(error)
-            errors.extend(errorsIter)
-
-        return error is None
-
-    def validate_type(self, types, instance, schema):
-        types = _list(types)
-        all_errors = list()
-
-        for type in types:
-
-            # We will need this a couple of times
-            is_object = self.is_type(type, "object")
-
-            # Ouch. Brain hurts. Two paths here, either we have a schema, then
-            # check if the instance is valid under it
-            if (
-                is_object and 
-                self.is_valid(instance, type, all_errors)
-                ):
-                    all_errors = []
-                    return
-            
-            # Or we have a type as a string, just check if the instance is that
-            # type. Also, HACK: we can reach the `or` here if skip_types is
-            # something other than error. If so, bail out.
-
-            if self.is_type(type, "string"):
-                if (self.is_type(instance, type) or type not in self._types):               
-                    return
-
-            if not is_object:
-                all_errors.append(ValidationError(_types_msg(instance, type)))
-        else:
-            for error in all_errors:
-                yield error
+        super(LRDraft3Validator, self).__init__(schema, types, resolver, format_checker)
 
 
-    def validate_format(self, format, instance, schema):
-
-        def is_date(val):
-            if self.is_type(val, "string"):
-                m =  LRDraft3Validator.ISO8601_DATE_REGEX.match(val)
-                if m:
-                    groups = m.groupdict()
-                    try:
-                        datetime(int(groups["year"]), int(groups["month"]), int(groups["day"]), tzinfo=iso8601.iso8601.UTC)
-                        return True
-                    except ValueError:
-                        pass
-            return False
-
-
-        def is_date_time(val):
-            if self.is_type(val, "string"):
-                m =  LRDraft3Validator.ISO8601_DATE_TIME_REGEX.match(val)
-                if m:
-                    groups = m.groupdict()
-                    try:
-                        datetime(int(groups["year"]), int(groups["month"]), int(groups["day"]),
-                            int(groups["hour"]), int(groups["minute"]), int(groups["second"]),
-                            tzinfo=iso8601.iso8601.UTC)
-                        return True
-                    except ValueError:
-                        pass
-            return False
-
-        def is_date_time_us(val):
-            if self.is_type(val, "string"):
-                m =  LRDraft3Validator.ISO8601_DATE_TIME_MS_REGEX.match(val)
-                if m:
-                    groups = m.groupdict()
-                    try:
-                        if groups["microsecond"] is None:
-                            groups["microsecond"] = 0
-                        else:
-                            groups["microsecond"] = int(float("0.%s" % groups["microsecond"]) * 1e6)
-
-                        datetime(int(groups["year"]), int(groups["month"]), int(groups["day"]),
-                            int(groups["hour"]), int(groups["minute"]), int(groups["second"]), int(groups["microsecond"]),
-                            tzinfo=iso8601.iso8601.UTC)
-                        return True
-                    except ValueError:
-                        pass
-            return False
-
-        def is_utc_millisec(val):
-            if self.is_type(val, "number") and val >= 0:
-                return True
-            return False
-
-
-        def is_regex(val):
-            if self.is_type(val, "string"):
-                try:
-                    exp = re.compile(val)
-                    if exp:
-                        return True
-                except:
-                    pass
-            return False
-
-        def is_uri(val):
-            if self.is_type(val, "string"):
-                if LRDraft3Validator.URI_REGEX.match(val) is not None:
-                    # print "regex matched a uri: %r" % val
-                    return True
-                # else:
-                #     try:
-                #         print "didn't match"
-                #         (first, sep, rest) = val.partition("#")
-                #         urlopen(first).read()
-                #         return True
-                #     except:
-                #         pass
-
-            return False
-
-        def unsupported(val):
-            raise UnsupportedFormatError()
-            return False
-
-        formats = {
-            "date-time": is_date_time,
-            "date-time-us": is_date_time_us,
-            "date": is_date,
-            "time": unsupported,
-            "utc-millisec": is_utc_millisec,
-            "regex": is_regex,
-            "color": unsupported,
-            "style": unsupported,
-            "phone": unsupported,
-            "uri": is_uri,
-            "email": unsupported,
-            "ip-address": unsupported,
-            "ipv6": unsupported,
-            "hostname": unsupported
-        }
-
+@FormatChecker.cls_checks("date", ())
+def is_date(val):
+    m =  LRDraft3Validator.ISO8601_DATE_REGEX.match(val)
+    if m:
+        groups = m.groupdict()
         try:
-            if not formats[format](instance):
-                yield ValidationError("%r is not formatted as a %r" % (instance, format)) 
-        except UnsupportedFormatError as e:
-            yield ValidationError("%r is an unsupported format" % format)
-        except KeyError:
-            if is_uri(format):
-                yield ValidationError("custom format is unsupported")
+            datetime(int(groups["year"]), int(groups["month"]), int(groups["day"]), tzinfo=iso8601.iso8601.UTC)
+            return True
+        except ValueError:
+            pass
+    return False
+
+@FormatChecker.cls_checks("date-time", ())
+def is_date_time(val):
+    m =  LRDraft3Validator.ISO8601_DATE_TIME_REGEX.match(val)
+    if m:
+        groups = m.groupdict()
+        try:
+            datetime(int(groups["year"]), int(groups["month"]), int(groups["day"]),
+                int(groups["hour"]), int(groups["minute"]), int(groups["second"]),
+                tzinfo=iso8601.iso8601.UTC)
+            return True
+        except ValueError:
+            pass
+    return False
+
+@FormatChecker.cls_checks("date-time-us")
+def is_date_time_us(val):
+    m =  LRDraft3Validator.ISO8601_DATE_TIME_MS_REGEX.match(val)
+    if m:
+        groups = m.groupdict()
+        try:
+            if groups["microsecond"] is None:
+                groups["microsecond"] = 0
             else:
-                yield ValidationError("%r is an unknown format" % format)
-        except GeneratorExit:
-            raise StopIteration
+                groups["microsecond"] = int(float("0.%s" % groups["microsecond"]) * 1e6)
+
+            datetime(int(groups["year"]), int(groups["month"]), int(groups["day"]),
+                int(groups["hour"]), int(groups["minute"]), int(groups["second"]), int(groups["microsecond"]),
+                tzinfo=iso8601.iso8601.UTC)
+            return True
+        except ValueError:
+            pass
+    return False
+
+@FormatChecker.cls_checks("utc-millisec")
+def is_utc_millisec(val):
+    try:
+        if val >= 0:
+            return True
+    except:
+        pass
+
+    return False
+
+@FormatChecker.cls_checks("regex")
+def is_regex(val):
+    try:
+        exp = re.compile(val)
+        if exp:
+            return True
+    except:
+        pass
+    return False
+
+@FormatChecker.cls_checks("uri")
+def is_uri(val):
+    if LRDraft3Validator.URI_REGEX.match(val) is not None:
+        # print "regex matched a uri: %r" % val
+        return True
+
+def unsupported(val):
+    raise UnsupportedFormatError()
+
+FormatChecker.cls_checks("time", UnsupportedFormatError)(unsupported)
+FormatChecker.cls_checks("color", UnsupportedFormatError)(unsupported)
+FormatChecker.cls_checks("style", UnsupportedFormatError)(unsupported)
+FormatChecker.cls_checks("phone", UnsupportedFormatError)(unsupported)
+FormatChecker.cls_checks("email", UnsupportedFormatError)(unsupported)
+FormatChecker.cls_checks("ip-address", UnsupportedFormatError)(unsupported)
+FormatChecker.cls_checks("ipv6", UnsupportedFormatError)(unsupported)
+FormatChecker.cls_checks("hostname", UnsupportedFormatError)(unsupported)
 
 
 
@@ -217,32 +173,6 @@ LRDraft3Validator.META_SCHEMA["properties"]["format"].update(
         "enum": ["date-time", "date-time-us", "date", "utc-millisec", "regex", "uri"]
     }
 )           
-
-class LRRefResolver(RefResolver):
-    def resolve(self, ref):
-        """
-        Resolve a JSON ``ref``.
-
-        :argument str ref: reference to resolve
-        :returns: the referrant document
-
-        """
-
-        base_uri = self.base_uri
-        full_uri = urlparse.urljoin(base_uri, ref)
-        uri, fragment = urlparse.urldefrag(full_uri)
-
-        if not full_uri.startswith(uri) and re.match("^file:[^/].*", full_uri):
-            uri = re.sub("([^:]+:)/+", "\\1", uri) 
-
-        if uri in self.store:
-            document = self.store[uri]
-        elif not uri or uri == self.base_uri:
-            document = self.referrer
-        else:
-            document = self.resolve_remote(uri)
-
-        return self.resolve_fragment(document, fragment.lstrip("/"))
 
 
 

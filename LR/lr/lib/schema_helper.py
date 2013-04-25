@@ -50,7 +50,7 @@ class SchemaBackedModelHelper(object):
                 pass
 
         try:
-            validate(model_ref, self.schema, cls=self.validator_class)
+            validate(dict(model_ref), self.schema, cls=self.validator_class)
         except ValidationError as ve:
             msgs = []
             for err in self.validator_class(self.schema).iter_errors(model_ref):
