@@ -44,6 +44,7 @@ def make_map(config):
         path_prefix='/contrib', name_prefix='contrib_')
     map.resource("register","register")
     map.resource('pubkey', 'pubkey')
+    map.resource('schema', 'schema')
     mapResource('lr.status.docid', 'status','status')
     mapResource('lr.distribute.docid','distribute','distribute')
     if not LRNode.nodeDescription.gateway_node:

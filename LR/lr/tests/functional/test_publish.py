@@ -1104,8 +1104,6 @@ class TestFilteredPublishController(TestController):
             "documents": [document]
         }
 
-        import pdb; pdb.set_trace()
-
         result = json.loads(self.app.post('/publish', params=json.dumps(data), headers=headers).body)
         assert(result['OK']), self._PUBLISH_UNSUCCESSFUL_MSG
         assert(len(result['document_results']) == 1), "Expected 1 result and got {0}".format(len(result['document_results']))
