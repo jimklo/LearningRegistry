@@ -16,11 +16,11 @@ class SchemaController(BaseController):
     def index(self):
         """GET /schemas: All items in the collection"""
         # url('schemas')
-        schemas = {}
+        schemas = { "schemas": { } }
         for plugin in LRPluginManager.getAllPlugins(ISchemaProvider):
             plugin_sids = plugin.schema_ids()
             for sid in plugin_sids:
-                schemas.update({
+                schemas["schemas"].update({
                     sid: plugin.schema_info(sid)
                     })
 
@@ -60,5 +60,5 @@ class SchemaController(BaseController):
             except:
                 pass
 
-        abort(404, 'Requested schema "{0}" not found.'.format(id))
+        abort(404, 'Requested schema "{0}" not found.'.format(id), headers={"Content-Type": "application/json"})
                 

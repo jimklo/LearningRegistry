@@ -109,9 +109,11 @@ class PublishController(BaseController):
 
             if not plugin.optional() or (plugin.optional() and plugin.name() == requestedFilter):
                 status, msg = plugin.filter(resourceData)
-                if status:
+                if status is not None:
                     return [status, msg]
 
+        if requestedFilter != None:
+            return [True, "Requested filter '%s' is not available." % requestedFilter]
 
         if (LRNode.filterDescription is None or
             LRNode.filterDescription.filter is None or 

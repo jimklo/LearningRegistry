@@ -41,7 +41,8 @@ class ISchemaProvider(object):
         return {
             "schema_id": str(schema_id),
             "description": "Not Available",
-            "content-type": "application/octet-stream"
+            "content-type": None,
+            "optional": False
         }
 
 

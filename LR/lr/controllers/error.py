@@ -32,7 +32,7 @@ class ErrorController(BaseController):
         if request.environ.has_key('pylons.controller.exception'):
             import json
             try:
-                response.headers.update(request.environ['pylons.controller.exception'].headers)
+                response.headers.update(**request.environ['pylons.controller.exception'].headers)
             except:
                 pass
 
