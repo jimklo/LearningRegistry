@@ -19,6 +19,7 @@ Contents:
 
    Slicing <slicing/index>
 
+   validate_publish/index
 
 Indices and tables
 ==================
