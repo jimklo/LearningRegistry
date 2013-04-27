@@ -26,7 +26,8 @@ class SchemaOrgFilterPolicy(ICustomFilterPolicy, ISchemaProvider):
         self.s_info = {
                 "schema_id": self.filter_id,
                 "description": self.filter_description,
-                "content-type": "application/json; charset=utf-8"
+                "content-type": "application/json; charset=utf-8",
+                "optional": self.optional()
         }
 
 

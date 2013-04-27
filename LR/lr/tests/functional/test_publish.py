@@ -1027,7 +1027,7 @@ class TestFilteredPublishController(TestController):
     
     @decorators.ModifiedServiceDoc(config["app_conf"]['lr.publish.docid'], decorators.update_authz())
     def test_publish_good_lrmi(self):
-        known_doc_id = 'urn:{domain}:nosetest:{uuid}'.format(domain=socket.gethostname(), uuid=uuid.uuid1())
+        known_doc_id = 'urn:{domain}:nosetest:{uuid}'.format(domain=socket.gethostname(), uuid=uuid.uuid4())
         document = {
           "doc_type": "resource_data",
           "resource_locator": "http://www.khanacademy.org/video/writing-and-using-inequalities-2",
@@ -1644,7 +1644,7 @@ class TestPublisherController(TestController):
                         { # 'keys' contains integers instead of strings
                         "active" : True,
                         "doc_type" : "resource_data",
-                        "doc_version": "0.23.0",
+                        "doc_version": "0.49.0",
                         "payload_schema": ["none"],
                         "resource_data_type": "metadata",
                         "resource_locator" : "http://example.com",
@@ -1676,7 +1676,7 @@ class TestPublisherController(TestController):
         data = { 
                     "active" : True,
                     "doc_type" : "resource_data",
-                    "doc_version": "0.23.0",
+                    "doc_version": "0.49.0",
                     "payload_schema": ["none"],
                     "resource_data_type": "metadata",
                     "resource_locator" : "http://example.com",
